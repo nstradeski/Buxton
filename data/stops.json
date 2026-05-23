@@ -32,7 +32,7 @@
     "type": "services",
     "lat": 52.8500,
     "lon": -1.3667,
-    "description": "M1 J23A-24. Moto, with good EV chargers if Mum diverts via M1.",
+    "description": "M1 J23A-24. Moto, with good EV chargers if Mom diverts via M1.",
     "from": "~3 hr 30 from Lewes"
   },
   {
@@ -84,7 +84,7 @@
 
   {
     "name": "Pavilion Gardens Car Park (Buxton)",
-    "group": "EV chargers (Mum)",
+    "group": "EV chargers (Mom)",
     "type": "ev",
     "lat": 53.2604,
     "lon": -1.9168,
@@ -93,7 +93,7 @@
   },
   {
     "name": "Spring Gardens Car Park (Buxton)",
-    "group": "EV chargers (Mum)",
+    "group": "EV chargers (Mom)",
     "type": "ev",
     "lat": 53.2607,
     "lon": -1.9114,
@@ -102,7 +102,7 @@
   },
   {
     "name": "Smithfield Centre Car Park (Leek)",
-    "group": "EV chargers (Mum)",
+    "group": "EV chargers (Mom)",
     "type": "ev",
     "lat": 53.1075,
     "lon": -2.0240,
@@ -111,7 +111,7 @@
   },
   {
     "name": "Trentham Gardens BP Pulse",
-    "group": "EV chargers (Mum)",
+    "group": "EV chargers (Mom)",
     "type": "ev",
     "lat": 52.9756,
     "lon": -2.1865,
@@ -120,11 +120,11 @@
   },
   {
     "name": "Tesla Supercharger, Stafford",
-    "group": "EV chargers (Mum)",
+    "group": "EV chargers (Mom)",
     "type": "ev",
     "lat": 52.7867,
     "lon": -2.0986,
-    "description": "If Mum drives a Tesla — V3 chargers, easy detour off the M6.",
+    "description": "If Mom drives a Tesla — V3 chargers, easy detour off the M6.",
     "from": "Detour from outbound route"
   }
 ]

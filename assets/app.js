@@ -7,8 +7,8 @@ const DAYS = [
     schedule: [
       { time: '09:00', text: 'Lewes party leaves (long drive — straight to the barnhouse)', ref: 'travel', party: 'lewes' },
       { time: '11:00', text: 'Newcastle party leaves', ref: 'travel', party: 'newcastle' },
-      { time: '12:30', text: 'Huddersfield party (Mum) leaves', ref: 'travel', party: 'huddersfield' },
-      { time: '14:00', text: 'Mum stops at Leek for the fresh shop', ref: 'arrival-meal', party: 'huddersfield' },
+      { time: '12:30', text: 'Huddersfield party (Mom) leaves', ref: 'travel', party: 'huddersfield' },
+      { time: '14:00', text: 'Mom stops at Leek for the fresh shop', ref: 'arrival-meal', party: 'huddersfield' },
       { time: '16:00', text: 'Check in at The Barnhouse', ref: 'stay' },
       { time: '17:00', text: 'Unpack, short stretch in the garden, kids decompress' },
       { time: '18:30', text: 'Cook Ma Po Tofu', ref: 'recipe-sichuan' },
@@ -624,7 +624,7 @@ const PACKING = [
     ]
   },
   {
-    section: 'Huddersfield (Mum)',
+    section: 'Huddersfield (Mom)',
     party: 'huddersfield',
     items: [
       { id: 'h-clothes', text: 'Clothes' },
