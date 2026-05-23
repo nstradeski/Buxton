@@ -229,7 +229,7 @@ function renderDays(weatherByDate = {}) {
           <div class="day-meals">
             <span><b>B</b> ${day.meals.breakfast}</span>
             <span><b>L</b> ${day.meals.lunch}</span>
-            <span><b>D</b> ${day.meals.dinner}</span>
+            <span><b>D</b> ${linkifyDinner(day.meals.dinner)}</span>
           </div>
         ` : ''}
       </div>
@@ -271,6 +271,20 @@ async function loadWeather() {
     // leave the "not available" placeholders in
   }
 }
+
+function linkifyDinner(text) {
+  const match = RECIPES.find(r => text.toLowerCase().includes(r.cuisine.toLowerCase()));
+  if (!match) return text;
+  return `<a class="meal-link" href="#recipe-${match.cuisine.toLowerCase()}" data-recipe="${match.cuisine.toLowerCase()}">${text}</a>`;
+}
+
+document.addEventListener('click', e => {
+  const link = e.target.closest('.meal-link');
+  if (!link) return;
+  const id = `recipe-${link.dataset.recipe}`;
+  const target = document.getElementById(id);
+  if (target) target.open = true;
+});
 
 function weatherEmoji(code) {
   if (code === 0) return '☀️';
@@ -537,6 +551,7 @@ function renderRecipes() {
   RECIPES.forEach(r => {
     const details = document.createElement('details');
     details.className = 'recipe';
+    details.id = `recipe-${r.cuisine.toLowerCase()}`;
     details.style.setProperty('--recipe-accent', r.accent);
     details.innerHTML = `
       <summary>

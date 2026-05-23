@@ -254,6 +254,12 @@ a:hover { text-decoration: underline; }
   font-size: 0.82rem;
   color: var(--ink-soft);
 }
+.meal-link {
+  color: var(--accent);
+  font-weight: 500;
+  border-bottom: 1px dotted var(--accent);
+}
+.meal-link:hover { text-decoration: none; border-bottom-style: solid; }
 .day-meals b {
   display: inline-block;
   width: 14px;
