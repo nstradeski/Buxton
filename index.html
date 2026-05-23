@@ -22,8 +22,114 @@
       document.write('<script src="assets/app.js?v=' + v + '" defer><\/script>');
     })();
   </script>
+  <style>
+    #gate {
+      position: fixed; inset: 0; z-index: 99999;
+      display: grid; place-items: center;
+      background: #1c1d1a;
+      color: #e6e3da;
+      font-family: 'Inter', -apple-system, sans-serif;
+    }
+    #gate .gate-box {
+      background: #25261f;
+      padding: 2rem 2.25rem;
+      border-radius: 14px;
+      max-width: 360px;
+      width: calc(100% - 2rem);
+      box-shadow: 0 10px 40px rgba(0,0,0,0.4);
+      text-align: center;
+    }
+    #gate h1 {
+      font-family: 'Fraunces', serif;
+      font-weight: 600;
+      font-size: 1.4rem;
+      margin: 0 0 0.5rem;
+    }
+    #gate p { color: #a8a59a; font-size: 0.9rem; margin: 0 0 1.25rem; }
+    #gate input {
+      width: 100%;
+      padding: 0.7rem 0.9rem;
+      border-radius: 8px;
+      border: 1px solid #3a3b35;
+      background: #1c1d1a;
+      color: #e6e3da;
+      font-size: 1rem;
+      box-sizing: border-box;
+    }
+    #gate input:focus { outline: 2px solid #c2693f; outline-offset: 1px; }
+    #gate button {
+      margin-top: 0.75rem;
+      width: 100%;
+      padding: 0.7rem;
+      border: none;
+      border-radius: 8px;
+      background: #c2693f;
+      color: #fff;
+      font-weight: 600;
+      font-size: 0.95rem;
+      cursor: pointer;
+    }
+    #gate button:hover { background: #d8835e; }
+    #gate .err { color: #ec8c70; font-size: 0.82rem; margin-top: 0.5rem; min-height: 1.1em; }
+    body.locked { overflow: hidden; }
+    body.locked .layout { filter: blur(8px); pointer-events: none; user-select: none; }
+  </style>
+  <script>
+    (function () {
+      var HASH = '9439d5e7e013bcad4051460aa810ca7ae18978d6959f8a73098e669be955288f';
+      var KEY = 'buxton-gate-v1';
+
+      async function sha256(s) {
+        var buf = new TextEncoder().encode(s);
+        var hash = await crypto.subtle.digest('SHA-256', buf);
+        return Array.from(new Uint8Array(hash)).map(b => b.toString(16).padStart(2, '0')).join('');
+      }
+
+      function unlock() {
+        document.body.classList.remove('locked');
+        var g = document.getElementById('gate');
+        if (g) g.remove();
+      }
+
+      function showGate() {
+        var gate = document.createElement('div');
+        gate.id = 'gate';
+        gate.innerHTML =
+          '<form class="gate-box" autocomplete="off">' +
+            '<h1>Peak District Trip</h1>' +
+            '<p>Family planning page. Enter the shared password to continue.</p>' +
+            '<input type="password" id="gate-input" autocomplete="off" autofocus />' +
+            '<button type="submit">Unlock</button>' +
+            '<div class="err" id="gate-err"></div>' +
+          '</form>';
+        document.body.appendChild(gate);
+        gate.querySelector('form').addEventListener('submit', async function (e) {
+          e.preventDefault();
+          var input = document.getElementById('gate-input');
+          var err = document.getElementById('gate-err');
+          var h = await sha256(input.value);
+          if (h === HASH) {
+            try { localStorage.setItem(KEY, '1'); } catch (e) {}
+            unlock();
+          } else {
+            err.textContent = 'Wrong password';
+            input.value = '';
+            input.focus();
+          }
+        });
+      }
+
+      var alreadyUnlocked = false;
+      try { alreadyUnlocked = localStorage.getItem(KEY) === '1'; } catch (e) {}
+
+      document.addEventListener('DOMContentLoaded', function () {
+        if (alreadyUnlocked) unlock();
+        else showGate();
+      });
+    })();
+  </script>
 </head>
-<body>
+<body class="locked">
   <div class="layout">
 
     <aside class="sidebar">
