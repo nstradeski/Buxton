@@ -527,6 +527,146 @@ a:hover { text-decoration: underline; }
 
 /* --- Misc ------------------------------------------------------------- */
 
+/* --- Travel ----------------------------------------------------------- */
+
+.travel-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1rem;
+}
+.travel-card {
+  background: var(--card);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 1.25rem 1.3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  border-top: 4px solid var(--accent);
+}
+.travel-head {
+  display: flex;
+  gap: 0.85rem;
+  align-items: center;
+}
+.travel-emoji {
+  width: 46px;
+  height: 46px;
+  border-radius: 12px;
+  background: var(--accent-soft);
+  display: grid;
+  place-items: center;
+  font-size: 1.5rem;
+}
+.travel-card h4 {
+  font-family: 'Fraunces', serif;
+  font-weight: 600;
+  font-size: 1.1rem;
+  margin: 0;
+}
+.travel-who {
+  font-size: 0.78rem;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+.travel-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+  background: var(--bg);
+  border-radius: 10px;
+  padding: 0.6rem 0.85rem;
+}
+.travel-stats > div {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+}
+.travel-route {
+  margin: 0;
+  font-size: 0.88rem;
+  color: var(--ink-soft);
+  line-height: 1.5;
+}
+.travel-foot {
+  font-size: 0.82rem;
+  color: var(--muted);
+  border-top: 1px dashed var(--line);
+  padding-top: 0.65rem;
+  margin-top: auto;
+}
+.travel-foot strong { color: var(--warm); }
+
+/* --- Options ---------------------------------------------------------- */
+
+.option-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1rem;
+}
+.option-card {
+  background: var(--card);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 1.3rem 1.4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  position: relative;
+}
+.option-card.recommended {
+  outline: 2px solid var(--accent);
+  outline-offset: -2px;
+}
+.option-tag {
+  position: absolute;
+  top: -0.7rem;
+  left: 1.4rem;
+  background: var(--accent);
+  color: #fff;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.25rem 0.7rem;
+  border-radius: 999px;
+}
+.option-card h4 {
+  font-family: 'Fraunces', serif;
+  font-weight: 600;
+  font-size: 1.15rem;
+  margin: 0;
+}
+.option-card > p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--ink-soft);
+  line-height: 1.5;
+}
+.option-section h5 {
+  font-family: 'Fraunces', serif;
+  font-size: 0.92rem;
+  margin: 0 0 0.4rem;
+  color: var(--accent);
+}
+.option-section ul {
+  margin: 0;
+  padding-left: 1.1rem;
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+}
+.option-section li { margin-bottom: 0.2rem; }
+.option-foot {
+  font-size: 0.8rem;
+  color: var(--muted);
+  border-top: 1px dashed var(--line);
+  padding-top: 0.65rem;
+  margin-top: auto;
+}
+
 /* --- Walks ------------------------------------------------------------ */
 
 .walks-grid {
