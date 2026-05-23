@@ -339,6 +339,17 @@ function slug(s) {
   return s.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 }
 
+function distanceKey(s) {
+  if (!s) return Number.POSITIVE_INFINITY;
+  if (/base/i.test(s)) return 0;
+  const m = s.match(/(\d+(?:\.\d+)?)/);
+  return m ? parseFloat(m[1]) : Number.POSITIVE_INFINITY;
+}
+
+function byDistance(a, b) {
+  return distanceKey(a.from_base) - distanceKey(b.from_base);
+}
+
 function weatherEmoji(code) {
   if (code === 0) return '☀️';
   if ([1, 2].includes(code)) return '🌤️';
@@ -384,6 +395,7 @@ async function loadPlacesAndMap() {
 function renderActivities(activities) {
   const el = document.getElementById('activities-list');
   if (!el) return;
+  activities = [...activities].sort(byDistance);
   const grouped = activities.reduce((acc, a) => {
     const g = a.group || 'Other';
     (acc[g] = acc[g] || []).push(a);
@@ -455,6 +467,7 @@ const CAT_LABELS = {
 };
 
 function renderPlaces(places, el) {
+  places = [...places].sort(byDistance);
   const grouped = places.reduce((acc, p) => {
     (acc[p.category] = acc[p.category] || []).push(p);
     return acc;
@@ -530,7 +543,7 @@ async function loadRestaurants() {
   if (!el) return;
   try {
     const res = await fetch('data/restaurants.json?t=' + Date.now());
-    const items = await res.json();
+    const items = (await res.json()).sort(byDistance);
     const grouped = items.reduce((acc, p) => {
       (acc[p.type] = acc[p.type] || []).push(p);
       return acc;
@@ -574,7 +587,7 @@ function renderWalks() {
   const el = document.getElementById('walks-list');
   if (!el) return;
   el.innerHTML = '';
-  WALKS.forEach(w => {
+  [...WALKS].sort(byDistance).forEach(w => {
     const accent = DIFF_ACCENT[w.difficulty] || '#888';
     const card = document.createElement('a');
     card.className = 'walk-card';
