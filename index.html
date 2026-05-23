@@ -12,7 +12,7 @@
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" defer></script>
   <script src="https://unpkg.com/opening_hours@3.12.0/build/opening_hours.js" defer></script>
-  <script src="assets/app.js?v=5" defer></script>
+  <script src="assets/app.js?v=6" defer></script>
 </head>
 <body>
   <div class="layout">
@@ -38,6 +38,7 @@
         <a href="#map">Map</a>
         <a href="#shops">Shops</a>
         <a href="#walks">Walks</a>
+        <a href="#activities">Activities</a>
         <a href="#food">Food &amp; Pubs</a>
         <a href="#logistics">Logistics</a>
       </nav>
@@ -87,6 +88,7 @@
           <span><i style="background:#d99350"></i> Organic</span>
           <span><i style="background:#8b6cc4"></i> Market</span>
           <span><i style="background:#3a8fb7"></i> Vegan-friendly food</span>
+          <span><i style="background:#b58a2f"></i> Activity / Sight</span>
         </div>
       </section>
 
@@ -101,13 +103,20 @@
       <section id="walks" class="block">
         <div class="block-head"><h2>Walks &amp; Hikes</h2></div>
         <div class="tile-grid">
-          <div class="tile"><h4>Mam Tor Ridge</h4><p class="muted">Classic ridge walk · Castleton</p></div>
           <div class="tile"><h4>The Roaches</h4><p class="muted">Right on the doorstep · gritstone edge</p></div>
+          <div class="tile"><h4>Lud's Church</h4><p class="muted">Mossy chasm near The Roaches</p></div>
           <div class="tile"><h4>Kinder Scout</h4><p class="muted">Plateau · longer day</p></div>
           <div class="tile"><h4>Chee Dale</h4><p class="muted">Stepping stones · limestone gorge</p></div>
           <div class="tile"><h4>Monsal Trail</h4><p class="muted">Easy · old railway, tunnels</p></div>
-          <div class="tile"><h4>Lud's Church</h4><p class="muted">Mossy chasm near The Roaches</p></div>
         </div>
+      </section>
+
+      <section id="activities" class="block">
+        <div class="block-head">
+          <h2>Activities &amp; Sights</h2>
+          <p>Castleton cluster — about 30 min drive from Buxton, all within a couple of miles of each other.</p>
+        </div>
+        <div id="activities-list" class="tile-grid"></div>
       </section>
 
       <section id="food" class="block">

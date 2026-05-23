@@ -427,6 +427,28 @@ a:hover { text-decoration: underline; }
   font-size: 1rem;
 }
 .tile p { margin: 0; font-size: 0.85rem; }
+.tile.activity {
+  color: inherit;
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+}
+.tile.activity:hover { text-decoration: none; }
+.activity-tags {
+  margin-top: 0.6rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+}
+.activity-tags span {
+  font-size: 0.7rem;
+  padding: 0.1rem 0.45rem;
+  border-radius: 999px;
+  background: var(--bg-2);
+  color: var(--ink-soft);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
 
 /* --- Misc ------------------------------------------------------------- */
 

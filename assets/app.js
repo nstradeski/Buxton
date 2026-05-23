@@ -13,8 +13,13 @@ const DAYS = [
     meals: { breakfast: 'Barnhouse', lunch: 'Pack lunch', dinner: 'Cook in' }
   },
   {
-    date: '2026-05-29', title: 'Buxton day',
-    items: ['Pavilion Gardens', 'Shopping run (Tesco / Waitrose)'],
+    date: '2026-05-29', title: 'Castleton cluster',
+    items: [
+      'Drive to Mam Nick car park (top of Winnats Pass)',
+      'Walk up to Mam Tor (paragliders if warm)',
+      'Blue John Cavern, then drive down to Speedwell Cavern (boat)',
+      'Castleton village — Peveril Castle + ice cream',
+    ],
     meals: { breakfast: 'Barnhouse', lunch: 'Simply Vegan Buxton', dinner: 'Nat\'s Kitchen' }
   },
   {
@@ -119,22 +124,48 @@ function weatherEmoji(code) {
 async function loadPlacesAndMap() {
   const listEl = document.getElementById('places-list');
   try {
-    const [placesRes, restaurantsRes] = await Promise.all([
+    const [placesRes, restaurantsRes, activitiesRes] = await Promise.all([
       fetch('data/places.json'),
       fetch('data/restaurants.json'),
+      fetch('data/activities.json'),
     ]);
     const places = await placesRes.json();
     const restaurants = await restaurantsRes.json();
+    const activities = await activitiesRes.json();
     renderPlaces(places.filter(p => p.category !== 'accommodation'), listEl);
+    renderActivities(activities);
 
-    const restaurantMarkers = restaurants.map(r => ({
-      ...r,
-      category: 'food',
+    const restaurantMarkers = restaurants.map(r => ({ ...r, category: 'food' }));
+    const activityMarkers = activities.map(a => ({
+      name: a.name,
+      address: a.description,
+      lat: a.lat,
+      lon: a.lon,
+      category: 'activity',
     }));
-    renderMap([...places, ...restaurantMarkers]);
+    renderMap([...places, ...restaurantMarkers, ...activityMarkers]);
   } catch (err) {
     listEl.innerHTML = `<p class="error">Couldn't load places: ${err.message}</p>`;
   }
+}
+
+function renderActivities(activities) {
+  const el = document.getElementById('activities-list');
+  if (!el) return;
+  el.innerHTML = '';
+  activities.forEach(a => {
+    const tile = document.createElement('a');
+    tile.className = 'tile activity';
+    tile.href = a.url;
+    tile.target = '_blank';
+    tile.rel = 'noopener';
+    tile.innerHTML = `
+      <h4>${a.name}</h4>
+      <p class="muted">${a.description}</p>
+      <div class="activity-tags">${(a.tags || []).map(t => `<span>${t}</span>`).join('')}</div>
+    `;
+    el.appendChild(tile);
+  });
 }
 
 function isOpen(hoursStr) {
@@ -216,10 +247,12 @@ function renderMap(places) {
     market: '#8b6cc4',
     accommodation: '#d35a6f',
     food: '#3a8fb7',
+    activity: '#b58a2f',
   };
 
   places.forEach(p => {
     const isStay = p.category === 'accommodation';
+    const hasHours = !!p.opening_hours;
     const marker = L.circleMarker([p.lat, p.lon], {
       radius: isStay ? 11 : 8,
       fillColor: colors[p.category] || '#555',
@@ -227,8 +260,8 @@ function renderMap(places) {
       weight: 2,
       fillOpacity: 0.95,
     }).addTo(map);
-    const status = isOpen(p.opening_hours);
-    const statusLine = isStay ? '' : `<br><em>${status.label}</em>`;
+    const status = hasHours ? isOpen(p.opening_hours) : null;
+    const statusLine = (isStay || !hasHours) ? '' : `<br><em>${status.label}</em>`;
     marker.bindPopup(`<strong>${p.name}</strong><br>${p.address}${statusLine}`);
   });
 

@@ -1,0 +1,56 @@
+[
+  {
+    "name": "Mam Tor",
+    "area": "Castleton",
+    "lat": 53.3490,
+    "lon": -1.8095,
+    "description": "Iconic ridge walk. Easy stroll up from Mam Nick car park at the top of Winnats Pass. Paragliders launch from the top in good weather.",
+    "url": "https://peakdistrictkids.co.uk/mam-tor-walk/",
+    "tags": ["walk", "views"]
+  },
+  {
+    "name": "Winnats Pass",
+    "area": "Castleton",
+    "lat": 53.3438,
+    "lon": -1.8047,
+    "description": "Dramatic limestone gorge road between Castleton and the Mam Tor ridge.",
+    "url": "https://share.google/fLzl9TTQXJgDHhxQY",
+    "tags": ["drive", "scenery"]
+  },
+  {
+    "name": "Blue John Cavern",
+    "area": "Castleton",
+    "lat": 53.3437,
+    "lon": -1.8138,
+    "description": "Cavern at the top of Winnats Pass, source of the rare Blue John stone.",
+    "url": "https://www.bluejohn-cavern.co.uk/",
+    "tags": ["cave", "indoor"]
+  },
+  {
+    "name": "Speedwell Cavern",
+    "area": "Castleton",
+    "lat": 53.3414,
+    "lon": -1.7867,
+    "description": "The boat one — underground canal trip at the bottom of Winnats Pass.",
+    "url": "https://speedwellcavern.co.uk/",
+    "tags": ["cave", "boat", "indoor"]
+  },
+  {
+    "name": "Peveril Castle",
+    "area": "Castleton",
+    "lat": 53.3429,
+    "lon": -1.7773,
+    "description": "Norman ruin perched above Castleton with sweeping Hope Valley views (English Heritage).",
+    "url": "https://www.english-heritage.org.uk/visit/places/peveril-castle/",
+    "tags": ["castle", "views"]
+  },
+  {
+    "name": "Castleton village",
+    "area": "Castleton",
+    "lat": 53.3437,
+    "lon": -1.7770,
+    "description": "Pretty stone village with cafés, pubs, and (apparently) excellent ice cream.",
+    "url": "https://visitpeakdistrict.com/locations/castleton",
+    "tags": ["village", "food"]
+  }
+]
