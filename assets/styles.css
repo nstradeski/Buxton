@@ -243,6 +243,37 @@ a:hover { text-decoration: underline; }
   font-size: 0.95rem;
 }
 .day-body li { margin-bottom: 0.2rem; }
+.day-meals {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 0.6rem;
+  padding-top: 0.6rem;
+  border-top: 1px dashed var(--line);
+  font-size: 0.82rem;
+  color: var(--ink-soft);
+}
+.day-meals b {
+  display: inline-block;
+  width: 14px;
+  color: var(--warm);
+  font-weight: 700;
+  margin-right: 0.15rem;
+}
+
+.vegan-tag {
+  font-size: 0.7rem;
+  padding: 0.1rem 0.45rem;
+  border-radius: 999px;
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-weight: 500;
+  margin-left: 0.35rem;
+}
+.vegan-tag.full {
+  background: var(--accent);
+  color: #fff;
+}
 
 .day-wx {
   background: var(--bg-2);

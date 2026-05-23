@@ -12,7 +12,7 @@
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" defer></script>
   <script src="https://unpkg.com/opening_hours@3.12.0/build/opening_hours.js" defer></script>
-  <script src="assets/app.js?v=3" defer></script>
+  <script src="assets/app.js?v=4" defer></script>
 </head>
 <body>
   <div class="layout">
@@ -38,7 +38,7 @@
         <a href="#map">Map</a>
         <a href="#shops">Shops</a>
         <a href="#walks">Walks</a>
-        <a href="#food">Food</a>
+        <a href="#food">Food &amp; Pubs</a>
         <a href="#logistics">Logistics</a>
       </nav>
 
@@ -110,8 +110,11 @@
       </section>
 
       <section id="food" class="block">
-        <div class="block-head"><h2>Food &amp; Drink</h2></div>
-        <p class="muted">TBD — pubs, cafes, dinner spots.</p>
+        <div class="block-head">
+          <h2>Vegan-friendly Pubs &amp; Restaurants</h2>
+          <p>Live open/closed status.</p>
+        </div>
+        <div id="restaurants-list" class="places"></div>
       </section>
 
       <section id="logistics" class="block">

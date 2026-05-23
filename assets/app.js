@@ -2,11 +2,31 @@
 const BUXTON = { lat: 53.2591, lon: -1.9111 };
 
 const DAYS = [
-  { date: '2026-05-27', title: 'Arrival', items: ['Travel to Gib Torr Farm', 'Check in at The Barnhouse — 4:00pm', 'Settle in / dinner'] },
-  { date: '2026-05-28', title: 'Day 1', items: ['TBD — local walk (The Roaches?)'] },
-  { date: '2026-05-29', title: 'Day 2', items: ['TBD'] },
-  { date: '2026-05-30', title: 'Day 3', items: ['TBD'] },
-  { date: '2026-05-31', title: 'Departure', items: ['Pack out', 'Travel home'] },
+  {
+    date: '2026-05-27', title: 'Arrival',
+    items: ['Travel to Gib Torr Farm', 'Check in at The Barnhouse — 4:00pm', 'Settle in'],
+    meals: { breakfast: 'On the road', lunch: 'Service station / pack', dinner: 'The Lazy Trout, Meerbrook' }
+  },
+  {
+    date: '2026-05-28', title: 'The Roaches',
+    items: ['Walk The Roaches ridge + Lud\'s Church', 'Tea at The Roaches Tea Rooms'],
+    meals: { breakfast: 'Barnhouse', lunch: 'Pack lunch', dinner: 'Cook in' }
+  },
+  {
+    date: '2026-05-29', title: 'Buxton day',
+    items: ['Pavilion Gardens', 'Shopping run (Tesco / Waitrose)'],
+    meals: { breakfast: 'Barnhouse', lunch: 'Simply Vegan Buxton', dinner: 'Nat\'s Kitchen' }
+  },
+  {
+    date: '2026-05-30', title: 'Big walk',
+    items: ['Mam Tor ridge or Kinder Scout'],
+    meals: { breakfast: 'Barnhouse', lunch: 'Pack lunch', dinner: 'The Old Hall Hotel' }
+  },
+  {
+    date: '2026-05-31', title: 'Departure',
+    items: ['Pack out', 'Quick walk / coffee', 'Travel home'],
+    meals: { breakfast: 'Barnhouse', lunch: 'On the road', dinner: '—' }
+  },
 ];
 
 const TODAY_ISO = new Date().toISOString().slice(0, 10);
@@ -35,6 +55,13 @@ function renderDays(weatherByDate = {}) {
       <div class="day-body">
         <h3>${day.title}</h3>
         <ul>${day.items.map(i => `<li>${i}</li>`).join('')}</ul>
+        ${day.meals ? `
+          <div class="day-meals">
+            <span><b>B</b> ${day.meals.breakfast}</span>
+            <span><b>L</b> ${day.meals.lunch}</span>
+            <span><b>D</b> ${day.meals.dinner}</span>
+          </div>
+        ` : ''}
       </div>
       <div class="day-wx ${wx ? '' : 'empty'}">
         ${wx ? `
@@ -201,7 +228,52 @@ function renderMap(places) {
 
 // --- Init ------------------------------------------------------------------
 
+async function loadRestaurants() {
+  const el = document.getElementById('restaurants-list');
+  if (!el) return;
+  try {
+    const res = await fetch('data/restaurants.json');
+    const items = await res.json();
+    const grouped = items.reduce((acc, p) => {
+      (acc[p.type] = acc[p.type] || []).push(p);
+      return acc;
+    }, {});
+    const TYPE_LABELS = { cafe: 'Cafés', restaurant: 'Restaurants', pub: 'Pubs' };
+    el.innerHTML = '';
+    for (const [type, list] of Object.entries(grouped)) {
+      const group = document.createElement('div');
+      group.className = 'place-group';
+      group.innerHTML = `<h3>${TYPE_LABELS[type] || type}</h3>`;
+      list.forEach(p => {
+        const status = isOpen(p.opening_hours);
+        const pillClass = status.open === true ? 'open' : status.open === false ? 'closed' : 'unknown';
+        const veganTag = p.vegan === 'full'
+          ? '<span class="vegan-tag full">Fully vegan</span>'
+          : '<span class="vegan-tag">Vegan options</span>';
+        const item = document.createElement('div');
+        item.className = 'place';
+        item.innerHTML = `
+          <div>
+            <div class="place-name">
+              <span class="dot ${pillClass}"></span>${p.name} ${veganTag}
+            </div>
+            <div class="place-meta">${p.address}</div>
+            ${p.notes ? `<div class="place-meta">${p.notes}</div>` : ''}
+            <div class="place-hours">${p.opening_hours}</div>
+          </div>
+          <span class="status-pill ${pillClass}">${status.label}</span>
+        `;
+        group.appendChild(item);
+      });
+      el.appendChild(group);
+    }
+  } catch (err) {
+    el.innerHTML = `<p class="error">Couldn't load restaurants: ${err.message}</p>`;
+  }
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   loadWeather();
   loadPlaces();
+  loadRestaurants();
 });
