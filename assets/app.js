@@ -475,6 +475,7 @@ function renderPlaces(places, el) {
         <div>
           <div class="place-name"><span class="dot ${dotClass}"></span>${p.name}</div>
           <div class="place-meta">${p.address}</div>
+          ${p.from_base ? `<div class="place-meta">🚗 ${p.from_base} from the barnhouse</div>` : ''}
           <div class="place-hours">${p.opening_hours}</div>
         </div>
         <span class="status-pill ${pillClass}">${status.label}</span>
@@ -554,6 +555,7 @@ async function loadRestaurants() {
               <span class="dot ${pillClass}"></span>${p.name} ${veganTag}
             </div>
             <div class="place-meta">${p.address}</div>
+            ${p.from_base ? `<div class="place-meta">🚗 ${p.from_base} from the barnhouse</div>` : ''}
             ${p.notes ? `<div class="place-meta">${p.notes}</div>` : ''}
             <div class="place-hours">${p.opening_hours}</div>
           </div>

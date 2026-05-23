@@ -8,7 +8,8 @@
     "lon": -1.9139,
     "opening_hours": "Tu-Sa 10:00-16:00; Su,Mo off",
     "notes": "Fully plant-based cafe & deli",
-    "url": "#"
+    "url": "#",
+    "from_base": "10 mi · ~25 min"
   },
   {
     "name": "Nat's Kitchen",
@@ -19,7 +20,8 @@
     "lon": -1.9148,
     "opening_hours": "We-Sa 18:00-21:30",
     "notes": "Bistro with dedicated vegan menu",
-    "url": "https://natskitchen.co.uk"
+    "url": "https://natskitchen.co.uk",
+    "from_base": "10 mi · ~25 min"
   },
   {
     "name": "Columbine Restaurant",
@@ -30,7 +32,8 @@
     "lon": -1.9151,
     "opening_hours": "Mo,Tu,Th-Sa 19:00-21:30",
     "notes": "Vegan tasting options on request",
-    "url": "https://columbinerestaurant.co.uk"
+    "url": "https://columbinerestaurant.co.uk",
+    "from_base": "10 mi · ~25 min"
   },
   {
     "name": "The Buxton Tap House",
@@ -41,7 +44,8 @@
     "lon": -1.9128,
     "opening_hours": "Mo-Th 12:00-23:00; Fr,Sa 12:00-00:00; Su 12:00-22:30",
     "notes": "Craft beer pub with vegan-marked menu items",
-    "url": "#"
+    "url": "#",
+    "from_base": "10 mi · ~25 min"
   },
   {
     "name": "The Old Hall Hotel",
@@ -52,7 +56,8 @@
     "lon": -1.9143,
     "opening_hours": "Mo-Su 12:00-22:00",
     "notes": "Historic hotel restaurant; vegan mains available",
-    "url": "https://oldhallhotelbuxton.co.uk"
+    "url": "https://oldhallhotelbuxton.co.uk",
+    "from_base": "10 mi · ~25 min"
   },
   {
     "name": "The Roaches Tea Rooms",
@@ -63,7 +68,8 @@
     "lon": -1.9985,
     "opening_hours": "We-Su 09:30-17:00; Mo,Tu off",
     "notes": "Walkers' cafe near The Roaches",
-    "url": "#"
+    "url": "#",
+    "from_base": "2 mi · ~5 min"
   },
   {
     "name": "The Lazy Trout, Meerbrook",
@@ -74,7 +80,8 @@
     "lon": -2.0098,
     "opening_hours": "Mo-Sa 12:00-22:00; Su 12:00-21:00",
     "notes": "Country pub near accommodation; small vegan section",
-    "url": "https://lazytroutmeerbrook.co.uk"
+    "url": "https://lazytroutmeerbrook.co.uk",
+    "from_base": "4 mi · ~10 min"
   },
   {
     "name": "The Devonshire Arms, Hartington",
@@ -85,6 +92,7 @@
     "lon": -1.8126,
     "opening_hours": "Mo-Su 12:00-22:00",
     "notes": "Village pub, vegan options on request",
-    "url": "#"
+    "url": "#",
+    "from_base": "11 mi · ~30 min"
   }
 ]

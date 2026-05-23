@@ -6,7 +6,8 @@
     "lat": 53.1547,
     "lon": -1.9667,
     "opening_hours": "24/7",
-    "url": "https://www.gibtorrfarm.com/"
+    "url": "https://www.gibtorrfarm.com/",
+    "from_base": "Base"
   },
   {
     "name": "Tesco Superstore",
@@ -15,7 +16,8 @@
     "lat": 53.2603,
     "lon": -1.9117,
     "opening_hours": "Mo-Sa 06:00-23:00; Su 10:00-16:00",
-    "url": "https://www.tesco.com/store-locator/buxton/spring-gardens"
+    "url": "https://www.tesco.com/store-locator/buxton/spring-gardens",
+    "from_base": "10 mi · ~25 min"
   },
   {
     "name": "Aldi Buxton",
@@ -24,7 +26,8 @@
     "lat": 53.2547,
     "lon": -1.9008,
     "opening_hours": "Mo-Sa 08:00-22:00; Su 10:00-16:00",
-    "url": "https://www.aldi.co.uk/stores"
+    "url": "https://www.aldi.co.uk/stores",
+    "from_base": "10 mi · ~25 min"
   },
   {
     "name": "Marks & Spencer Foodhall",
@@ -33,7 +36,8 @@
     "lat": 53.2598,
     "lon": -1.9123,
     "opening_hours": "Mo-Sa 08:00-19:00; Su 10:30-16:30",
-    "url": "https://www.marksandspencer.com"
+    "url": "https://www.marksandspencer.com",
+    "from_base": "10 mi · ~25 min"
   },
   {
     "name": "Waitrose Buxton",
@@ -42,7 +46,8 @@
     "lat": 53.2617,
     "lon": -1.9094,
     "opening_hours": "Mo-Sa 08:00-21:00; Su 10:00-16:00",
-    "url": "https://www.waitrose.com/ecom/shops/branch/buxton"
+    "url": "https://www.waitrose.com/ecom/shops/branch/buxton",
+    "from_base": "10 mi · ~25 min"
   },
   {
     "name": "Buxton Wholefoods",
@@ -51,7 +56,8 @@
     "lat": 53.2596,
     "lon": -1.9131,
     "opening_hours": "Mo-Sa 09:00-17:30; Su off",
-    "url": "https://buxtonwholefoods.co.uk"
+    "url": "https://buxtonwholefoods.co.uk",
+    "from_base": "10 mi · ~25 min"
   },
   {
     "name": "The Buxton Larder",
@@ -60,7 +66,8 @@
     "lat": 53.2597,
     "lon": -1.9132,
     "opening_hours": "Tu-Sa 09:00-17:00; Su,Mo off",
-    "url": "#"
+    "url": "#",
+    "from_base": "10 mi · ~25 min"
   },
   {
     "name": "Buxton Market (Tue/Sat)",
@@ -69,6 +76,7 @@
     "lat": 53.2602,
     "lon": -1.9145,
     "opening_hours": "Tu,Sa 09:00-16:00",
+    "from_base": "10 mi · ~25 min",
     "url": "#"
   }
 ]
