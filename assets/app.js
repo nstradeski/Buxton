@@ -169,10 +169,17 @@ function renderActivities(activities) {
       tile.href = a.url;
       tile.target = '_blank';
       tile.rel = 'noopener';
+      const bookBtn = a.booking_url
+        ? `<a class="book-btn" href="${a.booking_url}" target="_blank" rel="noopener" onclick="event.stopPropagation()">Book →</a>`
+        : '';
       tile.innerHTML = `
         <h4>${a.name}</h4>
         <p class="muted">${a.description}</p>
-        <div class="activity-tags">${(a.tags || []).map(t => `<span>${t}</span>`).join('')}</div>
+        ${a.hours ? `<div class="activity-hours">🕐 ${a.hours}</div>` : ''}
+        <div class="activity-foot">
+          <div class="activity-tags">${(a.tags || []).map(t => `<span>${t}</span>`).join('')}</div>
+          ${bookBtn}
+        </div>
       `;
       grid.appendChild(tile);
     });

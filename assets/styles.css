@@ -434,8 +434,30 @@ a:hover { text-decoration: underline; }
   flex-direction: column;
 }
 .tile.activity:hover { text-decoration: none; }
-.activity-tags {
+.activity-hours {
+  margin-top: 0.5rem;
+  font-size: 0.78rem;
+  color: var(--ink-soft);
+}
+.activity-foot {
   margin-top: 0.6rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 0.5rem;
+}
+.book-btn {
+  font-size: 0.75rem;
+  background: var(--accent);
+  color: #fff;
+  padding: 0.3rem 0.65rem;
+  border-radius: 999px;
+  font-weight: 500;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.book-btn:hover { background: #244939; text-decoration: none; }
+.activity-tags {
   display: flex;
   flex-wrap: wrap;
   gap: 0.3rem;
