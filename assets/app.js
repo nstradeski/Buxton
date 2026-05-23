@@ -5,10 +5,10 @@ const DAYS = [
   {
     date: '2026-05-27', title: 'Arrival',
     schedule: [
-      { time: '09:00', text: 'Lewes party leaves (long drive — straight to the barnhouse)', ref: 'travel' },
-      { time: '11:00', text: 'Newcastle party leaves', ref: 'travel' },
-      { time: '12:30', text: 'Huddersfield party (Mum) leaves', ref: 'travel' },
-      { time: '14:00', text: 'Mum stops at Leek for the fresh shop', ref: 'arrival-meal' },
+      { time: '09:00', text: 'Lewes party leaves (long drive — straight to the barnhouse)', ref: 'travel', party: 'lewes' },
+      { time: '11:00', text: 'Newcastle party leaves', ref: 'travel', party: 'newcastle' },
+      { time: '12:30', text: 'Huddersfield party (Mum) leaves', ref: 'travel', party: 'huddersfield' },
+      { time: '14:00', text: 'Mum stops at Leek for the fresh shop', ref: 'arrival-meal', party: 'huddersfield' },
       { time: '16:00', text: 'Check in at The Barnhouse', ref: 'stay' },
       { time: '17:00', text: 'Unpack, short stretch in the garden, kids decompress' },
       { time: '19:00', text: 'Cook Italian dinner', ref: 'recipe-italian' },
@@ -347,7 +347,8 @@ function renderDays(weatherByDate = {}) {
       const body = s.ref
         ? `<a class="schedule-link" href="#${s.ref}" data-ref="${s.ref}">${s.text}</a>`
         : s.text;
-      return `<li><span class="schedule-time">${s.time}</span><span class="schedule-text">${body}</span></li>`;
+      const partyAttr = s.party ? ` data-party="${s.party}"` : '';
+      return `<li${partyAttr}><span class="schedule-time">${s.time}</span><span class="schedule-text">${body}</span></li>`;
     }).join('');
     card.innerHTML = `
       <div class="day-date">
@@ -430,6 +431,89 @@ function slug(s) {
 }
 
 const BASE_COORDS = '53.1547,-1.9667';
+const WHO_KEY = 'buxton-whoami-v1';
+const PACK_KEY = 'buxton-packing-v1';
+
+function getWho() {
+  try { return localStorage.getItem(WHO_KEY) || 'all'; } catch (e) { return 'all'; }
+}
+function setWho(v) {
+  try { localStorage.setItem(WHO_KEY, v); } catch (e) {}
+}
+
+const PACKING = [
+  {
+    section: 'Everyone',
+    party: 'all',
+    items: [
+      { id: 'first-aid', text: 'First aid kit (kid plasters, antihistamine, Calpol, Piriton)' },
+      { id: 'sun-cream', text: 'Sun cream (kid-safe)' },
+      { id: 'rain-jackets', text: 'Waterproofs for everyone' },
+      { id: 'walking-boots', text: 'Walking boots' },
+      { id: 'wellies-kids', text: 'Wellies for the kids' },
+      { id: 'picnic-blanket', text: 'Picnic blanket' },
+      { id: 'flask', text: 'Thermos flask' },
+      { id: 'binoculars', text: 'Binoculars' },
+      { id: 'board-games', text: 'Board games / card games for the home day' },
+      { id: 'speaker', text: 'Bluetooth speaker' },
+      { id: 'multicharger', text: 'Multi-USB / extension lead' },
+      { id: 'pasta', text: '800g dried pasta · 4 tins plum tomatoes (Italian night)' },
+      { id: 'oils-spices', text: 'Olive oil, salt, sugar, oregano, chilli flakes, smoked paprika, cumin' },
+      { id: 'garlic', text: 'Garlic bulbs (lots — Italian + Mexican + Asian)' },
+      { id: 'coffee', text: 'Coffee + filters / cafetiere' },
+      { id: 'snacks', text: 'Kid snacks for the drive (oat bars, dried fruit)' },
+    ]
+  },
+  {
+    section: 'Lewes party',
+    party: 'lewes',
+    items: [
+      { id: 'l-adult-clothes', text: 'Adult clothes (warm layers, 5 days)' },
+      { id: 'l-kid-clothes', text: 'Jasper + Clover clothes (warmer than you think)' },
+      { id: 'l-baby-formula', text: 'Baby formula / feeding kit' },
+      { id: 'l-nappies', text: 'Nappies (pack 50% extra)' },
+      { id: 'l-baby-clothes', text: 'Baby clothes + sleep bags' },
+      { id: 'l-baby-carrier', text: 'Baby carrier for walks' },
+      { id: 'l-buggy', text: 'All-terrain buggy' },
+      { id: 'l-travel-cot', text: 'Travel cot (check if barnhouse has one)' },
+      { id: 'l-dusty-bed', text: "Dusty's bed + blanket" },
+      { id: 'l-dusty-food', text: "Dusty's food + bowls" },
+      { id: 'l-dusty-coat', text: 'Italian greyhound coat (Dusty gets cold)' },
+      { id: 'l-dusty-lead', text: 'Lead + harness for Dusty' },
+      { id: 'l-dusty-poobags', text: 'Poo bags' },
+    ]
+  },
+  {
+    section: 'Huddersfield (Mum)',
+    party: 'huddersfield',
+    items: [
+      { id: 'h-clothes', text: 'Clothes' },
+      { id: 'h-leek-shop', text: 'Shopping list for the Leek arrival shop' },
+      { id: 'h-ev-cable', text: 'EV charging cable + Type 2 adapter' },
+      { id: 'h-ev-rfid', text: 'Charging cards/app logins (BP Pulse, GeniePoint, InstaVolt)' },
+      { id: 'h-zap-map', text: 'Zap-Map app installed + planned route' },
+      { id: 'h-amber-bed', text: "Amber's bed" },
+      { id: 'h-amber-food', text: "Amber's food + bowls" },
+      { id: 'h-amber-lead', text: 'Lead + harness for Amber' },
+      { id: 'h-amber-coat', text: 'Greyhound coat (Amber gets cold)' },
+      { id: 'h-amber-poobags', text: 'Poo bags' },
+    ]
+  },
+  {
+    section: 'Newcastle party',
+    party: 'newcastle',
+    items: [
+      { id: 'n-adult-clothes', text: 'Adult clothes' },
+      { id: 'n-bee-lulu-clothes', text: 'Bee + Lulu clothes' },
+      { id: 'n-bobbi-food', text: "Bobbi's food + bowls" },
+      { id: 'n-bobbi-bed', text: "Bobbi's bed" },
+      { id: 'n-bobbi-coat', text: 'Chihuahua coat (warm layer)' },
+      { id: 'n-bobbi-lead', text: 'Lead + harness for Bobbi' },
+      { id: 'n-bobbi-carrier', text: 'Carry sling for tired chihuahua moments' },
+      { id: 'n-bobbi-poobags', text: 'Poo bags' },
+    ]
+  },
+];
 
 function mapLinks(lat, lon, fromBase = false) {
   if (lat == null || lon == null) return '';
@@ -904,12 +988,98 @@ function renderRecipes() {
   });
 }
 
+function applyWhoFilter() {
+  const who = getWho();
+  document.body.dataset.whoami = who;
+  // Travel cards
+  document.querySelectorAll('.travel-card').forEach(card => {
+    const route = card.dataset.route || '';
+    const matches = who === 'all'
+      || (who === 'lewes' && route === 'Lewes route')
+      || (who === 'huddersfield' && route === 'Huddersfield route')
+      || (who === 'newcastle' && route === 'Newcastle route');
+    card.style.display = matches ? '' : 'none';
+  });
+  renderPacking();
+  // Wed schedule items: re-render days to apply party filter
+  // (renderDays is called from loadWeather; just trigger filter on existing items)
+  document.querySelectorAll('.day-schedule li').forEach(li => {
+    const party = li.dataset.party;
+    if (!party || party === 'all') { li.style.display = ''; return; }
+    li.style.display = (who === 'all' || who === party) ? '' : 'none';
+  });
+}
+
+function packKey(id) { return `${PACK_KEY}:${id}`; }
+function isPacked(id) {
+  try { return localStorage.getItem(packKey(id)) === '1'; } catch (e) { return false; }
+}
+function setPacked(id, v) {
+  try { localStorage.setItem(packKey(id), v ? '1' : '0'); } catch (e) {}
+}
+
+function renderPacking() {
+  const el = document.getElementById('packing-list');
+  if (!el) return;
+  const who = getWho();
+  const visible = PACKING.filter(s => s.party === 'all' || who === 'all' || who === s.party);
+  el.innerHTML = '';
+  visible.forEach(section => {
+    const total = section.items.length;
+    const done = section.items.filter(i => isPacked(i.id)).length;
+    const wrap = document.createElement('div');
+    wrap.className = 'pack-section';
+    wrap.innerHTML = `
+      <div class="pack-head">
+        <h3>${section.section}</h3>
+        <span class="pack-count">${done} / ${total}</span>
+      </div>
+      <ul class="pack-list">
+        ${section.items.map(i => `
+          <li class="${isPacked(i.id) ? 'done' : ''}">
+            <label>
+              <input type="checkbox" data-pack-id="${i.id}" ${isPacked(i.id) ? 'checked' : ''} />
+              <span>${i.text}</span>
+            </label>
+          </li>
+        `).join('')}
+      </ul>
+    `;
+    el.appendChild(wrap);
+  });
+}
+
+document.addEventListener('change', e => {
+  const cb = e.target.closest('input[data-pack-id]');
+  if (!cb) return;
+  setPacked(cb.dataset.packId, cb.checked);
+  cb.closest('li').classList.toggle('done', cb.checked);
+  // Update count for this section
+  const section = cb.closest('.pack-section');
+  if (section) {
+    const inputs = section.querySelectorAll('input[data-pack-id]');
+    const done = Array.from(inputs).filter(i => i.checked).length;
+    section.querySelector('.pack-count').textContent = `${done} / ${inputs.length}`;
+  }
+});
+
 document.addEventListener('DOMContentLoaded', () => {
+  const sel = document.getElementById('whoami-select');
+  if (sel) {
+    sel.value = getWho();
+    sel.addEventListener('change', () => {
+      setWho(sel.value);
+      applyWhoFilter();
+    });
+  }
   loadWeather();
   loadPlacesAndMap();
   loadRestaurants();
   loadHealth();
-  loadStops();
+  loadStops().then(applyWhoFilter);
   renderWalks();
   renderRecipes();
+  renderPacking();
+  // Initial filter pass after a tick so day cards exist
+  setTimeout(applyWhoFilter, 100);
 });
