@@ -163,52 +163,32 @@ const RECIPES = [
 
 const WALKS = [
   {
-    name: 'The Roaches',
-    emoji: '🪨',
-    distance: '~6 km',
-    time: '2–3 hrs',
-    difficulty: 'Moderate',
-    from_base: '1 mi · ~5 min',
-    dog_friendly: 'yes — on lead (sheep)',
-    parking: 'Roach End or Roaches layby (free, fills up)',
-    description: 'Gritstone edge right above the accommodation. Wide views over Tittesworth Reservoir to Wales on a clear day. Combine with Lud\'s Church for a longer loop.',
-    url: 'https://www.peakdistrict.gov.uk/visiting/places-to-visit/the-roaches',
-  },
-  {
-    name: 'Lud\'s Church',
-    emoji: '🌿',
-    distance: '~5 km loop',
-    time: '2 hrs',
+    name: 'Pavilion Gardens, Buxton',
+    emoji: '🦆',
+    distance: '~1 km wander',
+    time: '1–2 hrs',
     difficulty: 'Easy',
-    from_base: '4 mi · ~10 min drive',
-    dog_friendly: 'yes — on lead in woodland',
-    parking: 'Gradbach NT car park',
-    description: 'Deep mossy chasm in the woods — feels prehistoric. Pairs with The Roaches as a half-day loop via Roach End.',
-    url: 'https://www.nationaltrust.org.uk/visit/peak-district/back-forest-and-luds-church',
+    min_age: 'all',
+    from_base: '10 mi · ~25 min drive',
+    dog_friendly: 'yes — on lead in formal gardens',
+    parking: 'Bridge St / Burlington Rd pay & display',
+    description: 'Victorian gardens with a lake, playground, mini railway, cafés. Pure toddler win on a rainy half-day.',
+    url: 'https://paviliongardens.co.uk/',
+    lat: 53.2604, lon: -1.9168,
   },
   {
-    name: 'Kinder Scout',
-    emoji: '⛰️',
-    distance: '13–16 km',
-    time: '5–6 hrs',
-    difficulty: 'Hard',
-    from_base: '18 mi · ~40 min drive',
-    dog_friendly: 'yes — strict on lead (ground-nesting birds & sheep)',
-    parking: 'Edale village (paid)',
-    description: 'The big one. Plateau walk up Jacob\'s Ladder, across the moor edge, down Grindsbrook. Bring map + compass — the top is featureless and easy to get lost in mist.',
-    url: 'https://www.nationaltrust.org.uk/visit/peak-district/kinder-edale-and-mam-tor/kinder-scout-walk',
-  },
-  {
-    name: 'Chee Dale stepping stones',
-    emoji: '💧',
-    distance: '~7 km out-and-back',
-    time: '2–3 hrs',
-    difficulty: 'Moderate',
-    from_base: '14 mi · ~30 min drive',
-    dog_friendly: 'yes — tricky stepping stones with small dogs',
-    parking: 'Miller\'s Dale station car park',
-    description: 'Limestone gorge with stepping stones bolted to the cliff over the River Wye. Don\'t attempt after heavy rain — water rises fast.',
-    url: 'https://www.peakdistrict.gov.uk/visiting/things-to-do/walks/chee-dale-walk',
+    name: 'Tittesworth Reservoir',
+    emoji: '🦢',
+    distance: '~1.5 km or full 8 km',
+    time: '45 min – 2 hrs',
+    difficulty: 'Easy',
+    min_age: 'all',
+    from_base: '5 mi · ~12 min drive',
+    dog_friendly: 'yes — popular dog walk',
+    parking: 'Tittesworth Water visitor centre (paid)',
+    description: 'Reservoir with a flat surfaced trail, café, big playground and bird hides. Stroller- and chihuahua-friendly.',
+    url: 'https://www.severntrent.com/visit-us/our-attractions/tittesworth-water/',
+    lat: 53.1380, lon: -2.0079,
   },
   {
     name: 'Monsal Trail',
@@ -216,24 +196,127 @@ const WALKS = [
     distance: 'Flexible · up to 13 km',
     time: '2–4 hrs',
     difficulty: 'Easy',
+    min_age: 'all',
     from_base: '16 mi · ~35 min drive',
     dog_friendly: 'yes — flat & well-suited to all three dogs',
     parking: 'Miller\'s Dale, Bakewell, or Hassop',
     description: 'Old railway converted to a flat traffic-free path with lit tunnels and Headstone Viaduct. Walkable or hire bikes at Hassop / Blackwell Mill.',
     url: 'https://www.peakdistrict.gov.uk/visiting/things-to-do/walks/monsal-trail',
+    lat: 53.2351, lon: -1.7242,
   },
   {
-    name: 'Three Shire Heads',
+    name: 'Three Shire Heads (short)',
     emoji: '🌊',
-    distance: '~6 km loop',
+    distance: '~2 km out-and-back',
+    time: '1 hr',
+    difficulty: 'Easy',
+    min_age: 'all',
+    from_base: '6 mi · ~15 min drive',
+    dog_friendly: 'yes — paddling spot',
+    parking: 'Cumberland Brook layby',
+    description: 'Shortened version: just down to the packhorse bridges & waterfall, then back. Big-kid paddling, toddlers in carriers for the rocky bits.',
+    url: 'https://www.walkingbritain.co.uk/walks/walk-1186/',
+    lat: 53.1880, lon: -1.9710,
+  },
+  {
+    name: 'Dovedale stepping stones',
+    emoji: '🪜',
+    distance: '~2 km out-and-back',
+    time: '1 hr',
+    difficulty: 'Easy',
+    min_age: '3+',
+    from_base: '12 mi · ~30 min drive',
+    dog_friendly: 'yes — on lead at stones',
+    parking: 'Dovedale NT car park (paid, busy)',
+    description: 'Classic family stroll along the river to the famous stepping stones. Mostly flat path; 3yo can do hand-held.',
+    url: 'https://www.nationaltrust.org.uk/visit/peak-district/dovedale',
+    lat: 53.0588, lon: -1.7825,
+  },
+  {
+    name: 'Padley Gorge',
+    emoji: '🌲',
+    distance: '~3 km loop',
+    time: '1.5 hrs',
+    difficulty: 'Easy',
+    min_age: '3+',
+    from_base: '22 mi · ~45 min drive',
+    dog_friendly: 'yes — woodland & stream',
+    parking: 'Grindleford Station',
+    description: 'Magical oak woodland with mossy boulders and a babbling brook. Plenty of stopping points for tired toddlers.',
+    url: 'https://www.peakdistrict.gov.uk/visiting/places-to-visit/longshaw-burbage-and-the-eastern-moors/padley-gorge',
+    lat: 53.3060, lon: -1.6371,
+  },
+  {
+    name: 'Lud\'s Church',
+    emoji: '🌿',
+    distance: '~5 km loop',
     time: '2 hrs',
     difficulty: 'Easy',
-    from_base: '6 mi · ~15 min drive',
-    dog_friendly: 'yes — paddling, but moor crossing on lead (sheep)',
-    parking: 'Cumberland Brook layby',
-    description: 'Packhorse bridges + waterfall where three counties meet. Easy half-day from the accommodation; can swim if hot.',
-    url: 'https://www.walkingbritain.co.uk/walks/walk-1186/',
+    min_age: '5+',
+    from_base: '4 mi · ~10 min drive',
+    dog_friendly: 'yes — on lead in woodland',
+    parking: 'Gradbach NT car park',
+    description: 'Deep mossy chasm in the woods — feels prehistoric. Pairs with The Roaches as a half-day loop via Roach End. Some scrambling at the chasm.',
+    url: 'https://www.nationaltrust.org.uk/visit/peak-district/back-forest-and-luds-church',
+    lat: 53.1840, lon: -1.9990,
   },
+  {
+    name: 'The Roaches',
+    emoji: '🪨',
+    distance: '~6 km',
+    time: '2–3 hrs',
+    difficulty: 'Moderate',
+    min_age: '5+',
+    from_base: '1 mi · ~5 min',
+    dog_friendly: 'yes — on lead (sheep)',
+    parking: 'Roach End or Roaches layby (free, fills up)',
+    description: 'Gritstone edge right above the accommodation. Wide views over Tittesworth Reservoir to Wales on a clear day. The Lower Tier alone works as a shorter walk with the 5yos.',
+    url: 'https://www.peakdistrict.gov.uk/visiting/places-to-visit/the-roaches',
+    lat: 53.1602, lon: -1.9970,
+  },
+  {
+    name: 'Chee Dale stepping stones',
+    emoji: '💧',
+    distance: '~7 km out-and-back',
+    time: '2–3 hrs',
+    difficulty: 'Moderate',
+    min_age: '8+',
+    from_base: '14 mi · ~30 min drive',
+    dog_friendly: 'yes — tricky stepping stones with small dogs',
+    parking: 'Miller\'s Dale station car park',
+    description: 'Limestone gorge with stepping stones bolted to the cliff over the River Wye. Bolts can be wet/slippery — not for toddlers or small dogs without help.',
+    url: 'https://www.peakdistrict.gov.uk/visiting/things-to-do/walks/chee-dale-walk',
+    lat: 53.2562, lon: -1.7847,
+  },
+  {
+    name: 'Kinder Scout',
+    emoji: '⛰️',
+    distance: '13–16 km',
+    time: '5–6 hrs',
+    difficulty: 'Hard',
+    min_age: 'adults',
+    from_base: '18 mi · ~40 min drive',
+    dog_friendly: 'yes — strict on lead (ground-nesting birds & sheep)',
+    parking: 'Edale village (paid)',
+    description: 'The big one. Plateau walk up Jacob\'s Ladder, across the moor edge, down Grindsbrook. Bring map + compass — the top is featureless and easy to get lost in mist.',
+    url: 'https://www.nationaltrust.org.uk/visit/peak-district/kinder-edale-and-mam-tor/kinder-scout-walk',
+    lat: 53.3866, lon: -1.8716,
+  },
+];
+
+const AGE_LABELS = {
+  all: 'All ages (buggy ok)',
+  '3+': 'Kids 3+',
+  '5+': 'Kids 5+',
+  '8+': 'Older kids',
+  adults: 'Adults only',
+};
+
+const AGE_FILTERS = [
+  { key: 'all-walks', label: 'All walks' },
+  { key: 'all', label: 'All ages (buggy)' },
+  { key: '3+', label: '3-year-old friendly' },
+  { key: '5+', label: '5+ friendly' },
 ];
 
 const DIFF_ACCENT = {
@@ -345,6 +428,23 @@ function slug(s) {
   return s.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 }
 
+const BASE_COORDS = '53.1547,-1.9667';
+
+function mapLinks(lat, lon, fromBase = false) {
+  if (lat == null || lon == null) return '';
+  const dest = `${lat},${lon}`;
+  const google = fromBase
+    ? `https://www.google.com/maps/dir/?api=1&origin=${BASE_COORDS}&destination=${dest}&travelmode=driving`
+    : `https://www.google.com/maps/search/?api=1&query=${dest}`;
+  const waze = `https://waze.com/ul?ll=${dest}&navigate=yes`;
+  return `
+    <div class="map-links">
+      <a href="${google}" target="_blank" rel="noopener" onclick="event.stopPropagation()">📍 Maps</a>
+      <a href="${waze}" target="_blank" rel="noopener" onclick="event.stopPropagation()">🚗 Waze</a>
+    </div>
+  `;
+}
+
 function dogFriendlyPill(text) {
   const t = (text || '').toLowerCase();
   let cls = 'dog-unknown';
@@ -442,6 +542,7 @@ function renderActivities(activities) {
           ${a.price ? `<div>💷 ${a.price}</div>` : ''}
           ${dogPill ? `<div>🐕 ${dogPill}</div>` : ''}
         </div>
+        ${mapLinks(a.lat, a.lon, true)}
         <div class="activity-foot">
           <div class="activity-tags">${(a.tags || []).map(t => `<span>${t}</span>`).join('')}</div>
           ${bookBtn}
@@ -510,6 +611,7 @@ function renderPlaces(places, el) {
           <div class="place-meta">${p.address}</div>
           ${p.from_base ? `<div class="place-meta">🚗 ${p.from_base} from the barnhouse</div>` : ''}
           <div class="place-hours">${p.opening_hours}</div>
+          ${mapLinks(p.lat, p.lon, true)}
         </div>
         <span class="status-pill ${pillClass}">${status.label}</span>
       `;
@@ -599,6 +701,7 @@ async function loadRestaurants() {
             ${p.notes ? `<div class="place-meta">${p.notes}</div>` : ''}
             ${highlightsHtml}
             <div class="place-hours">${p.opening_hours}</div>
+            ${mapLinks(p.lat, p.lon, true)}
           </div>
           <span class="status-pill ${pillClass}">${status.label}</span>
         `;
@@ -611,25 +714,36 @@ async function loadRestaurants() {
   }
 }
 
+let walkFilter = 'all-walks';
+
 function renderWalks() {
   const el = document.getElementById('walks-list');
   if (!el) return;
+  renderWalkFilters();
   el.innerHTML = '';
-  [...WALKS].sort(byDistance).forEach(w => {
+  const items = [...WALKS].sort(byDistance).filter(w => {
+    if (walkFilter === 'all-walks') return true;
+    if (walkFilter === 'all') return w.min_age === 'all';
+    if (walkFilter === '3+') return ['all', '3+'].includes(w.min_age);
+    if (walkFilter === '5+') return ['all', '3+', '5+'].includes(w.min_age);
+    return true;
+  });
+  if (!items.length) {
+    el.innerHTML = `<p class="muted">No walks match this filter.</p>`;
+    return;
+  }
+  items.forEach(w => {
     const accent = DIFF_ACCENT[w.difficulty] || '#888';
-    const card = document.createElement('a');
+    const card = document.createElement('div');
     card.className = 'walk-card';
     card.id = `walk-${slug(w.name)}`;
     card.style.setProperty('--walk-accent', accent);
-    card.href = w.url;
-    card.target = '_blank';
-    card.rel = 'noopener';
     card.innerHTML = `
       <div class="walk-top">
         <div class="walk-emoji">${w.emoji}</div>
         <div class="walk-title">
-          <h4>${w.name}</h4>
-          <span class="walk-diff">${w.difficulty}</span>
+          <h4><a class="walk-link" href="${w.url}" target="_blank" rel="noopener">${w.name}</a></h4>
+          <span class="walk-diff">${w.difficulty}${w.min_age ? ` · ${AGE_LABELS[w.min_age]}` : ''}</span>
         </div>
       </div>
       <div class="walk-stats">
@@ -641,9 +755,27 @@ function renderWalks() {
         <div>🚗 <strong>${w.from_base}</strong> from the barnhouse</div>
         <div>🅿️ ${w.parking}</div>
         ${w.dog_friendly ? `<div>🐕 ${dogFriendlyPill(w.dog_friendly)}</div>` : ''}
+        ${mapLinks(w.lat, w.lon, true)}
       </div>
     `;
     el.appendChild(card);
+  });
+}
+
+function renderWalkFilters() {
+  const el = document.getElementById('walk-filters');
+  if (!el || el.children.length) return;
+  AGE_FILTERS.forEach(f => {
+    const btn = document.createElement('button');
+    btn.className = 'filter-chip' + (walkFilter === f.key ? ' active' : '');
+    btn.textContent = f.label;
+    btn.dataset.key = f.key;
+    btn.addEventListener('click', () => {
+      walkFilter = f.key;
+      el.querySelectorAll('.filter-chip').forEach(c => c.classList.toggle('active', c.dataset.key === walkFilter));
+      renderWalks();
+    });
+    el.appendChild(btn);
   });
 }
 
