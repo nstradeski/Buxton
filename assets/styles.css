@@ -786,16 +786,10 @@ a:hover { text-decoration: underline; }
   .trip-meta { display: none; }
   .nav {
     flex-direction: row;
-    flex-wrap: nowrap;
-    gap: 0.2rem;
+    flex-wrap: wrap;
+    gap: 0.3rem;
     width: 100%;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    margin: 0 -1rem;
-    padding: 0 1rem 0.1rem;
-    scrollbar-width: none;
   }
-  .nav::-webkit-scrollbar { display: none; }
   .nav a {
     padding: 0.4rem 0.85rem;
     font-size: 0.82rem;
