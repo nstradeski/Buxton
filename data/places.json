@@ -1,5 +1,14 @@
 [
   {
+    "name": "The Barnhouse, Gib Torr Farm",
+    "category": "accommodation",
+    "address": "Gib Torr Farm, near Upper Hulme, Staffordshire Moorlands",
+    "lat": 53.1547,
+    "lon": -1.9667,
+    "opening_hours": "24/7",
+    "url": "https://www.gibtorrfarm.com/"
+  },
+  {
     "name": "Tesco Superstore",
     "category": "supermarket",
     "address": "Spring Gardens, Buxton SK17 6BS",

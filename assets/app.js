@@ -122,7 +122,7 @@ function renderPlaces(places, el) {
 // --- Map -------------------------------------------------------------------
 
 function renderMap(places) {
-  const map = L.map('map').setView([BUXTON.lat, BUXTON.lon], 14);
+  const map = L.map('map');
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 19,
     attribution: '© OpenStreetMap'
@@ -131,7 +131,8 @@ function renderMap(places) {
   const colors = {
     supermarket: '#3b6b4a',
     organic: '#c97b3a',
-    market: '#7a4ec9'
+    market: '#7a4ec9',
+    accommodation: '#c93a6b'
   };
 
   places.forEach(p => {
@@ -145,6 +146,9 @@ function renderMap(places) {
     const status = isOpen(p.opening_hours);
     marker.bindPopup(`<strong>${p.name}</strong><br>${p.address}<br><em>${status.label}</em>`);
   });
+
+  const bounds = L.latLngBounds(places.map(p => [p.lat, p.lon]));
+  map.fitBounds(bounds, { padding: [30, 30] });
 }
 
 // --- Init ------------------------------------------------------------------
