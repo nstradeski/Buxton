@@ -4,32 +4,58 @@ const BUXTON = { lat: 53.2591, lon: -1.9111 };
 const DAYS = [
   {
     date: '2026-05-27', title: 'Arrival',
-    items: ['Travel to Gib Torr Farm', 'Check in at The Barnhouse — 4:00pm', 'Settle in'],
+    schedule: [
+      { time: '~14:00', text: 'Travel to Gib Torr Farm', ref: 'stay' },
+      { time: '16:00', text: 'Check in at The Barnhouse', ref: 'stay' },
+      { time: '17:00', text: 'Unpack, short stretch in the garden / nap for the little one' },
+      { time: '19:00', text: 'Cook Italian dinner', ref: 'recipe-italian' },
+    ],
     meals: { breakfast: 'On the road', lunch: 'Pack', dinner: 'Cook in · Italian 🍝' }
   },
   {
-    date: '2026-05-28', title: 'The Roaches',
-    items: ['Walk The Roaches ridge + Lud\'s Church', 'Tea at The Roaches Tea Rooms'],
+    date: '2026-05-28', title: 'Three Shire Heads',
+    schedule: [
+      { time: '08:30', text: 'Breakfast at the Barnhouse' },
+      { time: '10:30', text: 'Drive to Cumberland Brook layby (15 min)' },
+      { time: '11:00', text: 'Walk to Three Shire Heads — easy, buggy-tricky but doable', ref: 'walk-three-shire-heads' },
+      { time: '13:00', text: 'Picnic by the waterfall (paddling if hot)' },
+      { time: '15:00', text: 'Back to barnhouse, downtime / nap' },
+      { time: '18:30', text: 'Cook Mexican dinner', ref: 'recipe-mexican' },
+    ],
     meals: { breakfast: 'Barnhouse', lunch: 'Pack lunch', dinner: 'Cook in · Mexican 🌮' }
   },
   {
-    date: '2026-05-29', title: 'Castleton cluster',
-    items: [
-      'Drive to Mam Nick car park (top of Winnats Pass)',
-      'Walk up to Mam Tor (paragliders if warm)',
-      'Blue John Cavern, then drive down to Speedwell Cavern (boat)',
-      'Castleton village — Peveril Castle + ice cream',
+    date: '2026-05-29', title: 'Castleton day',
+    schedule: [
+      { time: '08:30', text: 'Breakfast' },
+      { time: '10:00', text: 'Drive to Mam Nick car park (~40 min)' },
+      { time: '10:45', text: 'Easy walk up to Mam Tor — paragliders if warm', ref: 'activity-mam-tor' },
+      { time: '12:30', text: 'Lunch in Castleton + ice cream', ref: 'activity-castleton-village' },
+      { time: '14:00', text: 'Speedwell Cavern (boat trip) — book ahead', ref: 'activity-speedwell-cavern' },
+      { time: '15:30', text: 'Peveril Castle for the bigger kids', ref: 'activity-peveril-castle' },
+      { time: '18:30', text: 'Dinner at Nat\'s Kitchen — early sitting' },
     ],
     meals: { breakfast: 'Barnhouse', lunch: 'Pack / Castleton café', dinner: 'Nat\'s Kitchen · restaurant night ✨' }
   },
   {
-    date: '2026-05-30', title: 'Big walk',
-    items: ['Mam Tor ridge or Kinder Scout'],
+    date: '2026-05-30', title: 'Monsal & Poole\'s',
+    schedule: [
+      { time: '09:00', text: 'Breakfast' },
+      { time: '10:30', text: 'Drive to Hassop Station (~30 min)' },
+      { time: '11:00', text: 'Monsal Trail — flat & buggy-friendly, hire bikes for the 5-year-olds', ref: 'walk-monsal-trail' },
+      { time: '13:30', text: 'Picnic lunch at Headstone Viaduct' },
+      { time: '15:00', text: 'Poole\'s Cavern + Go Ape Junior (5yo only) in Buxton', ref: 'activity-go-ape-buxton' },
+      { time: '18:30', text: 'Cook Asian dinner', ref: 'recipe-asian' },
+    ],
     meals: { breakfast: 'Barnhouse', lunch: 'Pack lunch', dinner: 'Cook in · Asian 🥢' }
   },
   {
     date: '2026-05-31', title: 'Departure',
-    items: ['Pack out', 'Quick walk / coffee', 'Travel home'],
+    schedule: [
+      { time: '08:30', text: 'Breakfast & pack up' },
+      { time: '10:00', text: 'Short walk on The Roaches if dry', ref: 'walk-the-roaches' },
+      { time: '11:00', text: 'Check out, travel home' },
+    ],
     meals: { breakfast: 'Barnhouse', lunch: 'On the road', dinner: '—' }
   },
 ];
@@ -42,20 +68,20 @@ const RECIPES = [
     accent: '#b03a3a',
     night: 'Wed · Italian 🍝',
     title: 'Pasta al Pomodoro + garlic bread',
-    serves: '4',
-    time: '30 min',
-    why: 'Easy arrival-night cook after a long drive. One pan + an oven.',
+    serves: '5 adults + 3 kids',
+    time: '35 min',
+    why: 'Easy arrival-night cook after a long drive. One big pan + an oven.',
     ingredients: [
-      '400g spaghetti or linguine',
-      '2 × 400g tins plum tomatoes',
-      '4 cloves garlic, sliced',
+      '800g spaghetti or linguine',
+      '4 × 400g tins plum tomatoes',
+      '8 cloves garlic, sliced',
       'Big handful fresh basil',
-      '4 tbsp olive oil + extra to finish',
+      '6 tbsp olive oil + extra to finish',
       '1 tsp sugar, salt, black pepper',
-      '1 sourdough loaf or ciabatta',
-      '2 tbsp vegan butter',
-      '2 cloves garlic (for bread), parsley',
-      'Optional: chilli flakes, vegan parm (Violife)',
+      '2 sourdough loaves or ciabattas',
+      '4 tbsp vegan butter',
+      '4 cloves garlic (for bread), parsley',
+      'Optional: chilli flakes (adults), vegan parm (Violife)',
     ],
     method: [
       'Heat olive oil in a wide pan, gently fry sliced garlic 1–2 min (don\'t brown).',
@@ -72,21 +98,22 @@ const RECIPES = [
     accent: '#c2693f',
     night: 'Thu · Mexican 🌮',
     title: 'Black bean & sweet potato tacos',
-    serves: '4',
-    time: '40 min',
-    why: 'Post-walk fuel. Bold flavours, mostly cupboard ingredients, lots of toppings.',
+    serves: '5 adults + 3 kids',
+    time: '45 min',
+    why: 'Post-walk fuel. Bold flavours, mostly cupboard ingredients, lots of toppings. Build-your-own works well for the kids.',
     ingredients: [
-      '12 small corn or flour tortillas',
-      '2 sweet potatoes, diced 1.5cm',
-      '2 × 400g tins black beans, drained',
-      '1 red onion + 1 lime (quick-pickled)',
-      '2 ripe avocados',
-      'Bunch coriander',
-      '2 tsp ground cumin, 2 tsp smoked paprika, 1 tsp oregano',
-      '1–2 tbsp chipotle paste',
-      'Jar of salsa / pico',
+      '24 small corn or flour tortillas',
+      '4 sweet potatoes, diced 1.5cm',
+      '3 × 400g tins black beans, drained',
+      '2 red onions + 2 limes (quick-pickled)',
+      '3 ripe avocados',
+      '2 bunches coriander',
+      '3 tsp ground cumin, 3 tsp smoked paprika, 2 tsp oregano',
+      '1–2 tbsp chipotle paste (keep separate for kids)',
+      '2 jars salsa / pico (one mild)',
       'Olive oil, salt, pepper',
-      'Optional: vegan sour cream, hot sauce, pickled jalapeños',
+      'Optional: vegan sour cream, hot sauce, pickled jalapeños (adults)',
+      'For kids: grated cheese-style (Violife), plain beans, cucumber sticks',
     ],
     method: [
       'Toss sweet potato with oil, cumin, paprika, salt. Roast 200°C / 25 min until edges crisp.',
@@ -103,22 +130,23 @@ const RECIPES = [
     accent: '#2f7a6f',
     night: 'Sat · Asian 🥢',
     title: 'Crispy tofu & broccoli stir-fry with rice noodles',
-    serves: '4',
-    time: '35 min',
-    why: 'Fresh, quick, balances out a big walk day.',
+    serves: '5 adults + 3 kids',
+    time: '40 min',
+    why: 'Fresh, quick, balances out a big walk day. Sauce on the side for the kids who don\'t want it spicy.',
     ingredients: [
-      '500g firm tofu, pressed and cubed',
-      '3 tbsp cornflour',
-      '250g flat rice noodles',
-      '1 head broccoli, florets',
-      '1 red pepper, sliced',
-      '4 spring onions',
-      '4 cloves garlic, 30g ginger — minced',
-      '5 tbsp soy sauce',
-      '2 tbsp rice vinegar (or lime)',
-      '2 tbsp maple syrup or brown sugar',
-      '1 tbsp sesame oil + neutral oil for frying',
-      'Sriracha to taste, sesame seeds',
+      '900g firm tofu, pressed and cubed',
+      '5 tbsp cornflour',
+      '500g flat rice noodles',
+      '2 heads broccoli, florets',
+      '2 red peppers, sliced',
+      '6 spring onions',
+      '6 cloves garlic, 50g ginger — minced',
+      '8 tbsp soy sauce',
+      '3 tbsp rice vinegar (or lime)',
+      '3 tbsp maple syrup or brown sugar',
+      '2 tbsp sesame oil + neutral oil for frying',
+      'Sriracha (adults only, on the side), sesame seeds',
+      'For kids: portion their tofu + noodles + plain broccoli aside before adding sauce',
     ],
     method: [
       'Press tofu 15 min. Cube, toss in cornflour + pinch salt. Pan-fry in oil until golden on all sides. Set aside.',
@@ -216,6 +244,12 @@ function renderDays(weatherByDate = {}) {
     const card = document.createElement('div');
     card.className = 'day-card';
     if (day.date === TODAY_ISO) card.dataset.today = 'true';
+    const scheduleHtml = day.schedule.map(s => {
+      const body = s.ref
+        ? `<a class="schedule-link" href="#${s.ref}" data-ref="${s.ref}">${s.text}</a>`
+        : s.text;
+      return `<li><span class="schedule-time">${s.time}</span><span class="schedule-text">${body}</span></li>`;
+    }).join('');
     card.innerHTML = `
       <div class="day-date">
         <span class="dow">${dow}</span>
@@ -224,7 +258,7 @@ function renderDays(weatherByDate = {}) {
       </div>
       <div class="day-body">
         <h3>${day.title}</h3>
-        <ul>${day.items.map(i => `<li>${i}</li>`).join('')}</ul>
+        <ul class="day-schedule">${scheduleHtml}</ul>
         ${day.meals ? `
           <div class="day-meals">
             <span><b>B</b> ${day.meals.breakfast}</span>
@@ -279,12 +313,22 @@ function linkifyDinner(text) {
 }
 
 document.addEventListener('click', e => {
-  const link = e.target.closest('.meal-link');
-  if (!link) return;
-  const id = `recipe-${link.dataset.recipe}`;
-  const target = document.getElementById(id);
-  if (target) target.open = true;
+  const mealLink = e.target.closest('.meal-link');
+  if (mealLink) {
+    const target = document.getElementById(`recipe-${mealLink.dataset.recipe}`);
+    if (target) target.open = true;
+    return;
+  }
+  const schedLink = e.target.closest('.schedule-link');
+  if (schedLink) {
+    const target = document.getElementById(schedLink.dataset.ref);
+    if (target && target.tagName === 'DETAILS') target.open = true;
+  }
 });
+
+function slug(s) {
+  return s.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+}
 
 function weatherEmoji(code) {
   if (code === 0) return '☀️';
@@ -345,6 +389,7 @@ function renderActivities(activities) {
     items.forEach(a => {
       const tile = document.createElement('a');
       tile.className = 'tile activity';
+      tile.id = `activity-${slug(a.name)}`;
       tile.href = a.url;
       tile.target = '_blank';
       tile.rel = 'noopener';
@@ -521,6 +566,7 @@ function renderWalks() {
     const accent = DIFF_ACCENT[w.difficulty] || '#888';
     const card = document.createElement('a');
     card.className = 'walk-card';
+    card.id = `walk-${slug(w.name)}`;
     card.style.setProperty('--walk-accent', accent);
     card.href = w.url;
     card.target = '_blank';

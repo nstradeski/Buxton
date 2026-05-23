@@ -48,7 +48,14 @@ a:hover { text-decoration: underline; }
   display: flex;
   flex-direction: column;
   gap: 1.75rem;
+  z-index: 1000;
 }
+.map { isolation: isolate; }
+.leaflet-pane, .leaflet-top, .leaflet-bottom { z-index: 1 !important; }
+.leaflet-pane.leaflet-overlay-pane { z-index: 2 !important; }
+.leaflet-pane.leaflet-marker-pane { z-index: 3 !important; }
+.leaflet-pane.leaflet-popup-pane { z-index: 4 !important; }
+.leaflet-top, .leaflet-bottom { z-index: 5 !important; }
 
 .brand {
   display: flex;
@@ -247,6 +254,35 @@ a:hover { text-decoration: underline; }
   font-size: 0.95rem;
 }
 .day-body li { margin-bottom: 0.2rem; }
+.day-schedule {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+.day-schedule li {
+  display: grid;
+  grid-template-columns: 64px 1fr;
+  gap: 0.7rem;
+  font-size: 0.88rem;
+  align-items: baseline;
+}
+.schedule-time {
+  font-size: 0.75rem;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  color: var(--warm);
+  letter-spacing: 0.02em;
+}
+.schedule-text { color: var(--ink-soft); }
+.schedule-link {
+  color: var(--accent);
+  border-bottom: 1px dotted var(--accent);
+  font-weight: 500;
+}
+.schedule-link:hover { text-decoration: none; border-bottom-style: solid; }
 .day-meals {
   display: flex;
   flex-wrap: wrap;
