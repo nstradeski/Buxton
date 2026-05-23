@@ -304,9 +304,9 @@ async function loadPlacesAndMap() {
   const listEl = document.getElementById('places-list');
   try {
     const [placesRes, restaurantsRes, activitiesRes] = await Promise.all([
-      fetch('data/places.json'),
-      fetch('data/restaurants.json'),
-      fetch('data/activities.json'),
+      fetch('data/places.json?t=' + Date.now()),
+      fetch('data/restaurants.json?t=' + Date.now()),
+      fetch('data/activities.json?t=' + Date.now()),
     ]);
     const places = await placesRes.json();
     const restaurants = await restaurantsRes.json();
@@ -473,7 +473,7 @@ async function loadRestaurants() {
   const el = document.getElementById('restaurants-list');
   if (!el) return;
   try {
-    const res = await fetch('data/restaurants.json');
+    const res = await fetch('data/restaurants.json?t=' + Date.now());
     const items = await res.json();
     const grouped = items.reduce((acc, p) => {
       (acc[p.type] = acc[p.type] || []).push(p);
