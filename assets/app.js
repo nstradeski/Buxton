@@ -116,13 +116,22 @@ function weatherEmoji(code) {
 
 // --- Places ----------------------------------------------------------------
 
-async function loadPlaces() {
+async function loadPlacesAndMap() {
   const listEl = document.getElementById('places-list');
   try {
-    const res = await fetch('data/places.json');
-    const places = await res.json();
+    const [placesRes, restaurantsRes] = await Promise.all([
+      fetch('data/places.json'),
+      fetch('data/restaurants.json'),
+    ]);
+    const places = await placesRes.json();
+    const restaurants = await restaurantsRes.json();
     renderPlaces(places.filter(p => p.category !== 'accommodation'), listEl);
-    renderMap(places);
+
+    const restaurantMarkers = restaurants.map(r => ({
+      ...r,
+      category: 'food',
+    }));
+    renderMap([...places, ...restaurantMarkers]);
   } catch (err) {
     listEl.innerHTML = `<p class="error">Couldn't load places: ${err.message}</p>`;
   }
@@ -206,6 +215,7 @@ function renderMap(places) {
     organic: '#d99350',
     market: '#8b6cc4',
     accommodation: '#d35a6f',
+    food: '#3a8fb7',
   };
 
   places.forEach(p => {
@@ -274,6 +284,6 @@ async function loadRestaurants() {
 
 document.addEventListener('DOMContentLoaded', () => {
   loadWeather();
-  loadPlaces();
+  loadPlacesAndMap();
   loadRestaurants();
 });
