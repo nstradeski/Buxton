@@ -41,16 +41,17 @@ const DAYS = [
     meals: { breakfast: 'Barnhouse', lunch: 'Pack / Castleton café', dinner: 'Nat\'s Kitchen · restaurant night ✨' }
   },
   {
-    date: '2026-05-30', title: 'Monsal & Poole\'s',
+    date: '2026-05-30', title: 'Home day at the barnhouse',
     schedule: [
-      { time: '09:00', text: 'Breakfast' },
-      { time: '10:30', text: 'Drive to Hassop Station (~30 min)' },
-      { time: '11:00', text: 'Monsal Trail — flat & buggy-friendly, hire bikes for the 5-year-olds', ref: 'walk-monsal-trail' },
-      { time: '13:30', text: 'Picnic lunch at Headstone Viaduct' },
-      { time: '15:00', text: 'Poole\'s Cavern + Go Ape Junior (5yo only) in Buxton', ref: 'activity-go-ape-buxton' },
-      { time: '18:30', text: 'Cook Asian dinner', ref: 'recipe-asian' },
+      { time: 'All day', text: 'Slow morning — kids decompress, dogs run around the farm' },
+      { time: '10:30', text: 'Garden play / drawing / barnhouse games' },
+      { time: '12:30', text: 'Long lazy lunch (build-your-own wraps)' },
+      { time: '14:00', text: 'Optional short stroll on The Roaches lower tier', ref: 'walk-the-roaches' },
+      { time: '15:30', text: 'Tea & cake at Roaches Tea Rooms (2 mi up the road)' },
+      { time: '17:00', text: 'Quiet time — bath, books, naps' },
+      { time: '18:30', text: 'Cook Asian dinner together', ref: 'recipe-asian' },
     ],
-    meals: { breakfast: 'Barnhouse', lunch: 'Pack lunch', dinner: 'Cook in · Asian 🥢' }
+    meals: { breakfast: 'Barnhouse', lunch: 'Cook in · wraps / leftovers', dinner: 'Cook in · Asian 🥢' }
   },
   {
     date: '2026-05-31', title: 'Departure',
