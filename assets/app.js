@@ -169,6 +169,7 @@ const WALKS = [
     time: '2–3 hrs',
     difficulty: 'Moderate',
     from_base: '1 mi · ~5 min',
+    dog_friendly: 'yes — on lead (sheep)',
     parking: 'Roach End or Roaches layby (free, fills up)',
     description: 'Gritstone edge right above the accommodation. Wide views over Tittesworth Reservoir to Wales on a clear day. Combine with Lud\'s Church for a longer loop.',
     url: 'https://www.peakdistrict.gov.uk/visiting/places-to-visit/the-roaches',
@@ -180,6 +181,7 @@ const WALKS = [
     time: '2 hrs',
     difficulty: 'Easy',
     from_base: '4 mi · ~10 min drive',
+    dog_friendly: 'yes — on lead in woodland',
     parking: 'Gradbach NT car park',
     description: 'Deep mossy chasm in the woods — feels prehistoric. Pairs with The Roaches as a half-day loop via Roach End.',
     url: 'https://www.nationaltrust.org.uk/visit/peak-district/back-forest-and-luds-church',
@@ -191,6 +193,7 @@ const WALKS = [
     time: '5–6 hrs',
     difficulty: 'Hard',
     from_base: '18 mi · ~40 min drive',
+    dog_friendly: 'yes — strict on lead (ground-nesting birds & sheep)',
     parking: 'Edale village (paid)',
     description: 'The big one. Plateau walk up Jacob\'s Ladder, across the moor edge, down Grindsbrook. Bring map + compass — the top is featureless and easy to get lost in mist.',
     url: 'https://www.nationaltrust.org.uk/visit/peak-district/kinder-edale-and-mam-tor/kinder-scout-walk',
@@ -202,6 +205,7 @@ const WALKS = [
     time: '2–3 hrs',
     difficulty: 'Moderate',
     from_base: '14 mi · ~30 min drive',
+    dog_friendly: 'yes — tricky stepping stones with small dogs',
     parking: 'Miller\'s Dale station car park',
     description: 'Limestone gorge with stepping stones bolted to the cliff over the River Wye. Don\'t attempt after heavy rain — water rises fast.',
     url: 'https://www.peakdistrict.gov.uk/visiting/things-to-do/walks/chee-dale-walk',
@@ -213,6 +217,7 @@ const WALKS = [
     time: '2–4 hrs',
     difficulty: 'Easy',
     from_base: '16 mi · ~35 min drive',
+    dog_friendly: 'yes — flat & well-suited to all three dogs',
     parking: 'Miller\'s Dale, Bakewell, or Hassop',
     description: 'Old railway converted to a flat traffic-free path with lit tunnels and Headstone Viaduct. Walkable or hire bikes at Hassop / Blackwell Mill.',
     url: 'https://www.peakdistrict.gov.uk/visiting/things-to-do/walks/monsal-trail',
@@ -224,6 +229,7 @@ const WALKS = [
     time: '2 hrs',
     difficulty: 'Easy',
     from_base: '6 mi · ~15 min drive',
+    dog_friendly: 'yes — paddling, but moor crossing on lead (sheep)',
     parking: 'Cumberland Brook layby',
     description: 'Packhorse bridges + waterfall where three counties meet. Easy half-day from the accommodation; can swim if hot.',
     url: 'https://www.walkingbritain.co.uk/walks/walk-1186/',
@@ -339,6 +345,15 @@ function slug(s) {
   return s.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 }
 
+function dogFriendlyPill(text) {
+  const t = (text || '').toLowerCase();
+  let cls = 'dog-unknown';
+  if (t.startsWith('yes') || t.includes('cable cars')) cls = 'dog-yes';
+  else if (t.startsWith('no') || t.includes('assistance dogs only')) cls = 'dog-no';
+  else if (t.includes('outside') || t.includes('park yes')) cls = 'dog-partial';
+  return `<span class="dog-pill ${cls}">${text}</span>`;
+}
+
 function distanceKey(s) {
   if (!s) return Number.POSITIVE_INFINITY;
   if (/base/i.test(s)) return 0;
@@ -417,11 +432,16 @@ function renderActivities(activities) {
       const bookBtn = a.booking_url
         ? `<a class="book-btn" href="${a.booking_url}" target="_blank" rel="noopener" onclick="event.stopPropagation()">Book →</a>`
         : '';
+      const dogPill = a.dog_friendly ? dogFriendlyPill(a.dog_friendly) : '';
       tile.innerHTML = `
         <h4>${a.name}</h4>
         <p class="muted">${a.description}</p>
-        ${a.from_base ? `<div class="activity-hours">🚗 ${a.from_base}</div>` : ''}
-        ${a.hours ? `<div class="activity-hours">🕐 ${a.hours}</div>` : ''}
+        <div class="activity-meta">
+          ${a.from_base ? `<div>🚗 ${a.from_base}</div>` : ''}
+          ${a.hours ? `<div>🕐 ${a.hours}</div>` : ''}
+          ${a.price ? `<div>💷 ${a.price}</div>` : ''}
+          ${dogPill ? `<div>🐕 ${dogPill}</div>` : ''}
+        </div>
         <div class="activity-foot">
           <div class="activity-tags">${(a.tags || []).map(t => `<span>${t}</span>`).join('')}</div>
           ${bookBtn}
@@ -562,6 +582,11 @@ async function loadRestaurants() {
           : '<span class="vegan-tag">Vegan options</span>';
         const item = document.createElement('div');
         item.className = 'place';
+        const highlightsHtml = (p.menu_highlights || []).length
+          ? `<div class="menu-highlights"><b>Menu picks:</b> ${p.menu_highlights.join(' · ')}</div>`
+          : '';
+        const priceHtml = p.price_per_head ? `<div class="place-meta">💷 ${p.price_per_head} per head</div>` : '';
+        const dogHtml = p.dog_friendly ? `<div class="place-meta">🐕 ${dogFriendlyPill(p.dog_friendly)}</div>` : '';
         item.innerHTML = `
           <div>
             <div class="place-name">
@@ -569,7 +594,10 @@ async function loadRestaurants() {
             </div>
             <div class="place-meta">${p.address}</div>
             ${p.from_base ? `<div class="place-meta">🚗 ${p.from_base} from the barnhouse</div>` : ''}
+            ${priceHtml}
+            ${dogHtml}
             ${p.notes ? `<div class="place-meta">${p.notes}</div>` : ''}
+            ${highlightsHtml}
             <div class="place-hours">${p.opening_hours}</div>
           </div>
           <span class="status-pill ${pillClass}">${status.label}</span>
@@ -612,6 +640,7 @@ function renderWalks() {
       <div class="walk-foot">
         <div>🚗 <strong>${w.from_base}</strong> from the barnhouse</div>
         <div>🅿️ ${w.parking}</div>
+        ${w.dog_friendly ? `<div>🐕 ${dogFriendlyPill(w.dog_friendly)}</div>` : ''}
       </div>
     `;
     el.appendChild(card);

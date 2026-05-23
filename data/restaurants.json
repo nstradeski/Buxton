@@ -1,65 +1,5 @@
 [
   {
-    "name": "Simply Vegan Buxton",
-    "type": "cafe",
-    "vegan": "full",
-    "address": "Cavendish Arcade, The Crescent, Buxton",
-    "lat": 53.2596,
-    "lon": -1.9139,
-    "opening_hours": "Tu-Sa 10:00-16:00; Su,Mo off",
-    "notes": "Fully plant-based cafe & deli",
-    "url": "#",
-    "from_base": "10 mi · ~25 min"
-  },
-  {
-    "name": "Nat's Kitchen",
-    "type": "restaurant",
-    "vegan": "options",
-    "address": "9-11 Market St, Buxton SK17 6JY",
-    "lat": 53.2601,
-    "lon": -1.9148,
-    "opening_hours": "We-Sa 18:00-21:30",
-    "notes": "Bistro with dedicated vegan menu",
-    "url": "https://natskitchen.co.uk",
-    "from_base": "10 mi · ~25 min"
-  },
-  {
-    "name": "Columbine Restaurant",
-    "type": "restaurant",
-    "vegan": "options",
-    "address": "7 Hall Bank, Buxton SK17 6EW",
-    "lat": 53.2598,
-    "lon": -1.9151,
-    "opening_hours": "Mo,Tu,Th-Sa 19:00-21:30",
-    "notes": "Vegan tasting options on request",
-    "url": "https://columbinerestaurant.co.uk",
-    "from_base": "10 mi · ~25 min"
-  },
-  {
-    "name": "The Buxton Tap House",
-    "type": "pub",
-    "vegan": "options",
-    "address": "George St, Buxton SK17 6AY",
-    "lat": 53.2588,
-    "lon": -1.9128,
-    "opening_hours": "Mo-Th 12:00-23:00; Fr,Sa 12:00-00:00; Su 12:00-22:30",
-    "notes": "Craft beer pub with vegan-marked menu items",
-    "url": "#",
-    "from_base": "10 mi · ~25 min"
-  },
-  {
-    "name": "The Old Hall Hotel",
-    "type": "pub",
-    "vegan": "options",
-    "address": "The Square, Buxton SK17 6BD",
-    "lat": 53.2599,
-    "lon": -1.9143,
-    "opening_hours": "Mo-Su 12:00-22:00",
-    "notes": "Historic hotel restaurant; vegan mains available",
-    "url": "https://oldhallhotelbuxton.co.uk",
-    "from_base": "10 mi · ~25 min"
-  },
-  {
     "name": "The Roaches Tea Rooms",
     "type": "cafe",
     "vegan": "options",
@@ -68,6 +8,13 @@
     "lon": -1.9985,
     "opening_hours": "We-Su 09:30-17:00; Mo,Tu off",
     "notes": "Walkers' cafe near The Roaches",
+    "menu_highlights": [
+      "Vegan sausage roll",
+      "Beans on toast",
+      "Cake of the day (some vegan)"
+    ],
+    "price_per_head": "~£8–12",
+    "dog_friendly": "yes",
     "url": "#",
     "from_base": "2 mi · ~5 min"
   },
@@ -79,9 +26,109 @@
     "lat": 53.1437,
     "lon": -2.0098,
     "opening_hours": "Mo-Sa 12:00-22:00; Su 12:00-21:00",
-    "notes": "Country pub near accommodation; small vegan section",
+    "notes": "Country pub near accommodation",
+    "menu_highlights": [
+      "Beer-battered halloumi (ask vegan-swap)",
+      "Vegan curry of the week",
+      "Chips, garden salad, mushy peas"
+    ],
+    "price_per_head": "~£18–25 (2 courses)",
+    "dog_friendly": "yes — in the bar",
     "url": "https://lazytroutmeerbrook.co.uk",
     "from_base": "4 mi · ~10 min"
+  },
+  {
+    "name": "Simply Vegan Buxton",
+    "type": "cafe",
+    "vegan": "full",
+    "address": "Cavendish Arcade, The Crescent, Buxton",
+    "lat": 53.2596,
+    "lon": -1.9139,
+    "opening_hours": "Tu-Sa 10:00-16:00; Su,Mo off",
+    "notes": "Fully plant-based cafe & deli",
+    "menu_highlights": [
+      "Buddha bowls",
+      "Vegan sausage breakfast",
+      "Cakes & specialty coffee"
+    ],
+    "price_per_head": "~£10–14",
+    "dog_friendly": "outside only",
+    "url": "#",
+    "from_base": "10 mi · ~25 min"
+  },
+  {
+    "name": "The Buxton Tap House",
+    "type": "pub",
+    "vegan": "options",
+    "address": "George St, Buxton SK17 6AY",
+    "lat": 53.2588,
+    "lon": -1.9128,
+    "opening_hours": "Mo-Th 12:00-23:00; Fr,Sa 12:00-00:00; Su 12:00-22:30",
+    "notes": "Craft beer pub with vegan-marked menu items",
+    "menu_highlights": [
+      "Beyond burger + chips",
+      "Vegan loaded fries",
+      "Plant-based hot dog"
+    ],
+    "price_per_head": "~£16–22",
+    "dog_friendly": "yes — typical of Buxton craft pubs, confirm on the day",
+    "url": "#",
+    "from_base": "10 mi · ~25 min"
+  },
+  {
+    "name": "Nat's Kitchen",
+    "type": "restaurant",
+    "vegan": "options",
+    "address": "9-11 Market St, Buxton SK17 6JY",
+    "lat": 53.2601,
+    "lon": -1.9148,
+    "opening_hours": "We-Sa 18:00-21:30",
+    "notes": "Bistro with dedicated vegan menu — our restaurant night",
+    "menu_highlights": [
+      "Beetroot tartare",
+      "Wild mushroom risotto (vegan)",
+      "Chocolate & raspberry tart"
+    ],
+    "price_per_head": "~£35–45 (2 courses + drinks)",
+    "dog_friendly": "unknown · email/call to confirm",
+    "url": "https://natskitchen.co.uk",
+    "from_base": "10 mi · ~25 min"
+  },
+  {
+    "name": "Columbine Restaurant",
+    "type": "restaurant",
+    "vegan": "options",
+    "address": "7 Hall Bank, Buxton SK17 6EW",
+    "lat": 53.2598,
+    "lon": -1.9151,
+    "opening_hours": "Mo,Tu,Th-Sa 19:00-21:30",
+    "notes": "Vegan tasting options on request — official site appears down, call to confirm",
+    "menu_highlights": [
+      "Seasonal British-Italian small plates",
+      "Vegan pasta on request"
+    ],
+    "price_per_head": "~£35–45",
+    "dog_friendly": "unknown · call to confirm",
+    "url": "https://columbinerestaurant.co.uk",
+    "from_base": "10 mi · ~25 min"
+  },
+  {
+    "name": "The Old Hall Hotel",
+    "type": "pub",
+    "vegan": "options",
+    "address": "The Square, Buxton SK17 6BD",
+    "lat": 53.2599,
+    "lon": -1.9143,
+    "opening_hours": "Mo-Su 12:00-22:00",
+    "notes": "Historic hotel restaurant; official site appears down, call to confirm",
+    "menu_highlights": [
+      "Vegan mains usually available",
+      "Sunday roast with plant-based option"
+    ],
+    "price_per_head": "~£25–35",
+    "dog_friendly": "unknown · call to confirm",
+    "url": "https://oldhallhotelbuxton.co.uk",
+    "from_base": "10 mi · ~25 min"
   },
   {
     "name": "The Devonshire Arms, Hartington",
@@ -92,6 +139,13 @@
     "lon": -1.8126,
     "opening_hours": "Mo-Su 12:00-22:00",
     "notes": "Village pub, vegan options on request",
+    "menu_highlights": [
+      "Vegan pie of the day",
+      "Loaded nachos",
+      "Plant-based burger"
+    ],
+    "price_per_head": "~£18–25",
+    "dog_friendly": "yes — in the bar",
     "url": "#",
     "from_base": "11 mi · ~30 min"
   }

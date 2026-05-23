@@ -480,6 +480,15 @@ a:hover { text-decoration: underline; }
   flex-direction: column;
 }
 .tile.activity:hover { text-decoration: none; }
+.activity-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  margin-top: 0.5rem;
+  font-size: 0.78rem;
+  color: var(--ink-soft);
+}
+.activity-meta div { display: flex; align-items: center; gap: 0.35rem; flex-wrap: wrap; }
 .activity-hours {
   margin-top: 0.5rem;
   font-size: 0.78rem;
@@ -905,6 +914,28 @@ a:hover { text-decoration: underline; }
   place-items: center;
   margin-top: 0.1rem;
 }
+
+.dog-pill {
+  font-size: 0.72rem;
+  padding: 0.1rem 0.5rem;
+  border-radius: 999px;
+  font-weight: 500;
+}
+.dog-pill.dog-yes { background: #e3f0e6; color: #2c6a3b; }
+.dog-pill.dog-no { background: #f4dcd5; color: #9c3a1f; }
+.dog-pill.dog-partial { background: #fbeacd; color: #936a1b; }
+.dog-pill.dog-unknown { background: var(--bg-2); color: var(--muted); }
+
+.menu-highlights {
+  margin-top: 0.4rem;
+  font-size: 0.82rem;
+  color: var(--ink-soft);
+  font-style: italic;
+  background: var(--bg);
+  padding: 0.45rem 0.6rem;
+  border-radius: 6px;
+}
+.menu-highlights b { font-style: normal; color: var(--accent); font-weight: 600; margin-right: 0.3rem; }
 
 .muted { color: var(--muted); }
 .error { color: #9c3a1f; }
