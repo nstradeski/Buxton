@@ -36,6 +36,10 @@ const DAYS = [
 
 const RECIPES = [
   {
+    cuisine: 'Italian',
+    emoji: '🍝',
+    day: 'Wed',
+    accent: '#b03a3a',
     night: 'Wed · Italian 🍝',
     title: 'Pasta al Pomodoro + garlic bread',
     serves: '4',
@@ -62,6 +66,10 @@ const RECIPES = [
     ],
   },
   {
+    cuisine: 'Mexican',
+    emoji: '🌮',
+    day: 'Thu',
+    accent: '#c2693f',
     night: 'Thu · Mexican 🌮',
     title: 'Black bean & sweet potato tacos',
     serves: '4',
@@ -89,6 +97,10 @@ const RECIPES = [
     ],
   },
   {
+    cuisine: 'Asian',
+    emoji: '🥢',
+    day: 'Sat',
+    accent: '#2f7a6f',
     night: 'Sat · Asian 🥢',
     title: 'Crispy tofu & broccoli stir-fry with rice noodles',
     serves: '4',
@@ -508,27 +520,30 @@ function renderRecipes() {
   RECIPES.forEach(r => {
     const details = document.createElement('details');
     details.className = 'recipe';
+    details.style.setProperty('--recipe-accent', r.accent);
     details.innerHTML = `
       <summary>
-        <div class="recipe-summary">
-          <div>
-            <div class="recipe-night">${r.night}</div>
-            <h4>${r.title}</h4>
-            <div class="recipe-meta">Serves ${r.serves} · ${r.time}</div>
+        <div class="recipe-emoji">${r.emoji}</div>
+        <div class="recipe-summary-text">
+          <div class="recipe-cuisine">${r.day} · ${r.cuisine}</div>
+          <h4>${r.title}</h4>
+          <div class="recipe-meta">
+            <span>👥 Serves ${r.serves}</span>
+            <span>⏱ ${r.time}</span>
           </div>
-          <span class="recipe-chevron">▾</span>
         </div>
+        <span class="recipe-chevron" aria-hidden="true">＋</span>
       </summary>
       <div class="recipe-body">
-        <p class="muted">${r.why}</p>
+        <p class="recipe-why">${r.why}</p>
         <div class="recipe-cols">
-          <div>
+          <div class="recipe-col">
             <h5>Ingredients</h5>
-            <ul>${r.ingredients.map(i => `<li>${i}</li>`).join('')}</ul>
+            <ul class="ingredients">${r.ingredients.map(i => `<li>${i}</li>`).join('')}</ul>
           </div>
-          <div>
+          <div class="recipe-col">
             <h5>Method</h5>
-            <ol>${r.method.map(m => `<li>${m}</li>`).join('')}</ol>
+            <ol class="method">${r.method.map(m => `<li><span>${m}</span></li>`).join('')}</ol>
           </div>
         </div>
       </div>
