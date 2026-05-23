@@ -723,6 +723,41 @@ async function loadRestaurants() {
   }
 }
 
+async function loadStops() {
+  const el = document.getElementById('stops-list');
+  if (!el) return;
+  try {
+    const res = await fetch('data/stops.json?t=' + Date.now());
+    const items = await res.json();
+    const grouped = items.reduce((acc, p) => {
+      (acc[p.group] = acc[p.group] || []).push(p);
+      return acc;
+    }, {});
+    el.innerHTML = '';
+    for (const [group, list] of Object.entries(grouped)) {
+      const wrap = document.createElement('div');
+      wrap.className = 'activity-group';
+      wrap.innerHTML = `<h3>${group}</h3><div class="tile-grid"></div>`;
+      const grid = wrap.querySelector('.tile-grid');
+      list.forEach(s => {
+        const tile = document.createElement('div');
+        tile.className = 'tile';
+        const icon = s.type === 'ev' ? '⚡' : s.type === 'scenic' ? '🌳' : '🛣️';
+        tile.innerHTML = `
+          <h4>${icon} ${s.name}</h4>
+          <p class="muted">${s.description}</p>
+          ${s.from ? `<div class="activity-hours">📍 ${s.from}</div>` : ''}
+          ${mapLinks(s.lat, s.lon, false)}
+        `;
+        grid.appendChild(tile);
+      });
+      el.appendChild(wrap);
+    }
+  } catch (err) {
+    el.innerHTML = `<p class="error">Couldn't load stops: ${err.message}</p>`;
+  }
+}
+
 async function loadHealth() {
   const el = document.getElementById('health-list');
   if (!el) return;
@@ -879,6 +914,7 @@ document.addEventListener('DOMContentLoaded', () => {
   loadPlacesAndMap();
   loadRestaurants();
   loadHealth();
+  loadStops();
   renderWalks();
   renderRecipes();
 });
