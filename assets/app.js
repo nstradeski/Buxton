@@ -724,37 +724,32 @@ async function loadRestaurants() {
 }
 
 async function loadStops() {
-  const el = document.getElementById('stops-list');
-  if (!el) return;
+  const containers = document.querySelectorAll('.travel-stops[data-stops-for]');
+  if (!containers.length) return;
   try {
     const res = await fetch('data/stops.json?t=' + Date.now());
     const items = await res.json();
-    const grouped = items.reduce((acc, p) => {
-      (acc[p.group] = acc[p.group] || []).push(p);
-      return acc;
-    }, {});
-    el.innerHTML = '';
-    for (const [group, list] of Object.entries(grouped)) {
-      const wrap = document.createElement('div');
-      wrap.className = 'activity-group';
-      wrap.innerHTML = `<h3>${group}</h3><div class="tile-grid"></div>`;
-      const grid = wrap.querySelector('.tile-grid');
-      list.forEach(s => {
-        const tile = document.createElement('div');
-        tile.className = 'tile';
-        const icon = s.type === 'ev' ? '⚡' : s.type === 'scenic' ? '🌳' : '🛣️';
-        tile.innerHTML = `
-          <h4>${icon} ${s.name}</h4>
-          <p class="muted">${s.description}</p>
-          ${s.from ? `<div class="activity-hours">📍 ${s.from}</div>` : ''}
-          ${mapLinks(s.lat, s.lon, false)}
-        `;
-        grid.appendChild(tile);
-      });
-      el.appendChild(wrap);
-    }
+    containers.forEach(c => {
+      const group = c.dataset.stopsFor;
+      const list = items.filter(s => s.group === group);
+      if (!list.length) return;
+      const heading = group.includes('EV') ? '⚡ EV chargers' : '🛣️ Suggested stops';
+      c.innerHTML = `
+        <h5 class="stops-heading">${heading}</h5>
+        <ul class="stops-list">
+          ${list.map(s => `
+            <li>
+              <div class="stop-name">${s.type === 'ev' ? '⚡' : s.type === 'scenic' ? '🌳' : '🛣️'} ${s.name}</div>
+              <div class="stop-desc">${s.description}</div>
+              ${s.from ? `<div class="stop-from">${s.from}</div>` : ''}
+              ${mapLinks(s.lat, s.lon, false)}
+            </li>
+          `).join('')}
+        </ul>
+      `;
+    });
   } catch (err) {
-    el.innerHTML = `<p class="error">Couldn't load stops: ${err.message}</p>`;
+    containers.forEach(c => { c.innerHTML = `<p class="error">Couldn't load stops: ${err.message}</p>`; });
   }
 }
 

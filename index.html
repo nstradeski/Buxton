@@ -150,7 +150,6 @@
       <nav class="nav">
         <a href="#days">Days</a>
         <a href="#travel">Travel</a>
-        <a href="#stops">Pit stops</a>
         <a href="#arrival-meal">Arrival meal</a>
         <a href="#stay">Stay</a>
         <a href="#map">Map</a>
@@ -188,7 +187,7 @@
           <p>Three parties converging on The Barnhouse for ~4pm Wed check-in.</p>
         </div>
         <div class="travel-grid">
-          <div class="travel-card">
+          <div class="travel-card" data-route="Lewes route">
             <div class="travel-head">
               <div class="travel-emoji">🏡</div>
               <div>
@@ -206,9 +205,10 @@
               <a href="https://www.google.com/maps/dir/?api=1&origin=Lewes,+UK&destination=53.1547,-1.9667&travelmode=driving" target="_blank" rel="noopener">📍 Directions</a>
               <a href="https://waze.com/ul?ll=53.1547,-1.9667&navigate=yes" target="_blank" rel="noopener">🚗 Waze</a>
             </div>
+            <div class="travel-stops" data-stops-for="Lewes route"></div>
           </div>
 
-          <div class="travel-card">
+          <div class="travel-card" data-route="Huddersfield route">
             <div class="travel-head">
               <div class="travel-emoji">👵</div>
               <div>
@@ -226,9 +226,10 @@
               <a href="https://www.google.com/maps/dir/?api=1&origin=Huddersfield,+UK&destination=53.1547,-1.9667&travelmode=driving" target="_blank" rel="noopener">📍 Directions</a>
               <a href="https://waze.com/ul?ll=53.1547,-1.9667&navigate=yes" target="_blank" rel="noopener">🚗 Waze</a>
             </div>
+            <div class="travel-stops" data-stops-for="EV chargers (Mum)"></div>
           </div>
 
-          <div class="travel-card">
+          <div class="travel-card" data-route="Newcastle route">
             <div class="travel-head">
               <div class="travel-emoji">⚓</div>
               <div>
@@ -246,19 +247,12 @@
               <a href="https://www.google.com/maps/dir/?api=1&origin=Newcastle+upon+Tyne,+UK&destination=53.1547,-1.9667&travelmode=driving" target="_blank" rel="noopener">📍 Directions</a>
               <a href="https://waze.com/ul?ll=53.1547,-1.9667&navigate=yes" target="_blank" rel="noopener">🚗 Waze</a>
             </div>
+            <div class="travel-stops" data-stops-for="Newcastle route"></div>
           </div>
         </div>
       </section>
 
-      <section id="stops" class="block">
-        <div class="block-head">
-          <h2>Pit Stops &amp; EV Chargers</h2>
-          <p>Suggested stops on the routes in, plus EV charging spots for Mum's car. <a href="https://www.zap-map.com/" target="_blank" rel="noopener">Zap-Map</a> is the most reliable source for live charger info — these are starting points.</p>
-        </div>
-        <div id="stops-list"></div>
-      </section>
-
-      <section id="arrival-meal" class="block">
+<section id="arrival-meal" class="block">
         <div class="block-head">
           <h2>Wed Arrival Meal</h2>
           <p>Three options for getting Wed night's Italian dinner on the table by 7pm.</p>
