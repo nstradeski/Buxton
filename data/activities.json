@@ -1,7 +1,7 @@
 [
   {
     "name": "Mam Tor",
-    "area": "Castleton",
+    "group": "Castleton cluster",
     "lat": 53.3490,
     "lon": -1.8095,
     "description": "Iconic ridge walk. Easy stroll up from Mam Nick car park at the top of Winnats Pass. Paragliders launch from the top in good weather.",
@@ -10,7 +10,7 @@
   },
   {
     "name": "Winnats Pass",
-    "area": "Castleton",
+    "group": "Castleton cluster",
     "lat": 53.3438,
     "lon": -1.8047,
     "description": "Dramatic limestone gorge road between Castleton and the Mam Tor ridge.",
@@ -19,7 +19,7 @@
   },
   {
     "name": "Blue John Cavern",
-    "area": "Castleton",
+    "group": "Castleton cluster",
     "lat": 53.3437,
     "lon": -1.8138,
     "description": "Cavern at the top of Winnats Pass, source of the rare Blue John stone.",
@@ -28,7 +28,7 @@
   },
   {
     "name": "Speedwell Cavern",
-    "area": "Castleton",
+    "group": "Castleton cluster",
     "lat": 53.3414,
     "lon": -1.7867,
     "description": "The boat one — underground canal trip at the bottom of Winnats Pass.",
@@ -37,7 +37,7 @@
   },
   {
     "name": "Peveril Castle",
-    "area": "Castleton",
+    "group": "Castleton cluster",
     "lat": 53.3429,
     "lon": -1.7773,
     "description": "Norman ruin perched above Castleton with sweeping Hope Valley views (English Heritage).",
@@ -46,11 +46,103 @@
   },
   {
     "name": "Castleton village",
-    "area": "Castleton",
+    "group": "Castleton cluster",
     "lat": 53.3437,
     "lon": -1.7770,
     "description": "Pretty stone village with cafés, pubs, and (apparently) excellent ice cream.",
     "url": "https://visitpeakdistrict.com/locations/castleton",
     "tags": ["village", "food"]
+  },
+
+  {
+    "name": "Go Ape Buxton",
+    "group": "Adventure & climbing",
+    "lat": 53.2467,
+    "lon": -1.9252,
+    "description": "High-ropes & zip-line course in the trees at Buxton Country Park / Grin Low (next to Poole's Cavern). Treetop Challenge & Junior options.",
+    "url": "https://goape.co.uk/locations/buxton",
+    "tags": ["family", "outdoor", "booking"]
+  },
+  {
+    "name": "Poole's Cavern",
+    "group": "Adventure & climbing",
+    "lat": 53.2470,
+    "lon": -1.9258,
+    "description": "Show cave + Buxton Country Park woodland walks (Solomon's Temple folly). Right next to Go Ape.",
+    "url": "https://poolescavern.co.uk/",
+    "tags": ["cave", "family", "walk"]
+  },
+  {
+    "name": "The Climbing Hangar Sheffield",
+    "group": "Adventure & climbing",
+    "lat": 53.3793,
+    "lon": -1.4521,
+    "description": "Large dedicated bouldering centre (~45 min drive). Drop-in sessions.",
+    "url": "https://theclimbinghangar.com/sheffield/",
+    "tags": ["bouldering", "indoor"]
+  },
+  {
+    "name": "The Climbing Works",
+    "group": "Adventure & climbing",
+    "lat": 53.3592,
+    "lon": -1.4690,
+    "description": "Iconic Sheffield bouldering wall (~45 min drive). One of the UK's biggest.",
+    "url": "https://www.climbingworks.com/",
+    "tags": ["bouldering", "indoor"]
+  },
+  {
+    "name": "Awesome Walls Stockport",
+    "group": "Adventure & climbing",
+    "lat": 53.4128,
+    "lon": -2.1542,
+    "description": "Roped climbing centre with tall walls (~40 min drive west).",
+    "url": "https://www.awesomewalls.co.uk/stockport/",
+    "tags": ["climbing", "indoor"]
+  },
+  {
+    "name": "Stanage Edge (outdoor)",
+    "group": "Adventure & climbing",
+    "lat": 53.3450,
+    "lon": -1.6308,
+    "description": "Legendary gritstone edge — the spiritual home of UK trad climbing, but also great just to walk along.",
+    "url": "https://www.ukclimbing.com/logbook/crags/stanage_popular-104",
+    "tags": ["climbing", "outdoor", "walk"]
+  },
+  {
+    "name": "The Roaches (outdoor bouldering)",
+    "group": "Adventure & climbing",
+    "lat": 53.1602,
+    "lon": -1.9970,
+    "description": "Gritstone edge right above the accommodation — bouldering and trad classics.",
+    "url": "https://www.ukclimbing.com/logbook/crags/the_roaches-105",
+    "tags": ["bouldering", "climbing", "outdoor"]
+  },
+
+  {
+    "name": "Gulliver's Kingdom Matlock Bath",
+    "group": "Family parks",
+    "lat": 53.1296,
+    "lon": -1.5613,
+    "description": "Theme park aimed at younger kids (~45 min drive).",
+    "url": "https://www.gulliversfun.co.uk/parks/matlock",
+    "tags": ["family", "theme-park"]
+  },
+  {
+    "name": "Heights of Abraham (Matlock Bath)",
+    "group": "Family parks",
+    "lat": 53.1310,
+    "lon": -1.5618,
+    "description": "Cable car up to caverns and woodland playgrounds above Matlock Bath.",
+    "url": "https://www.heightsofabraham.com/",
+    "tags": ["family", "cable-car", "cave"]
+  },
+  {
+    "name": "Chatsworth House Farmyard & Playground",
+    "group": "Family parks",
+    "lat": 53.2274,
+    "lon": -1.6128,
+    "description": "Big adventure playground + farm animals on the Chatsworth estate.",
+    "url": "https://www.chatsworth.org/visit-chatsworth/farmyard-adventure-playground/",
+    "tags": ["family", "playground"]
   }
 ]

@@ -440,6 +440,13 @@ a:hover { text-decoration: underline; }
   flex-wrap: wrap;
   gap: 0.3rem;
 }
+.activity-group { margin-bottom: 1.5rem; }
+.activity-group > h3 {
+  font-family: 'Fraunces', serif;
+  font-size: 1.1rem;
+  color: var(--accent);
+  margin: 0 0 0.75rem;
+}
 .activity-tags span {
   font-size: 0.7rem;
   padding: 0.1rem 0.45rem;

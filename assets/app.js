@@ -152,20 +152,32 @@ async function loadPlacesAndMap() {
 function renderActivities(activities) {
   const el = document.getElementById('activities-list');
   if (!el) return;
+  const grouped = activities.reduce((acc, a) => {
+    const g = a.group || 'Other';
+    (acc[g] = acc[g] || []).push(a);
+    return acc;
+  }, {});
   el.innerHTML = '';
-  activities.forEach(a => {
-    const tile = document.createElement('a');
-    tile.className = 'tile activity';
-    tile.href = a.url;
-    tile.target = '_blank';
-    tile.rel = 'noopener';
-    tile.innerHTML = `
-      <h4>${a.name}</h4>
-      <p class="muted">${a.description}</p>
-      <div class="activity-tags">${(a.tags || []).map(t => `<span>${t}</span>`).join('')}</div>
-    `;
-    el.appendChild(tile);
-  });
+  for (const [group, items] of Object.entries(grouped)) {
+    const wrap = document.createElement('div');
+    wrap.className = 'activity-group';
+    wrap.innerHTML = `<h3>${group}</h3><div class="tile-grid"></div>`;
+    const grid = wrap.querySelector('.tile-grid');
+    items.forEach(a => {
+      const tile = document.createElement('a');
+      tile.className = 'tile activity';
+      tile.href = a.url;
+      tile.target = '_blank';
+      tile.rel = 'noopener';
+      tile.innerHTML = `
+        <h4>${a.name}</h4>
+        <p class="muted">${a.description}</p>
+        <div class="activity-tags">${(a.tags || []).map(t => `<span>${t}</span>`).join('')}</div>
+      `;
+      grid.appendChild(tile);
+    });
+    el.appendChild(wrap);
+  }
 }
 
 function isOpen(hoursStr) {
