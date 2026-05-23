@@ -1,40 +1,81 @@
-// Buxton coordinates
+// Buxton-area coordinates
 const BUXTON = { lat: 53.2591, lon: -1.9111 };
-const TRIP_DATES = ['2026-05-27', '2026-05-28', '2026-05-29', '2026-05-30', '2026-05-31'];
 
-// --- Weather ---------------------------------------------------------------
+const DAYS = [
+  { date: '2026-05-27', title: 'Arrival', items: ['Travel to Gib Torr Farm', 'Check in at The Barnhouse — 4:00pm', 'Settle in / dinner'] },
+  { date: '2026-05-28', title: 'Day 1', items: ['TBD — local walk (The Roaches?)'] },
+  { date: '2026-05-29', title: 'Day 2', items: ['TBD'] },
+  { date: '2026-05-30', title: 'Day 3', items: ['TBD'] },
+  { date: '2026-05-31', title: 'Departure', items: ['Pack out', 'Travel home'] },
+];
+
+const TODAY_ISO = new Date().toISOString().slice(0, 10);
+
+// --- Days + weather --------------------------------------------------------
+
+function renderDays(weatherByDate = {}) {
+  const grid = document.getElementById('days-grid');
+  grid.innerHTML = '';
+  DAYS.forEach(day => {
+    const d = new Date(day.date + 'T00:00:00');
+    const dow = d.toLocaleDateString('en-GB', { weekday: 'short' });
+    const dom = d.getDate();
+    const mon = d.toLocaleDateString('en-GB', { month: 'short' });
+    const wx = weatherByDate[day.date];
+
+    const card = document.createElement('div');
+    card.className = 'day-card';
+    if (day.date === TODAY_ISO) card.dataset.today = 'true';
+    card.innerHTML = `
+      <div class="day-date">
+        <span class="dow">${dow}</span>
+        <span class="dom">${dom}</span>
+        <span class="mon">${mon}</span>
+      </div>
+      <div class="day-body">
+        <h3>${day.title}</h3>
+        <ul>${day.items.map(i => `<li>${i}</li>`).join('')}</ul>
+      </div>
+      <div class="day-wx ${wx ? '' : 'empty'}">
+        ${wx ? `
+          <span class="icon">${weatherEmoji(wx.code)}</span>
+          <div class="temps">${Math.round(wx.min)}° / ${Math.round(wx.max)}°C</div>
+          <div class="meta">💧 ${wx.precip ?? 0}% · 💨 ${Math.round(wx.wind)} km/h</div>
+        ` : 'Forecast not yet available'}
+      </div>
+    `;
+    grid.appendChild(card);
+  });
+}
 
 async function loadWeather() {
+  renderDays();
+  const start = DAYS[0].date;
+  const end = DAYS[DAYS.length - 1].date;
   const url = `https://api.open-meteo.com/v1/forecast?latitude=${BUXTON.lat}&longitude=${BUXTON.lon}` +
     `&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max,wind_speed_10m_max` +
-    `&timezone=Europe/London&start_date=${TRIP_DATES[0]}&end_date=${TRIP_DATES[TRIP_DATES.length - 1]}`;
-
-  const container = document.getElementById('weather-grid');
+    `&timezone=Europe/London&start_date=${start}&end_date=${end}`;
   try {
     const res = await fetch(url);
-    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    if (!res.ok) return;
     const data = await res.json();
-    container.innerHTML = '';
+    const byDate = {};
     data.daily.time.forEach((date, i) => {
-      const card = document.createElement('div');
-      card.className = 'weather-card';
-      const d = new Date(date);
-      const dayName = d.toLocaleDateString('en-GB', { weekday: 'short', day: 'numeric', month: 'short' });
-      card.innerHTML = `
-        <h4>${dayName}</h4>
-        <div class="wx-icon">${weatherEmoji(data.daily.weather_code[i])}</div>
-        <div class="wx-temp">${Math.round(data.daily.temperature_2m_min[i])}° / ${Math.round(data.daily.temperature_2m_max[i])}°C</div>
-        <div class="wx-meta">💧 ${data.daily.precipitation_probability_max[i] ?? 0}% · 💨 ${Math.round(data.daily.wind_speed_10m_max[i])} km/h</div>
-      `;
-      container.appendChild(card);
+      byDate[date] = {
+        code: data.daily.weather_code[i],
+        min: data.daily.temperature_2m_min[i],
+        max: data.daily.temperature_2m_max[i],
+        precip: data.daily.precipitation_probability_max[i],
+        wind: data.daily.wind_speed_10m_max[i],
+      };
     });
-  } catch (err) {
-    container.innerHTML = `<p class="error">Weather unavailable: ${err.message}. Forecast becomes available ~7 days ahead.</p>`;
+    renderDays(byDate);
+  } catch (e) {
+    // leave the "not available" placeholders in
   }
 }
 
 function weatherEmoji(code) {
-  // WMO weather codes
   if (code === 0) return '☀️';
   if ([1, 2].includes(code)) return '🌤️';
   if (code === 3) return '☁️';
@@ -46,15 +87,14 @@ function weatherEmoji(code) {
   return '🌡️';
 }
 
-// --- Places + opening hours -----------------------------------------------
+// --- Places ----------------------------------------------------------------
 
 async function loadPlaces() {
   const listEl = document.getElementById('places-list');
   try {
     const res = await fetch('data/places.json');
     const places = await res.json();
-
-    renderPlaces(places, listEl);
+    renderPlaces(places.filter(p => p.category !== 'accommodation'), listEl);
     renderMap(places);
   } catch (err) {
     listEl.innerHTML = `<p class="error">Couldn't load places: ${err.message}</p>`;
@@ -69,9 +109,9 @@ function isOpen(hoursStr) {
     const next = oh.getNextChange();
     let label;
     if (open) {
-      label = next ? `Open · closes ${formatTime(next)}` : 'Open';
+      label = next ? `Open · til ${formatTime(next)}` : 'Open';
     } else {
-      label = next ? `Closed · opens ${formatTime(next)}` : 'Closed';
+      label = next ? `Opens ${formatTime(next)}` : 'Closed';
     }
     return { open, label };
   } catch (e) {
@@ -88,6 +128,12 @@ function formatTime(date) {
   return date.toLocaleString('en-GB', opts);
 }
 
+const CAT_LABELS = {
+  supermarket: 'Supermarkets',
+  organic: 'Organic & Wholefoods',
+  market: 'Markets',
+};
+
 function renderPlaces(places, el) {
   const grouped = places.reduce((acc, p) => {
     (acc[p.category] = acc[p.category] || []).push(p);
@@ -98,20 +144,20 @@ function renderPlaces(places, el) {
   for (const [cat, items] of Object.entries(grouped)) {
     const group = document.createElement('div');
     group.className = 'place-group';
-    group.innerHTML = `<h3>${cat.charAt(0).toUpperCase() + cat.slice(1)}</h3>`;
+    group.innerHTML = `<h3>${CAT_LABELS[cat] || cat}</h3>`;
     items.forEach(p => {
       const status = isOpen(p.opening_hours);
-      const dot = status.open === true ? 'open' : status.open === false ? 'closed' : 'unknown';
+      const pillClass = status.open === true ? 'open' : status.open === false ? 'closed' : 'unknown';
+      const dotClass = pillClass;
       const item = document.createElement('div');
       item.className = 'place';
       item.innerHTML = `
-        <div class="place-head">
-          <span class="dot ${dot}"></span>
-          <strong>${p.name}</strong>
-          <span class="status">${status.label}</span>
+        <div>
+          <div class="place-name"><span class="dot ${dotClass}"></span>${p.name}</div>
+          <div class="place-meta">${p.address}</div>
+          <div class="place-hours">${p.opening_hours}</div>
         </div>
-        <div class="place-meta">${p.address}</div>
-        <div class="place-hours">${p.opening_hours}</div>
+        <span class="status-pill ${pillClass}">${status.label}</span>
       `;
       group.appendChild(item);
     });
@@ -122,33 +168,35 @@ function renderPlaces(places, el) {
 // --- Map -------------------------------------------------------------------
 
 function renderMap(places) {
-  const map = L.map('map');
-  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  const map = L.map('map-canvas', { scrollWheelZoom: false });
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
     maxZoom: 19,
-    attribution: '© OpenStreetMap'
+    attribution: '© OpenStreetMap · © CARTO'
   }).addTo(map);
 
   const colors = {
-    supermarket: '#3b6b4a',
-    organic: '#c97b3a',
-    market: '#7a4ec9',
-    accommodation: '#c93a6b'
+    supermarket: '#4a8a64',
+    organic: '#d99350',
+    market: '#8b6cc4',
+    accommodation: '#d35a6f',
   };
 
   places.forEach(p => {
+    const isStay = p.category === 'accommodation';
     const marker = L.circleMarker([p.lat, p.lon], {
-      radius: 9,
+      radius: isStay ? 11 : 8,
       fillColor: colors[p.category] || '#555',
       color: '#fff',
       weight: 2,
-      fillOpacity: 0.9
+      fillOpacity: 0.95,
     }).addTo(map);
     const status = isOpen(p.opening_hours);
-    marker.bindPopup(`<strong>${p.name}</strong><br>${p.address}<br><em>${status.label}</em>`);
+    const statusLine = isStay ? '' : `<br><em>${status.label}</em>`;
+    marker.bindPopup(`<strong>${p.name}</strong><br>${p.address}${statusLine}`);
   });
 
   const bounds = L.latLngBounds(places.map(p => [p.lat, p.lon]));
-  map.fitBounds(bounds, { padding: [30, 30] });
+  map.fitBounds(bounds, { padding: [40, 40] });
 }
 
 // --- Init ------------------------------------------------------------------

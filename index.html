@@ -3,7 +3,10 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Buxton & Peak District Trip</title>
+  <title>Buxton & Peak District · May 2026</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/styles.css" />
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" defer></script>
@@ -11,108 +14,118 @@
   <script src="assets/app.js" defer></script>
 </head>
 <body>
-  <header class="hero">
-    <h1>Peak District Trip</h1>
-    <p class="dates">Wed 27 – Sun 31 May 2026 · Buxton</p>
-    <p class="tagline">Planning in progress — placeholder content below.</p>
-  </header>
+  <div class="layout">
 
-  <main>
-    <section id="overview">
-      <h2>Overview</h2>
-      <p>A long weekend in Buxton exploring the Peak District. Use the sections below to fill in plans as we go.</p>
-    </section>
-
-    <section id="weather">
-      <h2>Weather Forecast</h2>
-      <div id="weather-grid" class="weather-grid">
-        <p>Loading forecast…</p>
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="brand-mark">▲</div>
+        <div>
+          <div class="brand-title">Peak District</div>
+          <div class="brand-sub">Buxton · May 2026</div>
+        </div>
       </div>
-    </section>
 
-    <section id="map">
-      <h2>Map</h2>
-      <div id="map" class="map"></div>
-      <div class="legend">
-        <span><i style="background:#3b6b4a"></i> Supermarket</span>
-        <span><i style="background:#c97b3a"></i> Organic / Wholefoods</span>
-        <span><i style="background:#7a4ec9"></i> Market</span>
-        <span><i style="background:#c93a6b"></i> Accommodation</span>
+      <div class="trip-meta">
+        <div class="meta-row"><span>Arrive</span><strong>Wed 27 May</strong></div>
+        <div class="meta-row"><span>Depart</span><strong>Sun 31 May</strong></div>
+        <div class="meta-row"><span>Stay</span><strong>The Barnhouse</strong></div>
       </div>
-    </section>
 
-    <section id="shops">
-      <h2>Supermarkets & Organic Shops</h2>
-      <p class="muted">Open/closed status computed live from scheduled hours.</p>
-      <div id="places-list"></div>
-    </section>
+      <nav class="nav">
+        <a href="#days">Days</a>
+        <a href="#stay">Accommodation</a>
+        <a href="#map">Map</a>
+        <a href="#shops">Shops</a>
+        <a href="#walks">Walks</a>
+        <a href="#food">Food</a>
+        <a href="#logistics">Logistics</a>
+      </nav>
 
-    <section id="itinerary">
-      <h2>Itinerary</h2>
-      <article class="day">
-        <h3>Wed 27 May — Arrival</h3>
-        <ul>
-          <li>Travel to Gib Torr Farm</li>
-          <li>Check in at the Barnhouse — 4:00pm</li>
-          <li>Settle in / dinner</li>
+      <div class="sidebar-foot">
+        <a href="https://github.com/nstradeski/Buxton" target="_blank" rel="noopener">Source</a>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="hero">
+        <div class="hero-eyebrow">27 — 31 May 2026</div>
+        <h1>Five days in the <em>Peak District</em></h1>
+        <p class="hero-lede">Long weekend out of Buxton, based at The Barnhouse on Gib Torr Farm. Walks, pubs, and the occasional supermarket run.</p>
+      </header>
+
+      <section id="days" class="block">
+        <div class="block-head">
+          <h2>The trip, day by day</h2>
+          <p>Weather pulled live from Open-Meteo when within range.</p>
+        </div>
+        <div class="days" id="days-grid"></div>
+      </section>
+
+      <section id="stay" class="block">
+        <div class="block-head"><h2>Accommodation</h2></div>
+        <div class="card stay-card">
+          <div class="stay-main">
+            <h3>The Barnhouse</h3>
+            <p class="muted">Gib Torr Farm · Upper Hulme · Staffordshire Moorlands</p>
+            <p>South-west edge of the Peak District, under The Roaches. Quiet hill country, ~30 min drive south of Buxton.</p>
+            <p><a class="link" href="https://www.gibtorrfarm.com/" target="_blank" rel="noopener">gibtorrfarm.com →</a></p>
+          </div>
+          <div class="stay-side">
+            <div class="badge"><span>Check-in</span><strong>Wed · 4:00pm</strong></div>
+            <div class="badge"><span>Check-out</span><strong>Sun</strong></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="map" class="block">
+        <div class="block-head"><h2>Map</h2></div>
+        <div id="map-canvas" class="map"></div>
+        <div class="legend">
+          <span><i style="background:#d35a6f"></i> Stay</span>
+          <span><i style="background:#4a8a64"></i> Supermarket</span>
+          <span><i style="background:#d99350"></i> Organic</span>
+          <span><i style="background:#8b6cc4"></i> Market</span>
+        </div>
+      </section>
+
+      <section id="shops" class="block">
+        <div class="block-head">
+          <h2>Shops</h2>
+          <p>Open/closed computed live from scheduled hours.</p>
+        </div>
+        <div id="places-list" class="places"></div>
+      </section>
+
+      <section id="walks" class="block">
+        <div class="block-head"><h2>Walks &amp; Hikes</h2></div>
+        <div class="tile-grid">
+          <div class="tile"><h4>Mam Tor Ridge</h4><p class="muted">Classic ridge walk · Castleton</p></div>
+          <div class="tile"><h4>The Roaches</h4><p class="muted">Right on the doorstep · gritstone edge</p></div>
+          <div class="tile"><h4>Kinder Scout</h4><p class="muted">Plateau · longer day</p></div>
+          <div class="tile"><h4>Chee Dale</h4><p class="muted">Stepping stones · limestone gorge</p></div>
+          <div class="tile"><h4>Monsal Trail</h4><p class="muted">Easy · old railway, tunnels</p></div>
+          <div class="tile"><h4>Lud's Church</h4><p class="muted">Mossy chasm near The Roaches</p></div>
+        </div>
+      </section>
+
+      <section id="food" class="block">
+        <div class="block-head"><h2>Food &amp; Drink</h2></div>
+        <p class="muted">TBD — pubs, cafes, dinner spots.</p>
+      </section>
+
+      <section id="logistics" class="block">
+        <div class="block-head"><h2>Logistics</h2></div>
+        <ul class="check-list">
+          <li>Transport</li>
+          <li>Packing list</li>
+          <li>Weather window check</li>
         </ul>
-      </article>
-      <article class="day">
-        <h3>Thu 28 May</h3>
-        <ul><li>TBD — walk / hike</li></ul>
-      </article>
-      <article class="day">
-        <h3>Fri 29 May</h3>
-        <ul><li>TBD</li></ul>
-      </article>
-      <article class="day">
-        <h3>Sat 30 May</h3>
-        <ul><li>TBD</li></ul>
-      </article>
-      <article class="day">
-        <h3>Sun 31 May — Departure</h3>
-        <ul><li>TBD</li></ul>
-      </article>
-    </section>
+      </section>
 
-    <section id="accommodation">
-      <h2>Accommodation</h2>
-      <p><strong>The Barnhouse, Gib Torr Farm</strong></p>
-      <p>Near Upper Hulme, Staffordshire Moorlands — south-west edge of the Peak District, below The Roaches.</p>
-      <ul>
-        <li>Check-in: <strong>Wed 27 May, 4:00pm</strong></li>
-        <li>Check-out: Sun 31 May</li>
-        <li>Website: <a href="https://www.gibtorrfarm.com/" target="_blank" rel="noopener">gibtorrfarm.com</a></li>
-      </ul>
-    </section>
-
-    <section id="walks">
-      <h2>Walks & Hikes</h2>
-      <ul>
-        <li>Mam Tor ridge</li>
-        <li>Kinder Scout</li>
-        <li>Chee Dale stepping stones</li>
-        <li>Monsal Trail</li>
-      </ul>
-    </section>
-
-    <section id="food">
-      <h2>Food & Drink</h2>
-      <p>TBD — pubs, cafes, dinner spots.</p>
-    </section>
-
-    <section id="logistics">
-      <h2>Logistics</h2>
-      <ul>
-        <li>Transport: TBD</li>
-        <li>Packing list: TBD</li>
-        <li>Weather: check closer to date</li>
-      </ul>
-    </section>
-  </main>
-
-  <footer>
-    <p>Built with GitHub Pages.</p>
-  </footer>
+      <footer class="foot">
+        <p>Built with GitHub Pages · OpenStreetMap · Open-Meteo</p>
+      </footer>
+    </main>
+  </div>
 </body>
 </html>
