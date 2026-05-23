@@ -1,0 +1,65 @@
+[
+  {
+    "name": "Tesco Superstore",
+    "category": "supermarket",
+    "address": "Spring Gardens, Buxton SK17 6BS",
+    "lat": 53.2603,
+    "lon": -1.9117,
+    "opening_hours": "Mo-Sa 06:00-23:00; Su 10:00-16:00",
+    "url": "https://www.tesco.com/store-locator/buxton/spring-gardens"
+  },
+  {
+    "name": "Aldi Buxton",
+    "category": "supermarket",
+    "address": "Bakewell Rd, Buxton SK17 6UB",
+    "lat": 53.2547,
+    "lon": -1.9008,
+    "opening_hours": "Mo-Sa 08:00-22:00; Su 10:00-16:00",
+    "url": "https://www.aldi.co.uk/stores"
+  },
+  {
+    "name": "Marks & Spencer Foodhall",
+    "category": "supermarket",
+    "address": "Spring Gardens, Buxton SK17 6BJ",
+    "lat": 53.2598,
+    "lon": -1.9123,
+    "opening_hours": "Mo-Sa 08:00-19:00; Su 10:30-16:30",
+    "url": "https://www.marksandspencer.com"
+  },
+  {
+    "name": "Waitrose Buxton",
+    "category": "supermarket",
+    "address": "Sylvan Cliff, Buxton SK17 6AE",
+    "lat": 53.2617,
+    "lon": -1.9094,
+    "opening_hours": "Mo-Sa 08:00-21:00; Su 10:00-16:00",
+    "url": "https://www.waitrose.com/ecom/shops/branch/buxton"
+  },
+  {
+    "name": "Buxton Wholefoods",
+    "category": "organic",
+    "address": "5 Cavendish Circus, Buxton SK17 6AT",
+    "lat": 53.2596,
+    "lon": -1.9131,
+    "opening_hours": "Mo-Sa 09:00-17:30; Su off",
+    "url": "https://buxtonwholefoods.co.uk"
+  },
+  {
+    "name": "The Buxton Larder",
+    "category": "organic",
+    "address": "10 Cavendish Circus, Buxton SK17 6AT",
+    "lat": 53.2597,
+    "lon": -1.9132,
+    "opening_hours": "Tu-Sa 09:00-17:00; Su,Mo off",
+    "url": "#"
+  },
+  {
+    "name": "Buxton Market (Tue/Sat)",
+    "category": "market",
+    "address": "Market Place, Buxton SK17 6EL",
+    "lat": 53.2602,
+    "lon": -1.9145,
+    "opening_hours": "Tu,Sa 09:00-16:00",
+    "url": "#"
+  }
+]

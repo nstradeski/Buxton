@@ -5,6 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Buxton & Peak District Trip</title>
   <link rel="stylesheet" href="assets/styles.css" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" defer></script>
+  <script src="https://unpkg.com/opening_hours@3.8.0/build/opening_hours.min.js" defer></script>
+  <script src="assets/app.js" defer></script>
 </head>
 <body>
   <header class="hero">
@@ -17,6 +21,29 @@
     <section id="overview">
       <h2>Overview</h2>
       <p>A long weekend in Buxton exploring the Peak District. Use the sections below to fill in plans as we go.</p>
+    </section>
+
+    <section id="weather">
+      <h2>Weather Forecast</h2>
+      <div id="weather-grid" class="weather-grid">
+        <p>Loading forecast…</p>
+      </div>
+    </section>
+
+    <section id="map">
+      <h2>Map</h2>
+      <div id="map" class="map"></div>
+      <div class="legend">
+        <span><i style="background:#3b6b4a"></i> Supermarket</span>
+        <span><i style="background:#c97b3a"></i> Organic / Wholefoods</span>
+        <span><i style="background:#7a4ec9"></i> Market</span>
+      </div>
+    </section>
+
+    <section id="shops">
+      <h2>Supermarkets & Organic Shops</h2>
+      <p class="muted">Open/closed status computed live from scheduled hours.</p>
+      <div id="places-list"></div>
     </section>
 
     <section id="itinerary">
