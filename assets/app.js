@@ -5,10 +5,10 @@ const DAYS = [
   {
     date: '2026-05-27', title: 'Arrival',
     schedule: [
-      { time: '09:00', text: 'Lewes party leaves (long drive — plan breaks)', ref: 'travel' },
+      { time: '09:00', text: 'Lewes party leaves (long drive — straight to the barnhouse)', ref: 'travel' },
       { time: '11:00', text: 'Newcastle party leaves', ref: 'travel' },
-      { time: '14:00', text: 'Huddersfield party leaves', ref: 'travel' },
-      { time: '14:30', text: 'Lewes party stops at Leek for fresh shop', ref: 'arrival-meal' },
+      { time: '12:30', text: 'Huddersfield party (Mum) leaves', ref: 'travel' },
+      { time: '14:00', text: 'Mum stops at Leek for the fresh shop', ref: 'arrival-meal' },
       { time: '16:00', text: 'Check in at The Barnhouse', ref: 'stay' },
       { time: '17:00', text: 'Unpack, short stretch in the garden, kids decompress' },
       { time: '19:00', text: 'Cook Italian dinner', ref: 'recipe-italian' },
