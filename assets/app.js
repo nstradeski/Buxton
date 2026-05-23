@@ -441,6 +441,113 @@ function setWho(v) {
   try { localStorage.setItem(WHO_KEY, v); } catch (e) {}
 }
 
+const SHOPPING = [
+  {
+    section: '🥬 Fresh produce',
+    items: [
+      { id: 'sh-bananas', text: '12 bananas (breakfasts + snacks)' },
+      { id: 'sh-apples', text: 'Bag of apples' },
+      { id: 'sh-satsumas', text: 'Bag of satsumas (kid lunchboxes)' },
+      { id: 'sh-berries', text: '2 punnets berries (porridge topping)' },
+      { id: 'sh-tomatoes', text: '500g cherry tomatoes' },
+      { id: 'sh-cucumber', text: '2 cucumbers' },
+      { id: 'sh-carrots', text: '1 kg carrots' },
+      { id: 'sh-red-peppers', text: '4 red peppers' },
+      { id: 'sh-mushrooms', text: '500g mushrooms (fry-ups)' },
+      { id: 'sh-spinach', text: '2 bags baby spinach' },
+      { id: 'sh-salad', text: 'Mixed salad bag × 2' },
+      { id: 'sh-avocados', text: '5 ripe avocados' },
+      { id: 'sh-sweet-pot', text: '4 large sweet potatoes (Mexican)' },
+      { id: 'sh-broccoli', text: '2 heads broccoli (Asian)' },
+      { id: 'sh-spring-onion', text: 'Spring onions × 2 bunches' },
+      { id: 'sh-red-onion', text: '4 red onions' },
+      { id: 'sh-brown-onion', text: '4 brown onions' },
+      { id: 'sh-ginger', text: 'Thumb of ginger (50g)' },
+      { id: 'sh-limes', text: '6 limes' },
+      { id: 'sh-lemons', text: '3 lemons' },
+      { id: 'sh-basil', text: 'Fresh basil (big packet × 2 — Italian)' },
+      { id: 'sh-coriander', text: 'Fresh coriander × 2 (Mexican)' },
+      { id: 'sh-parsley', text: 'Fresh parsley (garlic bread)' },
+      { id: 'sh-potatoes', text: '1.5 kg potatoes (roast / wedges option)' },
+    ],
+  },
+  {
+    section: '🍞 Bakery',
+    items: [
+      { id: 'sh-sourdough', text: '2 × sourdough or ciabatta (Italian night)' },
+      { id: 'sh-bread-sliced', text: '2 × seeded sliced loaves (toast)' },
+      { id: 'sh-wraps', text: '2 × big packs flour wraps (lunches + Sat home lunch)' },
+      { id: 'sh-corn-tortillas', text: '24 corn or flour tortillas (Mexican)' },
+      { id: 'sh-pita', text: '1 pack pita pockets (picnics)' },
+      { id: 'sh-rolls', text: '1 pack rolls (sausage roll style)' },
+      { id: 'sh-croissants', text: 'Pack vegan croissants (Sunday morning)' },
+    ],
+  },
+  {
+    section: '🥛 Dairy alternatives & fridge',
+    items: [
+      { id: 'sh-oat-milk', text: '4 L oat milk (Oatly) — kids drink it too' },
+      { id: 'sh-vegan-butter', text: '2 × vegan butter (Flora Plant / Naturli)' },
+      { id: 'sh-vegan-cheese', text: '2 × vegan cheese slices (Violife)' },
+      { id: 'sh-vegan-parm', text: 'Violife vegan parm (Italian)' },
+      { id: 'sh-hummus', text: '3 × hummus tubs (lunches)' },
+      { id: 'sh-yogurt', text: '6 × oat yogurts (kids breakfasts)' },
+      { id: 'sh-tofu', text: '900g firm tofu (Asian night — 2 blocks)' },
+      { id: 'sh-vegan-sausages', text: '2 packs vegan sausages (fry-ups)' },
+      { id: 'sh-vegan-bacon', text: '2 packs vegan bacon rashers' },
+      { id: 'sh-vegan-cream-cheese', text: 'Vegan cream cheese (bagels)' },
+    ],
+  },
+  {
+    section: '🥫 Pantry & dry',
+    items: [
+      { id: 'sh-cereal', text: '2 × big boxes muesli / granola' },
+      { id: 'sh-porridge', text: '1 kg porridge oats' },
+      { id: 'sh-rice-noodles', text: '500g flat rice noodles (Asian)' },
+      { id: 'sh-black-beans', text: '3 × tins black beans (Mexican)' },
+      { id: 'sh-baked-beans', text: '4 × tins baked beans (breakfasts)' },
+      { id: 'sh-salsa', text: '2 × jars salsa (1 mild for kids)' },
+      { id: 'sh-soy', text: 'Soy sauce (200ml)' },
+      { id: 'sh-rice-vinegar', text: 'Rice vinegar (small bottle)' },
+      { id: 'sh-sesame-oil', text: 'Toasted sesame oil' },
+      { id: 'sh-maple', text: 'Small bottle maple syrup' },
+      { id: 'sh-chipotle', text: 'Tube/jar chipotle paste' },
+      { id: 'sh-cornflour', text: 'Cornflour' },
+      { id: 'sh-peanut-butter', text: 'Peanut butter (kids lunches)' },
+      { id: 'sh-jam', text: 'Jam' },
+      { id: 'sh-marmite', text: 'Marmite (small)' },
+      { id: 'sh-crisps', text: 'Multipack crisps × 2 (picnics)' },
+      { id: 'sh-flapjacks', text: 'Box flapjacks / cereal bars' },
+      { id: 'sh-dried-fruit', text: 'Dried fruit + nuts mix' },
+      { id: 'sh-veggie-pies', text: '2 packs Linda McCartney sausage rolls (frozen — heat for picnics)' },
+    ],
+  },
+  {
+    section: '🍷 Drinks',
+    items: [
+      { id: 'sh-water', text: '2 × 6-pack still water (driving + walks)' },
+      { id: 'sh-juice', text: '2 × kids juice cartons multipack' },
+      { id: 'sh-squash', text: 'Bottle squash' },
+      { id: 'sh-tea', text: 'Box tea bags' },
+      { id: 'sh-coffee-grinds', text: 'Ground coffee 500g (if barnhouse has cafetiere)' },
+      { id: 'sh-beer', text: '12-pack craft beer / IPA' },
+      { id: 'sh-wine', text: 'Red + white (2 bottles each)' },
+      { id: 'sh-cordial', text: 'Elderflower cordial' },
+    ],
+  },
+  {
+    section: '🧻 Household',
+    items: [
+      { id: 'sh-toilet-roll', text: '9-pack toilet roll (just in case)' },
+      { id: 'sh-kitchen-roll', text: 'Kitchen roll × 2' },
+      { id: 'sh-foil', text: 'Foil + cling film (for picnic wraps)' },
+      { id: 'sh-bin-bags', text: 'Bin bags' },
+      { id: 'sh-washing-up', text: 'Washing-up liquid' },
+      { id: 'sh-wipes', text: 'Wet wipes (kid hands at picnics)' },
+    ],
+  },
+];
+
 const PACKING = [
   {
     section: 'Everyone',
@@ -1018,6 +1125,35 @@ function setPacked(id, v) {
   try { localStorage.setItem(packKey(id), v ? '1' : '0'); } catch (e) {}
 }
 
+function renderShopping() {
+  const el = document.getElementById('shopping-list');
+  if (!el) return;
+  el.innerHTML = '';
+  SHOPPING.forEach(section => {
+    const total = section.items.length;
+    const done = section.items.filter(i => isPacked(i.id)).length;
+    const wrap = document.createElement('div');
+    wrap.className = 'pack-section';
+    wrap.innerHTML = `
+      <div class="pack-head">
+        <h3>${section.section}</h3>
+        <span class="pack-count">${done} / ${total}</span>
+      </div>
+      <ul class="pack-list">
+        ${section.items.map(i => `
+          <li class="${isPacked(i.id) ? 'done' : ''}">
+            <label>
+              <input type="checkbox" data-pack-id="${i.id}" ${isPacked(i.id) ? 'checked' : ''} />
+              <span>${i.text}</span>
+            </label>
+          </li>
+        `).join('')}
+      </ul>
+    `;
+    el.appendChild(wrap);
+  });
+}
+
 function renderPacking() {
   const el = document.getElementById('packing-list');
   if (!el) return;
@@ -1079,6 +1215,7 @@ document.addEventListener('DOMContentLoaded', () => {
   loadStops().then(applyWhoFilter);
   renderWalks();
   renderRecipes();
+  renderShopping();
   renderPacking();
   // Initial filter pass after a tick so day cards exist
   setTimeout(applyWhoFilter, 100);
