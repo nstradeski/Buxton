@@ -320,6 +320,16 @@ a:hover { text-decoration: underline; }
   background: var(--accent);
   color: #fff;
 }
+.pub-type-tag {
+  font-size: 0.7rem;
+  padding: 0.1rem 0.5rem;
+  border-radius: 999px;
+  background: #f1e8d8;
+  color: #826333;
+  font-weight: 500;
+  margin-left: 0.35rem;
+  white-space: nowrap;
+}
 
 .day-wx {
   background: var(--bg-2);

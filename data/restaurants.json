@@ -14,13 +14,17 @@
       "Cake of the day (some vegan)"
     ],
     "price_per_head": "~£8–12",
+    "phone": "01538 300345",
+    "menu_url": "https://www.facebook.com/RoachesTeaRooms/",
     "dog_friendly": "yes",
-    "url": "#",
+    "url": "https://www.facebook.com/RoachesTeaRooms/",
     "from_base": "2 mi · ~5 min"
   },
   {
     "name": "The Lazy Trout, Meerbrook",
     "type": "pub",
+    "pub_type": "Country gastropub",
+    "pint_price": "~£5.20",
     "vegan": "options",
     "address": "Meerbrook, Leek ST13 8SN",
     "lat": 53.1437,
@@ -33,6 +37,8 @@
       "Chips, garden salad, mushy peas"
     ],
     "price_per_head": "~£18–25 (2 courses)",
+    "phone": "01538 300385",
+    "menu_url": "https://lazytroutmeerbrook.co.uk/menu",
     "dog_friendly": "yes — in the bar",
     "url": "https://lazytroutmeerbrook.co.uk",
     "from_base": "4 mi · ~10 min"
@@ -52,27 +58,33 @@
       "Cakes & specialty coffee"
     ],
     "price_per_head": "~£10–14",
+    "phone": "07594 042170",
+    "menu_url": "https://www.facebook.com/simplyveganbuxton/",
     "dog_friendly": "outside only",
-    "url": "#",
+    "url": "https://www.facebook.com/simplyveganbuxton/",
     "from_base": "10 mi · ~25 min"
   },
   {
     "name": "The Buxton Tap House",
     "type": "pub",
+    "pub_type": "Craft beer pub",
+    "pint_price": "~£5.80",
     "vegan": "options",
     "address": "George St, Buxton SK17 6AY",
     "lat": 53.2588,
     "lon": -1.9128,
     "opening_hours": "Mo-Th 12:00-23:00; Fr,Sa 12:00-00:00; Su 12:00-22:30",
-    "notes": "Craft beer pub with vegan-marked menu items",
+    "notes": "Buxton Brewery's flagship; small kitchen serves pizzas & burgers",
     "menu_highlights": [
+      "Vegan pizza",
       "Beyond burger + chips",
-      "Vegan loaded fries",
-      "Plant-based hot dog"
+      "Loaded fries"
     ],
     "price_per_head": "~£16–22",
-    "dog_friendly": "yes — typical of Buxton craft pubs, confirm on the day",
-    "url": "#",
+    "phone": "01298 214085",
+    "menu_url": "https://www.buxtonbrewery.co.uk/pages/tap-house-buxton",
+    "dog_friendly": "yes — typical of craft pubs, confirm on the day",
+    "url": "https://www.buxtonbrewery.co.uk/pages/tap-house-buxton",
     "from_base": "10 mi · ~25 min"
   },
   {
@@ -90,7 +102,9 @@
       "Chocolate & raspberry tart"
     ],
     "price_per_head": "~£35–45 (2 courses + drinks)",
-    "dog_friendly": "unknown · email/call to confirm",
+    "phone": "01298 214642",
+    "menu_url": "https://natskitchen.co.uk/menu/",
+    "dog_friendly": "unknown · call to confirm",
     "url": "https://natskitchen.co.uk",
     "from_base": "10 mi · ~25 min"
   },
@@ -102,37 +116,45 @@
     "lat": 53.2598,
     "lon": -1.9151,
     "opening_hours": "Mo,Tu,Th-Sa 19:00-21:30",
-    "notes": "Vegan tasting options on request — official site appears down, call to confirm",
+    "notes": "Vegan tasting options on request — official site appears compromised, call to confirm",
     "menu_highlights": [
       "Seasonal British-Italian small plates",
       "Vegan pasta on request"
     ],
     "price_per_head": "~£35–45",
+    "phone": "01298 78752",
+    "menu_url": "",
     "dog_friendly": "unknown · call to confirm",
-    "url": "https://columbinerestaurant.co.uk",
+    "url": "#",
     "from_base": "10 mi · ~25 min"
   },
   {
     "name": "The Old Hall Hotel",
     "type": "pub",
+    "pub_type": "Historic hotel bar",
+    "pint_price": "~£5.50",
     "vegan": "options",
     "address": "The Square, Buxton SK17 6BD",
     "lat": 53.2599,
     "lon": -1.9143,
     "opening_hours": "Mo-Su 12:00-22:00",
-    "notes": "Historic hotel restaurant; official site appears down, call to confirm",
+    "notes": "Historic hotel restaurant; official site appears compromised, call to confirm",
     "menu_highlights": [
       "Vegan mains usually available",
       "Sunday roast with plant-based option"
     ],
     "price_per_head": "~£25–35",
+    "phone": "01298 22841",
+    "menu_url": "",
     "dog_friendly": "unknown · call to confirm",
-    "url": "https://oldhallhotelbuxton.co.uk",
+    "url": "#",
     "from_base": "10 mi · ~25 min"
   },
   {
     "name": "The Devonshire Arms, Hartington",
     "type": "pub",
+    "pub_type": "Village pub",
+    "pint_price": "~£4.80",
     "vegan": "options",
     "address": "Market Pl, Hartington SK17 0AL",
     "lat": 53.1377,
@@ -145,8 +167,10 @@
       "Plant-based burger"
     ],
     "price_per_head": "~£18–25",
+    "phone": "01298 84232",
+    "menu_url": "https://www.devonshirearmshartington.co.uk/menu",
     "dog_friendly": "yes — in the bar",
-    "url": "#",
+    "url": "https://www.devonshirearmshartington.co.uk/",
     "from_base": "11 mi · ~30 min"
   }
 ]

@@ -682,6 +682,9 @@ async function loadRestaurants() {
         const veganTag = p.vegan === 'full'
           ? '<span class="vegan-tag full">Fully vegan</span>'
           : '<span class="vegan-tag">Vegan options</span>';
+        const pubTypeTag = p.pub_type
+          ? `<span class="pub-type-tag">${p.pub_type}${p.pint_price ? ` · 🍺 ${p.pint_price}` : ''}</span>`
+          : '';
         const item = document.createElement('div');
         item.className = 'place';
         const highlightsHtml = (p.menu_highlights || []).length
@@ -689,10 +692,14 @@ async function loadRestaurants() {
           : '';
         const priceHtml = p.price_per_head ? `<div class="place-meta">💷 ${p.price_per_head} per head</div>` : '';
         const dogHtml = p.dog_friendly ? `<div class="place-meta">🐕 ${dogFriendlyPill(p.dog_friendly)}</div>` : '';
+        const actions = [];
+        if (p.phone) actions.push(`<a href="tel:${p.phone.replace(/\s/g, '')}">📞 ${p.phone}</a>`);
+        if (p.menu_url) actions.push(`<a href="${p.menu_url}" target="_blank" rel="noopener">📖 Menu</a>`);
+        const actionsHtml = actions.length ? `<div class="map-links">${actions.join('')}</div>` : '';
         item.innerHTML = `
           <div>
             <div class="place-name">
-              <span class="dot ${pillClass}"></span>${p.name} ${veganTag}
+              <span class="dot ${pillClass}"></span>${p.name} ${veganTag} ${pubTypeTag}
             </div>
             <div class="place-meta">${p.address}</div>
             ${p.from_base ? `<div class="place-meta">🚗 ${p.from_base} from the barnhouse</div>` : ''}
@@ -701,6 +708,7 @@ async function loadRestaurants() {
             ${p.notes ? `<div class="place-meta">${p.notes}</div>` : ''}
             ${highlightsHtml}
             <div class="place-hours">${p.opening_hours}</div>
+            ${actionsHtml}
             ${mapLinks(p.lat, p.lon, true)}
           </div>
           <span class="status-pill ${pillClass}">${status.label}</span>
@@ -711,6 +719,52 @@ async function loadRestaurants() {
     }
   } catch (err) {
     el.innerHTML = `<p class="error">Couldn't load restaurants: ${err.message}</p>`;
+  }
+}
+
+async function loadHealth() {
+  const el = document.getElementById('health-list');
+  if (!el) return;
+  try {
+    const res = await fetch('data/health.json?t=' + Date.now());
+    const items = (await res.json()).sort(byDistance);
+    const grouped = items.reduce((acc, p) => {
+      (acc[p.type] = acc[p.type] || []).push(p);
+      return acc;
+    }, {});
+    const TYPE_LABELS = { pharmacy: 'Pharmacies', hospital: 'Hospitals' };
+    el.innerHTML = '';
+    for (const [type, list] of Object.entries(grouped)) {
+      const group = document.createElement('div');
+      group.className = 'place-group';
+      group.innerHTML = `<h3>${TYPE_LABELS[type] || type}</h3>`;
+      list.forEach(p => {
+        const status = isOpen(p.opening_hours);
+        const pillClass = status.open === true ? 'open' : status.open === false ? 'closed' : 'unknown';
+        const item = document.createElement('div');
+        item.className = 'place';
+        item.innerHTML = `
+          <div>
+            <div class="place-name">
+              <span class="dot ${pillClass}"></span>${p.name}
+            </div>
+            <div class="place-meta">${p.address}</div>
+            <div class="place-meta">🚗 ${p.from_base} from the barnhouse</div>
+            ${p.notes ? `<div class="place-meta">${p.notes}</div>` : ''}
+            <div class="place-hours">${p.opening_hours}</div>
+            <div class="map-links">
+              ${p.phone ? `<a href="tel:${p.phone.replace(/\\s/g, '')}">📞 ${p.phone}</a>` : ''}
+            </div>
+            ${mapLinks(p.lat, p.lon, true)}
+          </div>
+          <span class="status-pill ${pillClass}">${status.label}</span>
+        `;
+        group.appendChild(item);
+      });
+      el.appendChild(group);
+    }
+  } catch (err) {
+    el.innerHTML = `<p class="error">Couldn't load health info: ${err.message}</p>`;
   }
 }
 
@@ -823,6 +877,7 @@ document.addEventListener('DOMContentLoaded', () => {
   loadWeather();
   loadPlacesAndMap();
   loadRestaurants();
+  loadHealth();
   renderWalks();
   renderRecipes();
 });

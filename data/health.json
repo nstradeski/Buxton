@@ -1,0 +1,90 @@
+[
+  {
+    "name": "Boots Pharmacy, Leek",
+    "type": "pharmacy",
+    "address": "9-11 Market Pl, Leek ST13 6AB",
+    "lat": 53.1078,
+    "lon": -2.0260,
+    "phone": "01538 382243",
+    "opening_hours": "Mo-Sa 09:00-17:30; Su off",
+    "from_base": "8 mi · ~20 min",
+    "notes": "Closest pharmacy to the barnhouse"
+  },
+  {
+    "name": "Cohens Chemist, Leek",
+    "type": "pharmacy",
+    "address": "23 Stockwell St, Leek ST13 6DH",
+    "lat": 53.1093,
+    "lon": -2.0244,
+    "phone": "01538 383272",
+    "opening_hours": "Mo-Fr 09:00-18:00; Sa 09:00-13:00",
+    "from_base": "8 mi · ~20 min",
+    "notes": "Backup if Boots is closed"
+  },
+  {
+    "name": "Boots Pharmacy, Buxton",
+    "type": "pharmacy",
+    "address": "10-14 Spring Gardens, Buxton SK17 6BJ",
+    "lat": 53.2599,
+    "lon": -1.9124,
+    "phone": "01298 23005",
+    "opening_hours": "Mo-Sa 09:00-17:30; Su 10:30-16:30",
+    "from_base": "10 mi · ~25 min",
+    "notes": "Buxton high street; Sunday opening"
+  },
+  {
+    "name": "Tesco Pharmacy, Buxton",
+    "type": "pharmacy",
+    "address": "Spring Gardens, Buxton SK17 6BS",
+    "lat": 53.2603,
+    "lon": -1.9117,
+    "phone": "0345 671 2127",
+    "opening_hours": "Mo-Fr 09:00-19:00; Sa 09:00-17:00; Su 11:00-16:00",
+    "from_base": "10 mi · ~25 min",
+    "notes": "Inside Tesco Superstore"
+  },
+  {
+    "name": "Buxton Cottage Hospital",
+    "type": "hospital",
+    "address": "London Rd, Buxton SK17 9NJ",
+    "lat": 53.2532,
+    "lon": -1.9050,
+    "phone": "01298 212800",
+    "opening_hours": "Minor Injuries Unit: Mo-Su 09:00-21:00 (no A&E)",
+    "from_base": "10 mi · ~25 min",
+    "notes": "Minor injuries only — for serious cases go to Macclesfield or Stepping Hill"
+  },
+  {
+    "name": "Macclesfield District General Hospital",
+    "type": "hospital",
+    "address": "Victoria Rd, Macclesfield SK10 3BL",
+    "lat": 53.2598,
+    "lon": -2.1336,
+    "phone": "01625 421000",
+    "opening_hours": "A&E 24/7",
+    "from_base": "16 mi · ~35 min",
+    "notes": "Nearest A&E"
+  },
+  {
+    "name": "Stepping Hill Hospital, Stockport",
+    "type": "hospital",
+    "address": "Poplar Grove, Stockport SK2 7JE",
+    "lat": 53.3854,
+    "lon": -2.1374,
+    "phone": "0161 483 1010",
+    "opening_hours": "A&E 24/7",
+    "from_base": "23 mi · ~50 min",
+    "notes": "Larger A&E; alternative to Macclesfield"
+  },
+  {
+    "name": "Royal Stoke University Hospital",
+    "type": "hospital",
+    "address": "Newcastle Rd, Stoke-on-Trent ST4 6QG",
+    "lat": 52.9939,
+    "lon": -2.2143,
+    "phone": "01782 715444",
+    "opening_hours": "A&E 24/7 · major trauma centre",
+    "from_base": "26 mi · ~55 min",
+    "notes": "Major trauma centre — only for serious cases"
+  }
+]
