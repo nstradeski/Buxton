@@ -133,6 +133,7 @@ const RECIPES = [
 const WALKS = [
   {
     name: 'The Roaches',
+    emoji: '🪨',
     distance: '~6 km',
     time: '2–3 hrs',
     difficulty: 'Moderate',
@@ -142,15 +143,17 @@ const WALKS = [
   },
   {
     name: 'Lud\'s Church',
+    emoji: '🌿',
     distance: '~5 km loop',
     time: '2 hrs',
-    difficulty: 'Easy / moderate',
+    difficulty: 'Easy',
     parking: 'Gradbach NT car park',
     description: 'Deep mossy chasm in the woods — feels prehistoric. Pairs with The Roaches as a half-day loop via Roach End.',
     url: 'https://www.nationaltrust.org.uk/visit/peak-district/back-forest-and-luds-church',
   },
   {
     name: 'Kinder Scout',
+    emoji: '⛰️',
     distance: '13–16 km',
     time: '5–6 hrs',
     difficulty: 'Hard',
@@ -160,16 +163,18 @@ const WALKS = [
   },
   {
     name: 'Chee Dale stepping stones',
+    emoji: '💧',
     distance: '~7 km out-and-back',
     time: '2–3 hrs',
-    difficulty: 'Moderate (river hop)',
+    difficulty: 'Moderate',
     parking: 'Miller\'s Dale station car park',
     description: 'Limestone gorge with stepping stones bolted to the cliff over the River Wye. Don\'t attempt after heavy rain — water rises fast.',
     url: 'https://www.peakdistrict.gov.uk/visiting/things-to-do/walks/chee-dale-walk',
   },
   {
     name: 'Monsal Trail',
-    distance: 'Flexible (full route 13 km)',
+    emoji: '🚲',
+    distance: 'Flexible · up to 13 km',
     time: '2–4 hrs',
     difficulty: 'Easy',
     parking: 'Miller\'s Dale, Bakewell, or Hassop',
@@ -178,14 +183,21 @@ const WALKS = [
   },
   {
     name: 'Three Shire Heads',
+    emoji: '🌊',
     distance: '~6 km loop',
     time: '2 hrs',
-    difficulty: 'Easy / moderate',
+    difficulty: 'Easy',
     parking: 'Cumberland Brook layby',
     description: 'Packhorse bridges + waterfall where three counties meet. Easy half-day from the accommodation; can swim if hot.',
     url: 'https://www.walkingbritain.co.uk/walks/walk-1186/',
   },
 ];
+
+const DIFF_ACCENT = {
+  Easy: '#3b8a52',
+  Moderate: '#c2693f',
+  Hard: '#a83a2f',
+};
 
 const TODAY_ISO = new Date().toISOString().slice(0, 10);
 
@@ -492,22 +504,27 @@ function renderWalks() {
   if (!el) return;
   el.innerHTML = '';
   WALKS.forEach(w => {
+    const accent = DIFF_ACCENT[w.difficulty] || '#888';
     const card = document.createElement('a');
     card.className = 'walk-card';
+    card.style.setProperty('--walk-accent', accent);
     card.href = w.url;
     card.target = '_blank';
     card.rel = 'noopener';
     card.innerHTML = `
-      <div class="walk-head">
-        <h4>${w.name}</h4>
-        <span class="walk-diff diff-${w.difficulty.split(' ')[0].toLowerCase()}">${w.difficulty}</span>
+      <div class="walk-top">
+        <div class="walk-emoji">${w.emoji}</div>
+        <div class="walk-title">
+          <h4>${w.name}</h4>
+          <span class="walk-diff">${w.difficulty}</span>
+        </div>
       </div>
       <div class="walk-stats">
-        <span>📏 ${w.distance}</span>
-        <span>⏱ ${w.time}</span>
+        <div><span>📏</span><strong>${w.distance}</strong></div>
+        <div><span>⏱</span><strong>${w.time}</strong></div>
       </div>
-      <p class="muted">${w.description}</p>
-      <div class="walk-foot">🚗 ${w.parking}</div>
+      <p class="walk-desc">${w.description}</p>
+      <div class="walk-foot"><span>🚗</span> ${w.parking}</div>
     `;
     el.appendChild(card);
   });
