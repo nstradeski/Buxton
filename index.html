@@ -12,7 +12,7 @@
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" defer></script>
   <script src="https://unpkg.com/opening_hours@3.12.0/build/opening_hours.js" defer></script>
-  <script src="assets/app.js?v=9" defer></script>
+  <script src="assets/app.js?v=10" defer></script>
 </head>
 <body>
   <div class="layout">
@@ -38,6 +38,7 @@
         <a href="#map">Map</a>
         <a href="#shops">Shops</a>
         <a href="#walks">Walks</a>
+        <a href="#cooking">Cooking</a>
         <a href="#activities">Activities</a>
         <a href="#food">Food &amp; Pubs</a>
       </nav>
@@ -100,14 +101,19 @@
       </section>
 
       <section id="walks" class="block">
-        <div class="block-head"><h2>Walks &amp; Hikes</h2></div>
-        <div class="tile-grid">
-          <div class="tile"><h4>The Roaches</h4><p class="muted">Right on the doorstep · gritstone edge</p></div>
-          <div class="tile"><h4>Lud's Church</h4><p class="muted">Mossy chasm near The Roaches</p></div>
-          <div class="tile"><h4>Kinder Scout</h4><p class="muted">Plateau · longer day</p></div>
-          <div class="tile"><h4>Chee Dale</h4><p class="muted">Stepping stones · limestone gorge</p></div>
-          <div class="tile"><h4>Monsal Trail</h4><p class="muted">Easy · old railway, tunnels</p></div>
+        <div class="block-head">
+          <h2>Walks &amp; Hikes</h2>
+          <p>Distances, times and difficulty are rough — check current conditions before heading out.</p>
         </div>
+        <div id="walks-list" class="walks-grid"></div>
+      </section>
+
+      <section id="cooking" class="block">
+        <div class="block-head">
+          <h2>Cook-in Nights</h2>
+          <p>Vegan recipes for the three cook nights. Tap to expand for ingredients &amp; method.</p>
+        </div>
+        <div id="recipes-list" class="recipes"></div>
       </section>
 
       <section id="activities" class="block">

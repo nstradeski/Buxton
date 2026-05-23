@@ -482,6 +482,135 @@ a:hover { text-decoration: underline; }
 
 /* --- Misc ------------------------------------------------------------- */
 
+/* --- Walks ------------------------------------------------------------ */
+
+.walks-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1rem;
+}
+.walk-card {
+  background: var(--card);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 1.15rem 1.25rem;
+  color: inherit;
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  transition: transform 0.15s;
+}
+.walk-card:hover { transform: translateY(-2px); text-decoration: none; }
+.walk-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+.walk-card h4 {
+  font-family: 'Fraunces', serif;
+  font-weight: 600;
+  font-size: 1.1rem;
+  margin: 0;
+}
+.walk-diff {
+  font-size: 0.7rem;
+  padding: 0.15rem 0.55rem;
+  border-radius: 999px;
+  font-weight: 500;
+  white-space: nowrap;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.diff-easy { background: #e3f0e6; color: #2c6a3b; }
+.diff-moderate { background: #fbeacd; color: #936a1b; }
+.diff-hard { background: #f4dcd5; color: #9c3a1f; }
+.walk-stats {
+  display: flex;
+  gap: 0.75rem;
+  font-size: 0.82rem;
+  color: var(--ink-soft);
+}
+.walk-card p { margin: 0; font-size: 0.88rem; }
+.walk-foot {
+  font-size: 0.78rem;
+  color: var(--muted);
+  border-top: 1px dashed var(--line);
+  padding-top: 0.55rem;
+  margin-top: auto;
+}
+
+/* --- Recipes ---------------------------------------------------------- */
+
+.recipes {
+  display: grid;
+  gap: 0.75rem;
+}
+.recipe {
+  background: var(--card);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+.recipe summary {
+  list-style: none;
+  cursor: pointer;
+  padding: 1.1rem 1.4rem;
+}
+.recipe summary::-webkit-details-marker { display: none; }
+.recipe-summary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+.recipe-night {
+  font-size: 0.7rem;
+  color: var(--warm);
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 0.2rem;
+}
+.recipe h4 {
+  font-family: 'Fraunces', serif;
+  font-weight: 600;
+  font-size: 1.15rem;
+  margin: 0 0 0.2rem;
+}
+.recipe-meta { font-size: 0.82rem; color: var(--muted); }
+.recipe-chevron {
+  color: var(--muted);
+  font-size: 1.2rem;
+  transition: transform 0.2s;
+}
+.recipe[open] .recipe-chevron { transform: rotate(180deg); }
+.recipe-body {
+  padding: 0 1.4rem 1.3rem;
+  border-top: 1px solid var(--line);
+}
+.recipe-body > p { margin-top: 1rem; }
+.recipe-cols {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap: 2rem;
+  margin-top: 1rem;
+}
+.recipe-cols h5 {
+  font-family: 'Fraunces', serif;
+  font-size: 0.95rem;
+  margin: 0 0 0.5rem;
+  color: var(--accent);
+}
+.recipe-cols ul, .recipe-cols ol {
+  margin: 0;
+  padding-left: 1.2rem;
+  font-size: 0.9rem;
+  color: var(--ink-soft);
+}
+.recipe-cols li { margin-bottom: 0.3rem; }
+
 .muted { color: var(--muted); }
 .error { color: #9c3a1f; }
 
@@ -589,6 +718,10 @@ a:hover { text-decoration: underline; }
   .day-meals span { white-space: nowrap; }
 
   .tile-grid { grid-template-columns: 1fr; }
+  .walks-grid { grid-template-columns: 1fr; }
+  .recipe-cols { grid-template-columns: 1fr; gap: 1.25rem; }
+  .recipe summary { padding: 1rem 1.15rem; }
+  .recipe-body { padding: 0 1.15rem 1.15rem; }
 
   .activity-foot {
     flex-direction: column;

@@ -5,12 +5,12 @@ const DAYS = [
   {
     date: '2026-05-27', title: 'Arrival',
     items: ['Travel to Gib Torr Farm', 'Check in at The Barnhouse — 4:00pm', 'Settle in'],
-    meals: { breakfast: 'On the road', lunch: 'Service station / pack', dinner: 'The Lazy Trout, Meerbrook' }
+    meals: { breakfast: 'On the road', lunch: 'Pack', dinner: 'Cook in · Italian 🍝' }
   },
   {
     date: '2026-05-28', title: 'The Roaches',
     items: ['Walk The Roaches ridge + Lud\'s Church', 'Tea at The Roaches Tea Rooms'],
-    meals: { breakfast: 'Barnhouse', lunch: 'Pack lunch', dinner: 'Cook in' }
+    meals: { breakfast: 'Barnhouse', lunch: 'Pack lunch', dinner: 'Cook in · Mexican 🌮' }
   },
   {
     date: '2026-05-29', title: 'Castleton cluster',
@@ -20,17 +20,158 @@ const DAYS = [
       'Blue John Cavern, then drive down to Speedwell Cavern (boat)',
       'Castleton village — Peveril Castle + ice cream',
     ],
-    meals: { breakfast: 'Barnhouse', lunch: 'Simply Vegan Buxton', dinner: 'Nat\'s Kitchen' }
+    meals: { breakfast: 'Barnhouse', lunch: 'Pack / Castleton café', dinner: 'Nat\'s Kitchen · restaurant night ✨' }
   },
   {
     date: '2026-05-30', title: 'Big walk',
     items: ['Mam Tor ridge or Kinder Scout'],
-    meals: { breakfast: 'Barnhouse', lunch: 'Pack lunch', dinner: 'The Old Hall Hotel' }
+    meals: { breakfast: 'Barnhouse', lunch: 'Pack lunch', dinner: 'Cook in · Asian 🥢' }
   },
   {
     date: '2026-05-31', title: 'Departure',
     items: ['Pack out', 'Quick walk / coffee', 'Travel home'],
     meals: { breakfast: 'Barnhouse', lunch: 'On the road', dinner: '—' }
+  },
+];
+
+const RECIPES = [
+  {
+    night: 'Wed · Italian 🍝',
+    title: 'Pasta al Pomodoro + garlic bread',
+    serves: '4',
+    time: '30 min',
+    why: 'Easy arrival-night cook after a long drive. One pan + an oven.',
+    ingredients: [
+      '400g spaghetti or linguine',
+      '2 × 400g tins plum tomatoes',
+      '4 cloves garlic, sliced',
+      'Big handful fresh basil',
+      '4 tbsp olive oil + extra to finish',
+      '1 tsp sugar, salt, black pepper',
+      '1 sourdough loaf or ciabatta',
+      '2 tbsp vegan butter',
+      '2 cloves garlic (for bread), parsley',
+      'Optional: chilli flakes, vegan parm (Violife)',
+    ],
+    method: [
+      'Heat olive oil in a wide pan, gently fry sliced garlic 1–2 min (don\'t brown).',
+      'Add tomatoes, crush with a spoon, add sugar, pinch of salt. Simmer 15–20 min.',
+      'Meanwhile mix vegan butter with crushed garlic and parsley. Slice bread, butter, bake 180°C / 10 min.',
+      'Cook pasta al dente in well-salted water. Reserve a mug of pasta water.',
+      'Toss pasta into the sauce with a splash of pasta water, basil, more oil. Serve with bread.',
+    ],
+  },
+  {
+    night: 'Thu · Mexican 🌮',
+    title: 'Black bean & sweet potato tacos',
+    serves: '4',
+    time: '40 min',
+    why: 'Post-walk fuel. Bold flavours, mostly cupboard ingredients, lots of toppings.',
+    ingredients: [
+      '12 small corn or flour tortillas',
+      '2 sweet potatoes, diced 1.5cm',
+      '2 × 400g tins black beans, drained',
+      '1 red onion + 1 lime (quick-pickled)',
+      '2 ripe avocados',
+      'Bunch coriander',
+      '2 tsp ground cumin, 2 tsp smoked paprika, 1 tsp oregano',
+      '1–2 tbsp chipotle paste',
+      'Jar of salsa / pico',
+      'Olive oil, salt, pepper',
+      'Optional: vegan sour cream, hot sauce, pickled jalapeños',
+    ],
+    method: [
+      'Toss sweet potato with oil, cumin, paprika, salt. Roast 200°C / 25 min until edges crisp.',
+      'Thinly slice red onion, cover with lime juice + pinch salt — leave 15 min to pickle.',
+      'Heat black beans with chipotle paste, oregano, splash of water. Mash slightly. 10 min.',
+      'Mash avocado with lime, salt → quick guac.',
+      'Warm tortillas. Build: beans → sweet potato → guac → pickled onion → salsa → coriander.',
+    ],
+  },
+  {
+    night: 'Sat · Asian 🥢',
+    title: 'Crispy tofu & broccoli stir-fry with rice noodles',
+    serves: '4',
+    time: '35 min',
+    why: 'Fresh, quick, balances out a big walk day.',
+    ingredients: [
+      '500g firm tofu, pressed and cubed',
+      '3 tbsp cornflour',
+      '250g flat rice noodles',
+      '1 head broccoli, florets',
+      '1 red pepper, sliced',
+      '4 spring onions',
+      '4 cloves garlic, 30g ginger — minced',
+      '5 tbsp soy sauce',
+      '2 tbsp rice vinegar (or lime)',
+      '2 tbsp maple syrup or brown sugar',
+      '1 tbsp sesame oil + neutral oil for frying',
+      'Sriracha to taste, sesame seeds',
+    ],
+    method: [
+      'Press tofu 15 min. Cube, toss in cornflour + pinch salt. Pan-fry in oil until golden on all sides. Set aside.',
+      'Mix sauce: soy, vinegar, maple, sesame oil, 3 tbsp water, sriracha.',
+      'Cook rice noodles per packet, drain, rinse cold.',
+      'Stir-fry garlic + ginger 30s, add broccoli + pepper, splash of water, cover 2 min.',
+      'Add noodles, tofu, sauce. Toss 1–2 min until glossy. Top with spring onion + sesame.',
+    ],
+  },
+];
+
+const WALKS = [
+  {
+    name: 'The Roaches',
+    distance: '~6 km',
+    time: '2–3 hrs',
+    difficulty: 'Moderate',
+    parking: 'Roach End or Roaches layby (free, fills up)',
+    description: 'Gritstone edge right above the accommodation. Wide views over Tittesworth Reservoir to Wales on a clear day. Combine with Lud\'s Church for a longer loop.',
+    url: 'https://www.peakdistrict.gov.uk/visiting/places-to-visit/the-roaches',
+  },
+  {
+    name: 'Lud\'s Church',
+    distance: '~5 km loop',
+    time: '2 hrs',
+    difficulty: 'Easy / moderate',
+    parking: 'Gradbach NT car park',
+    description: 'Deep mossy chasm in the woods — feels prehistoric. Pairs with The Roaches as a half-day loop via Roach End.',
+    url: 'https://www.nationaltrust.org.uk/visit/peak-district/back-forest-and-luds-church',
+  },
+  {
+    name: 'Kinder Scout',
+    distance: '13–16 km',
+    time: '5–6 hrs',
+    difficulty: 'Hard',
+    parking: 'Edale village (paid)',
+    description: 'The big one. Plateau walk up Jacob\'s Ladder, across the moor edge, down Grindsbrook. Bring map + compass — the top is featureless and easy to get lost in mist.',
+    url: 'https://www.nationaltrust.org.uk/visit/peak-district/kinder-edale-and-mam-tor/kinder-scout-walk',
+  },
+  {
+    name: 'Chee Dale stepping stones',
+    distance: '~7 km out-and-back',
+    time: '2–3 hrs',
+    difficulty: 'Moderate (river hop)',
+    parking: 'Miller\'s Dale station car park',
+    description: 'Limestone gorge with stepping stones bolted to the cliff over the River Wye. Don\'t attempt after heavy rain — water rises fast.',
+    url: 'https://www.peakdistrict.gov.uk/visiting/things-to-do/walks/chee-dale-walk',
+  },
+  {
+    name: 'Monsal Trail',
+    distance: 'Flexible (full route 13 km)',
+    time: '2–4 hrs',
+    difficulty: 'Easy',
+    parking: 'Miller\'s Dale, Bakewell, or Hassop',
+    description: 'Old railway converted to a flat traffic-free path with lit tunnels and Headstone Viaduct. Walkable or hire bikes at Hassop / Blackwell Mill.',
+    url: 'https://www.peakdistrict.gov.uk/visiting/things-to-do/walks/monsal-trail',
+  },
+  {
+    name: 'Three Shire Heads',
+    distance: '~6 km loop',
+    time: '2 hrs',
+    difficulty: 'Easy / moderate',
+    parking: 'Cumberland Brook layby',
+    description: 'Packhorse bridges + waterfall where three counties meet. Easy half-day from the accommodation; can swim if hot.',
+    url: 'https://www.walkingbritain.co.uk/walks/walk-1186/',
   },
 ];
 
@@ -334,8 +475,72 @@ async function loadRestaurants() {
   }
 }
 
+function renderWalks() {
+  const el = document.getElementById('walks-list');
+  if (!el) return;
+  el.innerHTML = '';
+  WALKS.forEach(w => {
+    const card = document.createElement('a');
+    card.className = 'walk-card';
+    card.href = w.url;
+    card.target = '_blank';
+    card.rel = 'noopener';
+    card.innerHTML = `
+      <div class="walk-head">
+        <h4>${w.name}</h4>
+        <span class="walk-diff diff-${w.difficulty.split(' ')[0].toLowerCase()}">${w.difficulty}</span>
+      </div>
+      <div class="walk-stats">
+        <span>📏 ${w.distance}</span>
+        <span>⏱ ${w.time}</span>
+      </div>
+      <p class="muted">${w.description}</p>
+      <div class="walk-foot">🚗 ${w.parking}</div>
+    `;
+    el.appendChild(card);
+  });
+}
+
+function renderRecipes() {
+  const el = document.getElementById('recipes-list');
+  if (!el) return;
+  el.innerHTML = '';
+  RECIPES.forEach(r => {
+    const details = document.createElement('details');
+    details.className = 'recipe';
+    details.innerHTML = `
+      <summary>
+        <div class="recipe-summary">
+          <div>
+            <div class="recipe-night">${r.night}</div>
+            <h4>${r.title}</h4>
+            <div class="recipe-meta">Serves ${r.serves} · ${r.time}</div>
+          </div>
+          <span class="recipe-chevron">▾</span>
+        </div>
+      </summary>
+      <div class="recipe-body">
+        <p class="muted">${r.why}</p>
+        <div class="recipe-cols">
+          <div>
+            <h5>Ingredients</h5>
+            <ul>${r.ingredients.map(i => `<li>${i}</li>`).join('')}</ul>
+          </div>
+          <div>
+            <h5>Method</h5>
+            <ol>${r.method.map(m => `<li>${m}</li>`).join('')}</ol>
+          </div>
+        </div>
+      </div>
+    `;
+    el.appendChild(details);
+  });
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   loadWeather();
   loadPlacesAndMap();
   loadRestaurants();
+  renderWalks();
+  renderRecipes();
 });
