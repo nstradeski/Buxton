@@ -168,6 +168,7 @@ const WALKS = [
     distance: '~6 km',
     time: '2–3 hrs',
     difficulty: 'Moderate',
+    from_base: '1 mi · ~5 min',
     parking: 'Roach End or Roaches layby (free, fills up)',
     description: 'Gritstone edge right above the accommodation. Wide views over Tittesworth Reservoir to Wales on a clear day. Combine with Lud\'s Church for a longer loop.',
     url: 'https://www.peakdistrict.gov.uk/visiting/places-to-visit/the-roaches',
@@ -178,6 +179,7 @@ const WALKS = [
     distance: '~5 km loop',
     time: '2 hrs',
     difficulty: 'Easy',
+    from_base: '4 mi · ~10 min drive',
     parking: 'Gradbach NT car park',
     description: 'Deep mossy chasm in the woods — feels prehistoric. Pairs with The Roaches as a half-day loop via Roach End.',
     url: 'https://www.nationaltrust.org.uk/visit/peak-district/back-forest-and-luds-church',
@@ -188,6 +190,7 @@ const WALKS = [
     distance: '13–16 km',
     time: '5–6 hrs',
     difficulty: 'Hard',
+    from_base: '18 mi · ~40 min drive',
     parking: 'Edale village (paid)',
     description: 'The big one. Plateau walk up Jacob\'s Ladder, across the moor edge, down Grindsbrook. Bring map + compass — the top is featureless and easy to get lost in mist.',
     url: 'https://www.nationaltrust.org.uk/visit/peak-district/kinder-edale-and-mam-tor/kinder-scout-walk',
@@ -198,6 +201,7 @@ const WALKS = [
     distance: '~7 km out-and-back',
     time: '2–3 hrs',
     difficulty: 'Moderate',
+    from_base: '14 mi · ~30 min drive',
     parking: 'Miller\'s Dale station car park',
     description: 'Limestone gorge with stepping stones bolted to the cliff over the River Wye. Don\'t attempt after heavy rain — water rises fast.',
     url: 'https://www.peakdistrict.gov.uk/visiting/things-to-do/walks/chee-dale-walk',
@@ -208,6 +212,7 @@ const WALKS = [
     distance: 'Flexible · up to 13 km',
     time: '2–4 hrs',
     difficulty: 'Easy',
+    from_base: '16 mi · ~35 min drive',
     parking: 'Miller\'s Dale, Bakewell, or Hassop',
     description: 'Old railway converted to a flat traffic-free path with lit tunnels and Headstone Viaduct. Walkable or hire bikes at Hassop / Blackwell Mill.',
     url: 'https://www.peakdistrict.gov.uk/visiting/things-to-do/walks/monsal-trail',
@@ -218,6 +223,7 @@ const WALKS = [
     distance: '~6 km loop',
     time: '2 hrs',
     difficulty: 'Easy',
+    from_base: '6 mi · ~15 min drive',
     parking: 'Cumberland Brook layby',
     description: 'Packhorse bridges + waterfall where three counties meet. Easy half-day from the accommodation; can swim if hot.',
     url: 'https://www.walkingbritain.co.uk/walks/walk-1186/',
@@ -402,6 +408,7 @@ function renderActivities(activities) {
       tile.innerHTML = `
         <h4>${a.name}</h4>
         <p class="muted">${a.description}</p>
+        ${a.from_base ? `<div class="activity-hours">🚗 ${a.from_base}</div>` : ''}
         ${a.hours ? `<div class="activity-hours">🕐 ${a.hours}</div>` : ''}
         <div class="activity-foot">
           <div class="activity-tags">${(a.tags || []).map(t => `<span>${t}</span>`).join('')}</div>
@@ -587,7 +594,10 @@ function renderWalks() {
         <div><span>⏱</span><strong>${w.time}</strong></div>
       </div>
       <p class="walk-desc">${w.description}</p>
-      <div class="walk-foot"><span>🚗</span> ${w.parking}</div>
+      <div class="walk-foot">
+        <div>🚗 <strong>${w.from_base}</strong> from the barnhouse</div>
+        <div>🅿️ ${w.parking}</div>
+      </div>
     `;
     el.appendChild(card);
   });

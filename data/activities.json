@@ -7,6 +7,7 @@
     "description": "Iconic ridge walk. Easy stroll up from Mam Nick car park at the top of Winnats Pass. Paragliders launch from the top in good weather.",
     "url": "https://peakdistrictkids.co.uk/mam-tor-walk/",
     "hours": "Open access · free",
+    "from_base": "17 mi · ~35 min drive",
     "tags": ["walk", "views"]
   },
   {
@@ -17,6 +18,7 @@
     "description": "Dramatic limestone gorge road between Castleton and the Mam Tor ridge.",
     "url": "https://share.google/fLzl9TTQXJgDHhxQY",
     "hours": "Open access · free",
+    "from_base": "18 mi · ~35 min drive",
     "tags": ["drive", "scenery"]
   },
   {
@@ -28,6 +30,7 @@
     "url": "https://www.bluejohn-cavern.co.uk/",
     "booking_url": "https://www.bluejohn-cavern.co.uk/visit-us/",
     "hours": "Daily ~09:30 – 17:00 (last tour ~16:00)",
+    "from_base": "17 mi · ~35 min drive",
     "tags": ["cave", "indoor", "bookable"]
   },
   {
@@ -39,6 +42,7 @@
     "url": "https://speedwellcavern.co.uk/",
     "booking_url": "https://speedwellcavern.co.uk/book-tickets/",
     "hours": "Daily ~10:00 – 16:30",
+    "from_base": "18 mi · ~35 min drive",
     "tags": ["cave", "boat", "indoor", "bookable"]
   },
   {
@@ -50,6 +54,7 @@
     "url": "https://www.english-heritage.org.uk/visit/places/peveril-castle/",
     "booking_url": "https://www.english-heritage.org.uk/visit/places/peveril-castle/prices-and-opening-times/",
     "hours": "Wed – Sun 10:00 – 17:00 (closed Mon/Tue)",
+    "from_base": "19 mi · ~40 min drive",
     "tags": ["castle", "views", "bookable"]
   },
   {
@@ -60,6 +65,7 @@
     "description": "Pretty stone village with cafés, pubs, and (apparently) excellent ice cream.",
     "url": "https://visitpeakdistrict.com/locations/castleton",
     "hours": "Always open",
+    "from_base": "19 mi · ~40 min drive",
     "tags": ["village", "food"]
   },
 
@@ -72,6 +78,7 @@
     "url": "https://goape.co.uk/locations/buxton",
     "booking_url": "https://goape.co.uk/locations/buxton",
     "hours": "Sessions ~09:00 – 16:00 · check site for dates",
+    "from_base": "10 mi · ~20 min drive",
     "tags": ["family", "outdoor", "bookable"]
   },
   {
@@ -83,6 +90,7 @@
     "url": "https://poolescavern.co.uk/",
     "booking_url": "https://poolescavern.co.uk/visit/",
     "hours": "Daily 10:00 – 16:30 (last tour ~15:30)",
+    "from_base": "10 mi · ~20 min drive",
     "tags": ["cave", "family", "walk", "bookable"]
   },
   {
@@ -94,6 +102,7 @@
     "url": "https://theclimbinghangar.com/sheffield/",
     "booking_url": "https://theclimbinghangar.com/sheffield/visit/",
     "hours": "Mo-Fr 07:00 – 22:00 · Sa-Su 09:00 – 20:00",
+    "from_base": "30 mi · ~55 min drive",
     "tags": ["bouldering", "indoor", "bookable"]
   },
   {
@@ -105,6 +114,7 @@
     "url": "https://www.climbingworks.com/",
     "booking_url": "https://www.climbingworks.com/visit/",
     "hours": "Mo-Fr 10:00 – 22:00 · Sa-Su 10:00 – 20:00",
+    "from_base": "28 mi · ~50 min drive",
     "tags": ["bouldering", "indoor", "bookable"]
   },
   {
@@ -116,6 +126,7 @@
     "url": "https://www.awesomewalls.co.uk/stockport/",
     "booking_url": "https://www.awesomewalls.co.uk/stockport/",
     "hours": "Mo-Fr 10:00 – 22:00 · Sa-Su 10:00 – 19:00",
+    "from_base": "25 mi · ~50 min drive",
     "tags": ["climbing", "indoor", "bookable"]
   },
   {
@@ -126,6 +137,7 @@
     "description": "Legendary gritstone edge — the spiritual home of UK trad climbing, but also great just to walk along.",
     "url": "https://www.ukclimbing.com/logbook/crags/stanage_popular-104",
     "hours": "Open access · free",
+    "from_base": "28 mi · ~55 min drive",
     "tags": ["climbing", "outdoor", "walk"]
   },
   {
@@ -136,6 +148,7 @@
     "description": "Gritstone edge right above the accommodation — bouldering and trad classics.",
     "url": "https://www.ukclimbing.com/logbook/crags/the_roaches-105",
     "hours": "Open access · free",
+    "from_base": "1 mi · ~5 min · walk-up",
     "tags": ["bouldering", "climbing", "outdoor"]
   },
 
@@ -148,6 +161,7 @@
     "url": "https://www.gulliversfun.co.uk/parks/matlock",
     "booking_url": "https://www.gulliversfun.co.uk/parks/matlock/book-tickets/",
     "hours": "Open select dates · 10:30 – 17:00 typically",
+    "from_base": "22 mi · ~45 min drive",
     "tags": ["family", "theme-park", "bookable"]
   },
   {
@@ -159,6 +173,7 @@
     "url": "https://www.heightsofabraham.com/",
     "booking_url": "https://www.heightsofabraham.com/tickets/",
     "hours": "Daily 10:00 – 16:30 (last cable car ~16:00)",
+    "from_base": "22 mi · ~45 min drive",
     "tags": ["family", "cable-car", "cave", "bookable"]
   },
   {
@@ -170,6 +185,7 @@
     "url": "https://www.chatsworth.org/visit-chatsworth/farmyard-adventure-playground/",
     "booking_url": "https://www.chatsworth.org/visit-chatsworth/buy-tickets/",
     "hours": "Daily 10:00 – 17:30",
+    "from_base": "22 mi · ~45 min drive",
     "tags": ["family", "playground", "bookable"]
   }
 ]

@@ -753,9 +753,10 @@ a:hover { text-decoration: underline; }
   padding-top: 0.7rem;
   margin-top: auto;
   display: flex;
-  align-items: center;
-  gap: 0.35rem;
+  flex-direction: column;
+  gap: 0.25rem;
 }
+.walk-foot strong { color: var(--ink-soft); font-weight: 600; }
 
 /* --- Recipes ---------------------------------------------------------- */
 
