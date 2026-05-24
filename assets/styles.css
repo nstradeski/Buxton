@@ -1011,6 +1011,28 @@ a:hover { text-decoration: underline; }
   text-decoration: none;
 }
 
+.filter-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin-bottom: 1rem;
+}
+.filter-label {
+  font-size: 0.75rem;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+.activity-age {
+  font-size: 0.7rem;
+  padding: 0.1rem 0.45rem;
+  border-radius: 999px;
+  background: var(--bg-2);
+  color: var(--ink-soft);
+  font-weight: 500;
+  margin-left: 0.3rem;
+  white-space: nowrap;
+}
 .filter-row {
   display: flex;
   flex-wrap: wrap;

@@ -10,7 +10,10 @@
     "price": "Free",
     "dog_friendly": "yes — on lead (sheep)",
     "from_base": "1 mi · ~5 min · walk-up",
-    "tags": ["bouldering", "climbing", "outdoor"]
+    "tags": ["bouldering", "climbing", "outdoor"],
+    "min_age": "5+",
+    "grades": "V0 – V12 (full range; many easy classics + iconic test-pieces)",
+    "levels": ["beginner", "intermediate", "advanced"]
   },
   {
     "name": "Go Ape Buxton",
@@ -24,7 +27,8 @@
     "price": "Challenge from £36.95 · Adventure (juniors) ~£20–25",
     "dog_friendly": "yes — leashed, on the ground only",
     "from_base": "10 mi · ~20 min drive",
-    "tags": ["family", "outdoor", "bookable"]
+    "tags": ["family", "outdoor", "bookable"],
+    "min_age": "3+"
   },
   {
     "name": "Poole's Cavern",
@@ -38,7 +42,8 @@
     "price": "~£14 adult · ~£8 child · family ~£36",
     "dog_friendly": "park yes, cavern no",
     "from_base": "10 mi · ~20 min drive",
-    "tags": ["cave", "family", "walk", "bookable"]
+    "tags": ["cave", "family", "walk", "bookable"],
+    "min_age": "all"
   },
   {
     "name": "Mam Tor",
@@ -51,7 +56,8 @@
     "price": "Free",
     "dog_friendly": "yes — on lead (sheep & paragliders)",
     "from_base": "17 mi · ~35 min drive",
-    "tags": ["walk", "views"]
+    "tags": ["walk", "views"],
+    "min_age": "3+"
   },
   {
     "name": "Blue John Cavern",
@@ -65,7 +71,8 @@
     "price": "~£14 adult · ~£8 child · family ~£35",
     "dog_friendly": "no",
     "from_base": "17 mi · ~35 min drive",
-    "tags": ["cave", "indoor", "bookable"]
+    "tags": ["cave", "indoor", "bookable"],
+    "min_age": "3+"
   },
   {
     "name": "Winnats Pass",
@@ -78,7 +85,8 @@
     "price": "Free",
     "dog_friendly": "yes",
     "from_base": "18 mi · ~35 min drive",
-    "tags": ["drive", "scenery"]
+    "tags": ["drive", "scenery"],
+    "min_age": "all"
   },
   {
     "name": "Speedwell Cavern",
@@ -92,7 +100,8 @@
     "price": "~£18 adult · ~£12 child · family ~£50",
     "dog_friendly": "no",
     "from_base": "18 mi · ~35 min drive",
-    "tags": ["cave", "boat", "indoor", "bookable"]
+    "tags": ["cave", "boat", "indoor", "bookable"],
+    "min_age": "3+"
   },
   {
     "name": "Peveril Castle",
@@ -106,7 +115,8 @@
     "price": "~£10 adult · ~£6 child · family ~£26 (book online -15%)",
     "dog_friendly": "yes — on lead (English Heritage policy)",
     "from_base": "19 mi · ~40 min drive",
-    "tags": ["castle", "views", "bookable"]
+    "tags": ["castle", "views", "bookable"],
+    "min_age": "5+"
   },
   {
     "name": "Castleton village",
@@ -119,7 +129,8 @@
     "price": "Free to wander",
     "dog_friendly": "yes",
     "from_base": "19 mi · ~40 min drive",
-    "tags": ["village", "food"]
+    "tags": ["village", "food"],
+    "min_age": "all"
   },
   {
     "name": "Chatsworth Farmyard & Playground",
@@ -133,7 +144,8 @@
     "price": "~£12 adult · ~£10 child · under 3 free",
     "dog_friendly": "assistance dogs only inside farmyard; estate paths yes",
     "from_base": "22 mi · ~45 min drive",
-    "tags": ["family", "playground", "bookable"]
+    "tags": ["family", "playground", "bookable"],
+    "min_age": "all"
   },
   {
     "name": "Gulliver's Kingdom Matlock Bath",
@@ -147,7 +159,8 @@
     "price": "~£25 per person (under 90cm free)",
     "dog_friendly": "no (assistance dogs only)",
     "from_base": "22 mi · ~45 min drive",
-    "tags": ["family", "theme-park", "bookable"]
+    "tags": ["family", "theme-park", "bookable"],
+    "min_age": "3+"
   },
   {
     "name": "Heights of Abraham (Matlock Bath)",
@@ -161,7 +174,8 @@
     "price": "~£24 adult · ~£17 child · family ~£70",
     "dog_friendly": "yes — cable cars & estate; no in caverns or restaurant",
     "from_base": "22 mi · ~45 min drive",
-    "tags": ["family", "cable-car", "cave", "bookable"]
+    "tags": ["family", "cable-car", "cave", "bookable"],
+    "min_age": "all"
   },
   {
     "name": "Awesome Walls Stockport",
@@ -175,7 +189,10 @@
     "price": "~£12 day pass · induction extra",
     "dog_friendly": "no",
     "from_base": "25 mi · ~50 min drive",
-    "tags": ["climbing", "indoor", "bookable"]
+    "tags": ["climbing", "indoor", "bookable"],
+    "min_age": "5+",
+    "grades": "Roped routes F4 – F8a+ (≈ V0 – V9 equivalent)",
+    "levels": ["beginner", "intermediate", "advanced"]
   },
   {
     "name": "The Climbing Works",
@@ -189,7 +206,10 @@
     "price": "~£11 day pass · induction ~£20",
     "dog_friendly": "no",
     "from_base": "28 mi · ~50 min drive",
-    "tags": ["bouldering", "indoor", "bookable"]
+    "tags": ["bouldering", "indoor", "bookable"],
+    "min_age": "5+",
+    "grades": "V0 – V14 (entire spectrum; deep on benchmark V3–V8)",
+    "levels": ["beginner", "intermediate", "advanced"]
   },
   {
     "name": "Stanage Edge (outdoor)",
@@ -202,7 +222,10 @@
     "price": "Free",
     "dog_friendly": "yes — on lead",
     "from_base": "28 mi · ~55 min drive",
-    "tags": ["climbing", "outdoor", "walk"]
+    "tags": ["climbing", "outdoor", "walk"],
+    "min_age": "5+",
+    "grades": "V0 – V14 (boulder problems plenty; trad routes Diff – E9)",
+    "levels": ["beginner", "intermediate", "advanced"]
   },
   {
     "name": "The Climbing Hangar Sheffield",
@@ -216,6 +239,9 @@
     "price": "~£12 day pass · induction ~£15",
     "dog_friendly": "no",
     "from_base": "30 mi · ~55 min drive",
-    "tags": ["bouldering", "indoor", "bookable"]
+    "tags": ["bouldering", "indoor", "bookable"],
+    "min_age": "4+",
+    "grades": "V0 – V11 (very beginner-friendly grading, well-set V0–V4)",
+    "levels": ["beginner", "intermediate", "advanced"]
   }
 ]

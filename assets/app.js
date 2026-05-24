@@ -732,15 +732,93 @@ async function loadPlacesAndMap() {
   }
 }
 
+let cachedActivities = [];
+let activityAgeFilter = 'all-activities';
+let activityGradeFilter = 'all-grades';
+
+const ACTIVITY_AGE_FILTERS = [
+  { key: 'all-activities', label: 'All activities' },
+  { key: 'all', label: 'All ages (toddler ok)' },
+  { key: '3+', label: '3-year-old friendly' },
+  { key: '5+', label: '5+ friendly' },
+];
+
+const GRADE_FILTERS = [
+  { key: 'all-grades', label: 'All grades' },
+  { key: 'beginner', label: 'Beginner (V0–V2)' },
+  { key: 'intermediate', label: 'Intermediate (V3–V5)' },
+  { key: 'advanced', label: 'Advanced (V6+)' },
+];
+
+function isClimbing(a) {
+  return (a.tags || []).some(t => ['climbing', 'bouldering'].includes(t));
+}
+
+function activityMatches(a) {
+  // Age filter
+  if (activityAgeFilter !== 'all-activities') {
+    const ageOk = activityAgeFilter === 'all' ? a.min_age === 'all'
+      : activityAgeFilter === '3+' ? ['all', '3+'].includes(a.min_age)
+      : activityAgeFilter === '5+' ? ['all', '3+', '5+', '4+'].includes(a.min_age)
+      : true;
+    if (!ageOk) return false;
+  }
+  // Grade filter: only affects climbing/bouldering tiles
+  if (activityGradeFilter !== 'all-grades' && isClimbing(a)) {
+    const levels = a.levels || [];
+    if (!levels.includes(activityGradeFilter)) return false;
+  }
+  return true;
+}
+
+function renderActivityFilters() {
+  const ageEl = document.getElementById('activity-age-filters');
+  const gradeEl = document.getElementById('activity-grade-filters');
+  if (ageEl && !ageEl.children.length) {
+    ACTIVITY_AGE_FILTERS.forEach(f => {
+      const btn = document.createElement('button');
+      btn.className = 'filter-chip' + (activityAgeFilter === f.key ? ' active' : '');
+      btn.textContent = f.label;
+      btn.dataset.key = f.key;
+      btn.addEventListener('click', () => {
+        activityAgeFilter = f.key;
+        ageEl.querySelectorAll('.filter-chip').forEach(c => c.classList.toggle('active', c.dataset.key === activityAgeFilter));
+        renderActivities(cachedActivities);
+      });
+      ageEl.appendChild(btn);
+    });
+  }
+  if (gradeEl && !gradeEl.children.length) {
+    GRADE_FILTERS.forEach(f => {
+      const btn = document.createElement('button');
+      btn.className = 'filter-chip' + (activityGradeFilter === f.key ? ' active' : '');
+      btn.textContent = f.label;
+      btn.dataset.key = f.key;
+      btn.addEventListener('click', () => {
+        activityGradeFilter = f.key;
+        gradeEl.querySelectorAll('.filter-chip').forEach(c => c.classList.toggle('active', c.dataset.key === activityGradeFilter));
+        renderActivities(cachedActivities);
+      });
+      gradeEl.appendChild(btn);
+    });
+  }
+}
+
 function renderActivities(activities) {
   const el = document.getElementById('activities-list');
   if (!el) return;
-  activities = [...activities].sort(byDistance);
-  const grouped = activities.reduce((acc, a) => {
+  cachedActivities = activities;
+  renderActivityFilters();
+  const filtered = [...activities].filter(activityMatches).sort(byDistance);
+  const grouped = filtered.reduce((acc, a) => {
     const g = a.group || 'Other';
     (acc[g] = acc[g] || []).push(a);
     return acc;
   }, {});
+  if (!Object.keys(grouped).length) {
+    el.innerHTML = `<p class="muted">No activities match these filters.</p>`;
+    return;
+  }
   el.innerHTML = '';
   for (const [group, items] of Object.entries(grouped)) {
     const wrap = document.createElement('div');
@@ -758,13 +836,15 @@ function renderActivities(activities) {
         ? `<a class="book-btn" href="${a.booking_url}" target="_blank" rel="noopener" onclick="event.stopPropagation()">Book →</a>`
         : '';
       const dogPill = a.dog_friendly ? dogFriendlyPill(a.dog_friendly) : '';
+      const ageBadge = a.min_age ? `<span class="activity-age">${a.min_age === 'all' ? 'All ages' : `Age ${a.min_age}`}</span>` : '';
       tile.innerHTML = `
-        <h4>${a.name}</h4>
+        <h4>${a.name} ${ageBadge}</h4>
         <p class="muted">${a.description}</p>
         <div class="activity-meta">
           ${a.from_base ? `<div>🚗 ${a.from_base}</div>` : ''}
           ${a.hours ? `<div>🕐 ${a.hours}</div>` : ''}
           ${a.price ? `<div>💷 ${a.price}</div>` : ''}
+          ${a.grades ? `<div>🧗 ${a.grades}</div>` : ''}
           ${dogPill ? `<div>🐕 ${dogPill}</div>` : ''}
         </div>
         ${mapLinks(a.lat, a.lon, true)}
